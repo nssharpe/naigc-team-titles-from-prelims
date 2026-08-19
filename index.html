@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What changes at NAIGC Nationals if team titles are decided on prelim scores and finals qualification becomes purely individual. Modelled on the 2026 results, with judging drift tested across 2024-2026.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Team Titles from Prelims">
+<meta property="og:description" content="NAIGC Nationals rules analysis: what changes if the team competition is decided on prelims and finals qualification becomes purely individual.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A4%B8%3C/text%3E%3C/svg%3E">
+<title>Team Titles from Prelims</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+:root{
+  --ink:#171a1f;
+  --ink-soft:#4a545e;
+  --ink-faint:#5f6871;
+  --paper:#f7f6f3;
+  --surface:#ffffff;
+  --surface-2:#eeedea;
+  --rule:#d9d7d1;
+  --rule-soft:#e7e5e0;
+  --accent:#1f4d5c;
+  --accent-soft:#e2eef1;
+  --brick:#a8482f;
+  --brick-soft:#f4e5e0;
+  --gain:#2f6b4f;
+  --gain-soft:#e2efe8;
+  --gym-green:#3f7d4e;
+  --gym-red:#a83b3b;
+  --gym-yellow:#856210;
+  --gym-orange:#9c4f1e;
+  --shadow:0 1px 2px rgba(23,26,31,.06),0 8px 24px -12px rgba(23,26,31,.14);
+  --maxw:70ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e6e4df;
+    --ink-soft:#a8b1ba;
+    --ink-faint:#98a1aa;
+    --paper:#12161a;
+    --surface:#1a2026;
+    --surface-2:#232b32;
+    --rule:#333d45;
+    --rule-soft:#283138;
+    --accent:#67b0c4;
+    --accent-soft:#1c343c;
+    --brick:#e0876b;
+    --brick-soft:#3a2620;
+    --gain:#6bbd93;
+    --gain-soft:#1d3229;
+    --gym-green:#6fb37f;
+    --gym-red:#d97070;
+    --gym-yellow:#d6ab4a;
+    --gym-orange:#e08d5a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e6e4df;
+  --ink-soft:#a8b1ba;
+  --ink-faint:#98a1aa;
+  --paper:#12161a;
+  --surface:#1a2026;
+  --surface-2:#232b32;
+  --rule:#333d45;
+  --rule-soft:#283138;
+  --accent:#67b0c4;
+  --accent-soft:#1c343c;
+  --brick:#e0876b;
+  --brick-soft:#3a2620;
+  --gain:#6bbd93;
+  --gain-soft:#1d3229;
+  --gym-green:#6fb37f;
+  --gym-red:#d97070;
+  --gym-yellow:#d6ab4a;
+  --gym-orange:#e08d5a;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.ui{font-family:"Archivo","Helvetica Neue",Arial,sans-serif}
+.mono,td.num,th.num,.stat-val,.tag{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+
+/* ---------- shell ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding:44px 0 22px;
+  margin-bottom:40px;
+}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px;
+}
+h1{
+  font-size:clamp(2.1rem,5.2vw,3.5rem);
+  line-height:1.02;font-weight:700;letter-spacing:-.022em;
+  margin:0 0 18px;text-wrap:balance;max-width:19ch;
+}
+.standfirst{
+  font-size:1.16rem;color:var(--ink-soft);margin:0;max-width:62ch;
+}
+.byline{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:24px;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  letter-spacing:.05em;color:var(--ink-faint);text-transform:uppercase;
+}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.layout>*{min-width:0}
+@media(min-width:1000px){
+  .layout{grid-template-columns:190px minmax(0,1fr);gap:56px;align-items:start}
+  nav.rail{position:sticky;top:28px}
+}
+nav.rail{font-family:"Archivo",sans-serif;font-size:13px;margin-bottom:40px}
+nav.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+nav.rail a{
+  display:flex;gap:10px;padding:6px 8px;border-radius:4px;
+  color:var(--ink-soft);text-decoration:none;line-height:1.32;
+  border-left:2px solid transparent;
+}
+nav.rail a:hover{background:var(--surface-2);color:var(--ink);border-left-color:var(--accent)}
+nav.rail a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+nav.rail .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);padding-top:1px}
+
+/* ---------- sections ---------- */
+section{margin-bottom:76px;scroll-margin-top:24px}
+.sec-head{border-top:1px solid var(--ink);padding-top:14px;margin-bottom:26px}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;display:block;margin-bottom:8px;
+}
+h2{font-size:clamp(1.5rem,3vw,2.05rem);line-height:1.14;font-weight:700;letter-spacing:-.018em;margin:0;text-wrap:balance;max-width:26ch}
+h3{font-size:1.16rem;font-weight:600;letter-spacing:-.008em;margin:44px 0 12px;max-width:40ch}
+h4{font-size:.87rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px}
+p{margin:0 0 16px;max-width:var(--maxw)}
+ul,ol.body{margin:0 0 18px;padding-left:20px;max-width:var(--maxw)}
+li{margin-bottom:8px}
+strong{font-weight:600}
+em{font-style:italic}
+a{color:var(--accent)}
+code,.k{
+  font-family:"IBM Plex Mono",monospace;font-size:.86em;
+  background:var(--surface-2);padding:1px 5px;border-radius:3px;
+}
+
+/* ---------- executive summary ---------- */
+.exec{
+  border:1px solid var(--ink);border-radius:3px;background:var(--surface);
+  padding:30px 32px 26px;margin:0 0 52px;box-shadow:var(--shadow);
+}
+.exec>h2{
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 18px;font-weight:600;max-width:none;
+}
+.exec-lede{
+  font-size:1.2rem;line-height:1.5;margin:0 0 26px;max-width:66ch;
+}
+.exec-grid{
+  display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:3px;margin-bottom:24px;
+}
+@media(min-width:820px){.exec-grid{grid-template-columns:1fr 1fr}}
+.exec-item{background:var(--surface);padding:16px 20px}
+.exec-item h3{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+  margin:0 0 8px;font-weight:600;max-width:none;
+}
+.exec-item p{margin:0;font-size:.95rem;line-height:1.55;max-width:none}
+.exec-item b{color:var(--ink)}
+.exec-bottom{
+  border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin:0;
+  font-size:1.02rem;max-width:70ch;
+}
+/* ---------- verdict ---------- */
+.verdict{
+  background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  border-radius:3px;padding:20px 24px;margin:0 0 30px;box-shadow:var(--shadow);max-width:var(--maxw);
+}
+.verdict h4{color:var(--accent);margin-bottom:8px}
+.verdict p{margin:0;font-size:1.02rem}
+.verdict p+p{margin-top:10px}
+
+/* ---------- stat row ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+  margin:0 0 32px;overflow:hidden;
+}
+.stat{background:var(--surface);padding:16px 18px}
+.stat-val{font-size:1.72rem;font-weight:600;line-height:1;letter-spacing:-.02em;display:block}
+.stat-val.up{color:var(--gain)}
+.stat-val.dn{color:var(--brick)}
+.stat-lab{font-family:"Archivo",sans-serif;font-size:11.5px;line-height:1.35;color:var(--ink-soft);margin-top:8px;display:block}
+
+/* ---------- figures ---------- */
+figure{margin:32px 0;padding:0}
+.fig-box{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:22px 24px 18px;box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:"Archivo",sans-serif;font-size:12.5px;line-height:1.5;color:var(--ink-soft);
+  margin-top:12px;max-width:78ch;
+}
+figcaption b{color:var(--ink);font-weight:600}
+.fig-title{font-family:"Archivo",sans-serif;font-weight:600;font-size:1rem;margin:0 0 4px}
+.fig-sub{font-family:"Archivo",sans-serif;font-size:12.5px;color:var(--ink-faint);margin:0 0 20px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:"IBM Plex Mono",monospace}
+svg .lab{font-family:"Archivo",sans-serif}
+
+/* ---------- legend ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:14px 0 0;font-family:"Archivo",sans-serif;font-size:12px;color:var(--ink-soft)}
+.legend span{display:flex;align-items:center;gap:7px}
+.sw{width:11px;height:11px;border-radius:2px;flex:none}
+
+/* ---------- tables ---------- */
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-family:"Archivo",sans-serif}
+caption{text-align:left;font-family:"Archivo",sans-serif;font-weight:600;font-size:1rem;padding-bottom:4px}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+thead th{
+  font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);
+  border-bottom:1px solid var(--ink);font-weight:600;white-space:nowrap;
+}
+td.num,th.num{text-align:right;white-space:nowrap}
+tbody tr:hover{background:var(--surface-2)}
+.grp td{background:var(--surface-2);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.chg{background:var(--brick-soft)}
+.chg td:first-child{box-shadow:inset 2px 0 0 var(--brick)}
+.tag{
+  display:inline-block;font-size:10.5px;padding:1px 6px;border-radius:2px;
+  letter-spacing:.03em;white-space:nowrap;
+}
+.tag.flip{background:var(--brick-soft);color:var(--brick)}
+.tag.hold{background:var(--surface-2);color:var(--ink-faint)}
+.tag.new{background:var(--gain-soft);color:var(--gain)}
+
+/* ---------- misc ---------- */
+.note{
+  border-left:2px solid var(--rule);padding:2px 0 2px 18px;margin:26px 0;
+  color:var(--ink-soft);font-size:.95rem;max-width:var(--maxw);
+}
+.note h4{margin-bottom:6px}
+.two-col{display:grid;grid-template-columns:1fr;gap:26px;margin:26px 0}
+@media(min-width:760px){.two-col{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:18px 20px;box-shadow:var(--shadow)}
+.card h4{color:var(--accent)}
+.card p:last-child{margin-bottom:0}
+.card p{max-width:none}
+.qlist{counter-reset:q;list-style:none;padding:0;max-width:var(--maxw)}
+.qlist li{
+  counter-increment:q;position:relative;padding-left:34px;margin-bottom:16px;
+}
+.qlist li::before{
+  content:counter(q);position:absolute;left:0;top:2px;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--surface);
+  background:var(--accent);width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;font-weight:600;
+}
+footer{border-top:1px solid var(--rule);margin-top:60px;padding-top:22px;color:var(--ink-faint);font-size:12.5px;font-family:"Archivo",sans-serif}
+footer p{max-width:80ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">NAIGC Nationals · rules analysis · 2026 data, replicated on 2025 and 2024</p>
+  <h1>Team Titles from Prelims</h1>
+  <p class="standfirst">What changes if the team competition is decided on prelim scores and finals qualification becomes purely individual — modelled on the 2026 Nationals results, with the judging-drift question tested across three years. Short version: three of sixteen titles change hands, individual qualification spots rise about 69%, and both of the fairness objections turn out to be smaller than the round-to-round variation they would replace.</p>
+  <div class="byline">
+    <span>1,920 prelim athletes</span>
+    <span>1,255 finals routines · 4 sessions</span>
+    <span>16 team titles in scope</span>
+    <span>3 years of drift data</span>
+  </div>
+</header>
+
+<section class="exec" aria-labelledby="exec-h">
+  <h2 id="exec-h">Executive summary</h2>
+  <p class="exec-lede">Decide the team competition on prelims, make finals qualification purely individual, and keep the finals sessions the same length. Applied to the 2026 results: <strong>three of sixteen team titles change hands</strong>, individual qualification opportunities rise about <strong>69%</strong>, and the number of athletes who actually compete in a final barely moves. The two fairness objections usually raised against prelims-based team scoring both turn out to be <strong>smaller than the round-to-round variation the current system already accepts.</strong></p>
+
+  <div class="exec-grid">
+    <div class="exec-item">
+      <h3>Finals access — close to a swap, at a higher standard</h3>
+      <p>488 athletes compete in a 2026 final today; <b>511</b> would qualify. <b>390 keep their place, 98 lose it, 121 gain one.</b> No current individual qualifier is displaced. The incoming group is stronger — median <b>25th percentile</b> of their category&times;level group against <b>47th</b> for those leaving — and comes from <b>75 clubs</b> against 26 losing someone. Clubs with an athlete in a final rise from <b>95 to 109</b>, and none lose their presence entirely.</p>
+    </div>
+    <div class="exec-item">
+      <h3>Team results — three golds move</h3>
+      <p>Of the 16 titles currently decided in finals, <b>3 golds</b> and <b>12 of 34 medal positions</b> change hands: WAG Level&nbsp;9 (Liberty&nbsp;&rarr;&nbsp;Rhode Island), WAG Diamond (Grand Valley&nbsp;&rarr;&nbsp;Michigan) and MAG Intermediate (Virginia Tech&nbsp;&rarr;&nbsp;Vermont). All three are categories where three or more competitive teams reached the team final. Three bronzes that don't currently exist would start being awarded. Mixed-gender titles and every Silver, Open Scoring and MAG Developmental title <b>already</b> come from prelims and are unaffected.</p>
+    </div>
+    <div class="exec-item">
+      <h3>Judging drift — not detectable over three years</h3>
+      <p>Because the same two judges cover an apparatus for the whole competition, an athlete's prelim and finals routines are scored by the same panel — as clean a test as this data allows. Across six year&times;discipline cells the session trend <b>straddles zero and flips sign by year</b>; the day-1 vs day-2 comparison is not significant anywhere. The largest effect found in any cell is <b>0.72 team points</b>, against a measured prelims-to-finals team swing of <b>1.59 (WAG)</b> and <b>3.74 (MAG)</b>.</p>
+    </div>
+    <div class="exec-item">
+      <h3>Open-squad scoring — costs very little</h3>
+      <p>Scoring prelims from the whole squad rather than a declared lineup was worth a median of <b>0.05 team points in WAG and 0.10 in MAG</b>; 22 of 45 teams gained nothing at all, and the largest gain was 1.53. It does <b>not</b> scale with squad size — a 4-athlete club gained more than a 23-athlete one. Removing it entirely would change one gold. Keeping the open squad, and avoiding A/B team splits, is well supported.</p>
+    </div>
+  </div>
+
+  <p class="exec-bottom"><strong>The bottom line.</strong> On the evidence, the fairness case against prelims-based team scoring is weaker than it is usually assumed to be, and the change slightly improves both the breadth and the standard of the finals field. The real cost is not statistical: it is that three of sixteen titles in 2026 would have gone to a different club, and that the team competition would no longer be settled with the contenders in the room together. Those are judgement calls, not measurement problems.</p>
+</section>
+
+<div class="layout">
+  <nav class="rail" aria-label="Sections">
+    <ol>
+      <li><a href="#setup"><span class="n">00</span><span>How the current system works</span></a></li>
+      <li><a href="#q1"><span class="n">01</span><span>Who qualifies, and how much it changes</span></a></li>
+      <li><a href="#q2"><span class="n">02</span><span>How team results change</span></a></li>
+      <li><a href="#q3"><span class="n">03</span><span>Session drift vs. team variance</span></a></li>
+      <li><a href="#depth"><span class="n">04</span><span>What open-squad scoring actually costs</span></a></li>
+      <li><a href="#other"><span class="n">05</span><span>Other consequences</span></a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+<!-- ============ 00 SETUP ============ -->
+<section id="setup">
+  <div class="sec-head"><span class="sec-num">00 — Baseline</span><h2>What the current system actually does</h2></div>
+
+  <p>Everything below is grounded in the real 2026 files, and the qualification and scoring rules were reverse-engineered from them and then validated against the banquet program. Three facts shape the whole analysis:</p>
+
+  <ol class="body">
+    <li><strong>Only five level-groups have finals at all.</strong> WAG Platinum, Diamond and Level&nbsp;9; MAG Advanced and Intermediate. Silver, Open Scoring and MAG Developmental have <em>no</em> finals session — their individual and team awards already come straight from prelims. This rule change cannot touch them.</li>
+    <li><strong>Mixed-gender team titles are already decided on prelims.</strong> Colorado State's Platinum Mixed title (112.725), UCLA's Diamond Mixed (114.875) and Ohio State's Level&nbsp;9 Mixed (108.35) are all prelim numbers in the banquet program. So the proposal doesn't introduce prelims-based team scoring to NAIGC — it extends it to the remaining <strong>16 titles</strong>.</li>
+    <li><strong>Team qualification accounts for more of the finals floor than individual qualification does in some sessions.</strong> A qualifying team names four per apparatus and can name a different four on each, so the athletes it brings into a final are spread thinly across the events — averaging 2.2 routines each, against 4 or 6 for an all-around qualifier.</li>
+  </ol>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">488</span><span class="stat-lab">athletes competed in the four finals sessions</span></div>
+    <div class="stat"><span class="stat-val">336</span><span class="stat-lab">of them qualified on their own score</span></div>
+    <div class="stat"><span class="stat-val">152</span><span class="stat-lab">competed only as part of a team lineup</span></div>
+    <div class="stat"><span class="stat-val">1,255</span><span class="stat-lab">routines performed in finals</span></div>
+    <div class="stat"><span class="stat-val dn">38%</span><span class="stat-lab">of those routines exist only because of team qualification</span></div>
+  </div>
+
+  <p>Every count in this report is of athletes who <strong>performed a scored routine</strong>. Being named to a qualifying team's squad is not by itself counted as making a final: a further 113 athletes were entered via their club's team and never took the floor, and they are excluded from both sides of every comparison that follows.</p>
+
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Where the finals routines come from</p>
+      <p class="fig-sub">Routines actually performed (scratches excluded), by finals session</p>
+      <div class="scroll">
+      <svg viewBox="0 0 720 250" role="img" aria-label="Stacked bars showing individual-qualified versus team-only routines in each of the four finals sessions">
+        <g class="lab" font-size="12" fill="var(--ink-soft)">
+          <text x="0" y="34">Platinum</text>
+          <text x="0" y="86">Diamond</text>
+          <text x="0" y="138">Level 9</text>
+          <text x="0" y="190">MAG</text>
+        </g>
+        <!-- scale: 435 routines = 500px -->
+        <g>
+          <!-- Platinum 175 / 151 -->
+          <rect x="86" y="16" width="201" height="26" fill="var(--accent)"/>
+          <rect x="287" y="16" width="174" height="26" fill="var(--brick)"/>
+          <text x="96" y="34" font-size="12" fill="var(--surface)" font-weight="600">175</text>
+          <text x="297" y="34" font-size="12" fill="var(--surface)" font-weight="600">151</text>
+          <text x="472" y="34" font-size="11.5" fill="var(--brick)" font-weight="600">46% team-only</text>
+          <!-- Diamond 181 / 112 -->
+          <rect x="86" y="68" width="208" height="26" fill="var(--accent)"/>
+          <rect x="294" y="68" width="129" height="26" fill="var(--brick)"/>
+          <text x="96" y="86" font-size="12" fill="var(--surface)" font-weight="600">181</text>
+          <text x="304" y="86" font-size="12" fill="var(--surface)" font-weight="600">112</text>
+          <text x="434" y="86" font-size="11.5" fill="var(--brick)" font-weight="600">38%</text>
+          <!-- Level 9 138 / 63 -->
+          <rect x="86" y="120" width="159" height="26" fill="var(--accent)"/>
+          <rect x="245" y="120" width="72" height="26" fill="var(--brick)"/>
+          <text x="96" y="138" font-size="12" fill="var(--surface)" font-weight="600">138</text>
+          <text x="255" y="138" font-size="12" fill="var(--surface)" font-weight="600">63</text>
+          <text x="328" y="138" font-size="11.5" fill="var(--brick)" font-weight="600">31%</text>
+          <!-- MAG 285 / 150 -->
+          <rect x="86" y="172" width="328" height="26" fill="var(--accent)"/>
+          <rect x="414" y="172" width="172" height="26" fill="var(--brick)"/>
+          <text x="96" y="190" font-size="12" fill="var(--surface)" font-weight="600">285</text>
+          <text x="424" y="190" font-size="12" fill="var(--surface)" font-weight="600">150</text>
+          <text x="597" y="190" font-size="11.5" fill="var(--brick)" font-weight="600">35%</text>
+        </g>
+        <line x1="86" y1="212" x2="86" y2="220" stroke="var(--rule)"/>
+        <line x1="86" y1="216" x2="661" y2="216" stroke="var(--rule)"/>
+        <text x="86" y="236" font-size="10.5" fill="var(--ink-faint)">0</text>
+        <text x="360" y="236" font-size="10.5" fill="var(--ink-faint)">250 routines</text>
+        <text x="620" y="236" font-size="10.5" fill="var(--ink-faint)">500</text>
+      </svg>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--accent)"></i>Athlete qualified individually on that apparatus (AA or event)</span>
+        <span><i class="sw" style="background:var(--brick)"></i>Athlete is there only because their club's team qualified</span>
+      </div>
+      <figcaption>This is the capacity that the proposal frees up. Platinum is the extreme case — <b>nearly half</b> the routines in the Xcel Platinum final were performed by athletes who did not qualify on their own score.</figcaption>
+    </div>
+  </figure>
+</section>
+
+<!-- ============ 01 ============ -->
+<section id="q1">
+  <div class="sec-head"><span class="sec-num">01 — Qualifiers</span><h2>Individual qualification spots would rise about 69%</h2></div>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>Holding each finals session to the <strong>same number of routines</strong> (which is what actually sets session length), individual qualification spots go from <strong>663 to 1,119</strong> — up 69% overall, and up 94% in Platinum where team qualifiers are thickest. Because the new qualifier fields are strict supersets of the old, <strong>no athlete who currently qualifies individually loses their spot</strong>.</p>
+    <p>Counting only athletes who actually perform a routine, the field grows slightly: <strong>488 compete now, 511 would qualify</strong>. <strong>390 keep their place, 98 lose it, 121 gain one.</strong></p>
+  </div>
+
+  <h3>The reallocation rule I used</h3>
+  <p>"Same size" doesn't by itself determine how the freed slots are handed out, so I picked the assumption that best matches NAIGC's existing intent: <strong>multiply the current per-group qualification depth by a common factor</strong>, keeping ties-at-the-cutoff advancing exactly as they do today. The current depths already encode a proportional-to-participation allocation (20 for the big Collegiate Women+ groups, 2–3 for the small ones), so scaling preserves that balance rather than flattening it.</p>
+
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Expansion factor needed to keep each session the same length</p>
+      <p class="fig-sub">Multiplier applied to current qualification depth</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Finals session</th><th class="num">Routines<br>(held fixed)</th><th class="num">Athletes<br>competing now</th><th class="num">Expansion</th><th class="num">Qualification spots</th><th class="num">Athletes<br>after</th></tr></thead>
+        <tbody>
+          <tr><td>WAG Xcel Platinum</td><td class="num mono">326</td><td class="num mono">139</td><td class="num mono">&times;2.04</td><td class="num mono">158 &rarr; 307</td><td class="num mono">150</td></tr>
+          <tr><td>WAG Xcel Diamond</td><td class="num mono">293</td><td class="num mono">133</td><td class="num mono">&times;1.84</td><td class="num mono">153 &rarr; 251</td><td class="num mono">130</td></tr>
+          <tr><td>WAG Level 9</td><td class="num mono">201</td><td class="num mono">89</td><td class="num mono">&times;1.54</td><td class="num mono">121 &rarr; 187</td><td class="num mono">89</td></tr>
+          <tr><td>MAG (Adv + Int)</td><td class="num mono">435</td><td class="num mono">127</td><td class="num mono">&times;1.66</td><td class="num mono">231 &rarr; 374</td><td class="num mono">142</td></tr>
+          <tr style="border-top:1px solid var(--ink);font-weight:600"><td>Total</td><td class="num mono">1,255</td><td class="num mono">488</td><td class="num mono">—</td><td class="num mono">663 &rarr; 1,119</td><td class="num mono">511</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>A "qualification spot" is one athlete&times;apparatus entry, so an all-around qualifier holds four (WAG) or six (MAG) of them. Expansion factors differ by session because team qualifiers make up different shares of each field.</figcaption>
+    </div>
+  </figure>
+
+  <h3>Change by apparatus</h3>
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Qualification spots, current vs. proposed</p>
+      <p class="fig-sub">WAG covers the Platinum, Diamond and Level 9 finals; MAG covers the single Advanced + Intermediate final</p>
+      <div class="scroll">
+      <svg viewBox="0 0 720 380" role="img" aria-label="Paired bars comparing current and proposed qualification spots for each apparatus, split by WAG and MAG">
+        <g font-size="11">
+        <text x="0" y="12" class="lab" font-size="11" font-weight="600" fill="var(--accent)" letter-spacing="1.4">WAG</text>
+        <!-- scale: 170 spots = 420px  => 2.47 px per spot -->
+        <g class="lab" font-size="12" font-weight="600" fill="var(--ink)">
+          <text x="0" y="38">AA</text><text x="0" y="68">VT</text><text x="0" y="98">FX</text>
+          <text x="0" y="128">UB</text><text x="0" y="158">BB</text>
+        </g>
+        <!-- AA 79 -> 143 -->
+        <rect x="34" y="24" width="195" height="7" fill="var(--ink-faint)"/><rect x="34" y="33" width="353" height="7" fill="var(--accent)"/>
+        <text x="395" y="39" fill="var(--gain)" font-weight="600">79 &rarr; 143 &nbsp;+81%</text>
+        <!-- VT 97 -> 166 -->
+        <rect x="34" y="54" width="240" height="7" fill="var(--ink-faint)"/><rect x="34" y="63" width="410" height="7" fill="var(--accent)"/>
+        <text x="452" y="69" fill="var(--gain)" font-weight="600">97 &rarr; 166 &nbsp;+71%</text>
+        <!-- FX 89 -> 148 -->
+        <rect x="34" y="84" width="220" height="7" fill="var(--ink-faint)"/><rect x="34" y="93" width="366" height="7" fill="var(--accent)"/>
+        <text x="408" y="99" fill="var(--gain)" font-weight="600">89 &rarr; 148 &nbsp;+66%</text>
+        <!-- UB 84 -> 143 -->
+        <rect x="34" y="114" width="208" height="7" fill="var(--ink-faint)"/><rect x="34" y="123" width="353" height="7" fill="var(--accent)"/>
+        <text x="395" y="129" fill="var(--gain)" font-weight="600">84 &rarr; 143 &nbsp;+70%</text>
+        <!-- BB 83 -> 145 -->
+        <rect x="34" y="144" width="205" height="7" fill="var(--ink-faint)"/><rect x="34" y="153" width="358" height="7" fill="var(--accent)"/>
+        <text x="400" y="159" fill="var(--gain)" font-weight="600">83 &rarr; 145 &nbsp;+75%</text>
+        <line x1="0" y1="176" x2="700" y2="176" stroke="var(--rule)"/>
+        <text x="0" y="198" class="lab" font-size="11" font-weight="600" fill="var(--accent)" letter-spacing="1.4">MAG</text>
+        <g class="lab" font-size="12" font-weight="600" fill="var(--ink)">
+          <text x="0" y="224">AA</text><text x="0" y="254">FX</text><text x="0" y="284">VT</text>
+          <text x="0" y="314">PH</text><text x="0" y="344">SR</text><text x="0" y="374">PB</text>
+        </g>
+        <!-- AA 29 -> 46 -->
+        <rect x="34" y="210" width="72" height="7" fill="var(--ink-faint)"/><rect x="34" y="219" width="114" height="7" fill="var(--accent)"/>
+        <text x="156" y="225" fill="var(--gain)" font-weight="600">29 &rarr; 46 &nbsp;+59%</text>
+        <!-- FX 35 -> 56 -->
+        <rect x="34" y="240" width="86" height="7" fill="var(--ink-faint)"/><rect x="34" y="249" width="138" height="7" fill="var(--accent)"/>
+        <text x="180" y="255" fill="var(--gain)" font-weight="600">35 &rarr; 56 &nbsp;+60%</text>
+        <!-- VT 33 -> 55 -->
+        <rect x="34" y="270" width="82" height="7" fill="var(--ink-faint)"/><rect x="34" y="279" width="136" height="7" fill="var(--accent)"/>
+        <text x="178" y="285" fill="var(--gain)" font-weight="600">33 &rarr; 55 &nbsp;+67%</text>
+        <!-- PH 33 -> 55 -->
+        <rect x="34" y="300" width="82" height="7" fill="var(--ink-faint)"/><rect x="34" y="309" width="136" height="7" fill="var(--accent)"/>
+        <text x="178" y="315" fill="var(--gain)" font-weight="600">33 &rarr; 55 &nbsp;+67%</text>
+        <!-- SR 34 -> 54 -->
+        <rect x="34" y="330" width="84" height="7" fill="var(--ink-faint)"/><rect x="34" y="339" width="133" height="7" fill="var(--accent)"/>
+        <text x="175" y="345" fill="var(--gain)" font-weight="600">34 &rarr; 54 &nbsp;+59%</text>
+        <!-- PB 32 -> 54 ; HB 35 -> 54 shown together -->
+        <rect x="34" y="360" width="79" height="7" fill="var(--ink-faint)"/><rect x="34" y="369" width="133" height="7" fill="var(--accent)"/>
+        <text x="175" y="375" fill="var(--gain)" font-weight="600">32 &rarr; 54 &nbsp;+69%&nbsp;&nbsp;·&nbsp;&nbsp;HB 35 &rarr; 54 &nbsp;+54%</text>
+        </g>
+      </svg>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--ink-faint)"></i>Current</span>
+        <span><i class="sw" style="background:var(--accent)"></i>Proposed (routine-neutral)</span>
+      </div>
+      <figcaption>WAG spots rise <b>+72%</b> overall, MAG <b>+62%</b>. Within WAG the all-around gains most (+81%) because AA qualifiers are the most "expensive" way to fill routine capacity — each one consumes four routine slots at once, so a fixed routine budget buys proportionally more of them once team squads are removed. MAG gains less across the board because its final already had the smallest team-qualifier share (35% of routines vs. 46% in Platinum).</figcaption>
+    </div>
+  </figure>
+
+  <h3>Change by session and category</h3>
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>Qualification spots by finals session and placement category</caption>
+        <thead><tr><th>Session</th><th>Category</th><th class="num">Now</th><th class="num">Proposed</th><th class="num">&Delta;</th><th class="num">%</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="6">WAG Xcel Platinum &nbsp;·&nbsp; +94% overall</td></tr>
+          <tr><td>Platinum</td><td>Collegiate Women+</td><td class="num mono">119</td><td class="num mono">233</td><td class="num mono">+114</td><td class="num mono">+96%</td></tr>
+          <tr><td>Platinum</td><td>Community Women+</td><td class="num mono">15</td><td class="num mono">32</td><td class="num mono">+17</td><td class="num mono">+113%</td></tr>
+          <tr><td>Platinum</td><td>Collegiate Men+</td><td class="num mono">14</td><td class="num mono">22</td><td class="num mono">+8</td><td class="num mono">+57%</td></tr>
+          <tr><td>Platinum</td><td>Community Men+</td><td class="num mono">10</td><td class="num mono">20</td><td class="num mono">+10</td><td class="num mono">+100%</td></tr>
+          <tr class="grp"><td colspan="6">WAG Xcel Diamond &nbsp;·&nbsp; +64% overall</td></tr>
+          <tr><td>Diamond</td><td>Collegiate Women+</td><td class="num mono">116</td><td class="num mono">181</td><td class="num mono">+65</td><td class="num mono">+56%</td></tr>
+          <tr><td>Diamond</td><td>Community Women+</td><td class="num mono">16</td><td class="num mono">30</td><td class="num mono">+14</td><td class="num mono">+88%</td></tr>
+          <tr><td>Diamond</td><td>Collegiate Men+</td><td class="num mono">10</td><td class="num mono">20</td><td class="num mono">+10</td><td class="num mono">+100%</td></tr>
+          <tr><td>Diamond</td><td>Community Men+</td><td class="num mono">11</td><td class="num mono">20</td><td class="num mono">+9</td><td class="num mono">+82%</td></tr>
+          <tr class="grp"><td colspan="6">WAG Level 9 &nbsp;·&nbsp; +55% overall</td></tr>
+          <tr><td>Level 9</td><td>Collegiate Women+</td><td class="num mono">100</td><td class="num mono">157</td><td class="num mono">+57</td><td class="num mono">+57%</td></tr>
+          <tr><td>Level 9</td><td>Community Women+</td><td class="num mono">11</td><td class="num mono">15</td><td class="num mono">+4</td><td class="num mono">+36%</td></tr>
+          <tr><td>Level 9</td><td>Collegiate Men+</td><td class="num mono">10</td><td class="num mono">15</td><td class="num mono">+5</td><td class="num mono">+50%</td></tr>
+          <tr class="grp"><td colspan="6">MAG Advanced + Intermediate &nbsp;·&nbsp; +62% overall</td></tr>
+          <tr><td>MAG</td><td>Collegiate Men+</td><td class="num mono">143</td><td class="num mono">235</td><td class="num mono">+92</td><td class="num mono">+64%</td></tr>
+          <tr><td>MAG</td><td>Community Men+</td><td class="num mono">51</td><td class="num mono">85</td><td class="num mono">+34</td><td class="num mono">+67%</td></tr>
+          <tr><td>MAG</td><td>Community Women+</td><td class="num mono">21</td><td class="num mono">29</td><td class="num mono">+8</td><td class="num mono">+38%</td></tr>
+          <tr><td>MAG</td><td>Collegiate Women+</td><td class="num mono">16</td><td class="num mono">25</td><td class="num mono">+9</td><td class="num mono">+56%</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>Gains are spread fairly evenly across categories (Collegiate Women+ 70%, Collegiate Men+ 65%, Community Men+ 74%, Community Women+ 68%), so the change is not a transfer between constituencies — it is a transfer from squads to individuals within every constituency.</figcaption>
+    </div>
+  </figure>
+
+  <h3>Who actually moves</h3>
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Who competes in a final, before and after</p>
+      <p class="fig-sub">Routine-neutral scenario, all four sessions. Counts athletes who performed at least one scored routine — squad members who never took the floor are excluded from both sides.</p>
+      <div class="scroll">
+      <svg viewBox="0 -14 700 314" role="img" aria-label="Flow diagram: 188 individually qualified and 148 individually-plus-team athletes keep competing, 54 team-lineup athletes now qualify individually, 98 team-lineup athletes lose the chance, and 121 athletes newly qualify, giving 511 versus 488">
+        <defs>
+          <linearGradient id="fl" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".55"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".28"/></linearGradient>
+          <linearGradient id="fl2" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".33"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".18"/></linearGradient>
+          <linearGradient id="fd" x1="0" x2="1"><stop offset="0" stop-color="var(--gain)" stop-opacity=".45"/><stop offset="1" stop-color="var(--gain)" stop-opacity=".28"/></linearGradient>
+          <linearGradient id="fx" x1="0" x2="1"><stop offset="0" stop-color="var(--brick)" stop-opacity=".5"/><stop offset="1" stop-color="var(--brick)" stop-opacity=".12"/></linearGradient>
+          <linearGradient id="fn" x1="0" x2="1"><stop offset="0" stop-color="var(--gain)" stop-opacity=".1"/><stop offset="1" stop-color="var(--gain)" stop-opacity=".5"/></linearGradient>
+        </defs>
+        <!-- scale 0.36 px per athlete. LEFT: A188(68) B148(53) D54(19) C98(35) = 175px -->
+        <rect x="150" y="14" width="22" height="68" fill="var(--accent)"/>
+        <rect x="150" y="82" width="22" height="53" fill="var(--accent)" opacity=".62"/>
+        <rect x="150" y="135" width="22" height="19" fill="var(--gain)"/>
+        <rect x="150" y="154" width="22" height="35" fill="var(--brick)"/>
+        <text x="161" y="4" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)" class="lab">488 compete now</text>
+        <!-- flows -->
+        <path d="M172,14 L520,14 L520,82 L172,82 Z" fill="url(#fl)"/>
+        <path d="M172,82 L520,82 L520,135 L172,135 Z" fill="url(#fl2)"/>
+        <path d="M172,135 L520,135 L520,154 L172,154 Z" fill="url(#fd)"/>
+        <path d="M172,154 L390,154 L390,222 L172,189 Z" fill="url(#fx)"/>
+        <path d="M430,262 L520,154 L520,198 L430,268 Z" fill="url(#fn)"/>
+        <!-- RIGHT: A68 B53 D19 E38 = 178px -->
+        <rect x="520" y="14" width="22" height="68" fill="var(--accent)"/>
+        <rect x="520" y="82" width="22" height="53" fill="var(--accent)" opacity=".62"/>
+        <rect x="520" y="135" width="22" height="19" fill="var(--gain)"/>
+        <rect x="520" y="154" width="22" height="44" fill="var(--gain)" opacity=".62"/>
+        <text x="531" y="4" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)" class="lab">511 qualify</text>
+        <g class="lab" font-size="11.5">
+          <text x="144" y="44" text-anchor="end" fill="var(--accent)" font-weight="600">188</text>
+          <text x="144" y="58" text-anchor="end" fill="var(--ink-soft)" font-size="10">individual only</text>
+          <text x="144" y="108" text-anchor="end" fill="var(--accent)" font-weight="600">148</text>
+          <text x="144" y="122" text-anchor="end" fill="var(--ink-soft)" font-size="10">individual + team</text>
+          <text x="144" y="149" text-anchor="end" fill="var(--gain)" font-weight="600">54</text>
+          <text x="144" y="176" text-anchor="end" fill="var(--brick)" font-weight="600">98</text>
+          <text x="144" y="190" text-anchor="end" fill="var(--ink-soft)" font-size="10">team lineup only</text>
+          <text x="250" y="52" fill="var(--accent)" font-weight="600">keeps competing — qualified individually</text>
+          <text x="250" y="112" fill="var(--accent)" font-weight="600">keeps competing — was on a team as well</text>
+          <text x="250" y="149" fill="var(--gain)" font-weight="600">team lineup only, but makes the deeper individual cut</text>
+          <text x="180" y="216" fill="var(--brick)" font-weight="600">98 lose the chance to compete</text>
+          <text x="180" y="232" fill="var(--ink-faint)" font-size="10.5">they were in a team lineup but do not make the deeper cut;</text>
+          <text x="180" y="246" fill="var(--ink-faint)" font-size="10.5">they averaged 2.2 routines each in the 2026 finals</text>
+          <text x="436" y="282" fill="var(--gain)" font-weight="600">+121 gain a competing place</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption><b>Zero</b> current individual qualifiers are displaced — the deeper cut is a strict superset of the shallower one, so groups A and B pass through untouched. Group <b>D</b> is the quiet winner: 54 athletes who currently compete only as part of a team lineup would earn a place on their own score. The exchange is <b>98 out, 121 in</b>: 390 of the 488 who compete today keep a place, and the field goes <b>488 competing athletes to 511 qualifiers.</b>
+      <br><br>Separately, 113 athletes were <em>entered</em> in a 2026 final via their team but never performed a routine. They are excluded from both sides of this diagram, because the current system does not actually give them a competitive day.</figcaption>
+    </div>
+  </figure>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Who the 98 who no longer qualify are</h4>
+      <p>They are not the weakest athletes in the room. Team-lineup-only competitors sit at the <strong>47th percentile</strong> of their own category&times;level group — a shade <em>above</em> its median, because teams field their strongest available on each apparatus. Only 17% are in the bottom quartile, and they averaged 2.2 routines each.</p>
+      <p>The losses are concentrated: <strong>26 clubs</strong> account for all 98, led by Jurassic (11), Washington U. St. Louis (9), Wisconsin (7) and Florida State (7). These are the deep programs that currently convert one team berth into several finals appearances.</p>
+    </div>
+    <div class="card">
+      <h4>Who the 121 who now qualify are</h4>
+      <p>Markedly stronger athletes. Their median sits at the <strong>25th percentile</strong> of their category&times;level group — the top quartile — and <strong>59% are in the top third</strong> of their group. Only 29% come from the bottom half. On the measure the sport uses to rank people, the incoming group clearly out-performs the outgoing one.</p>
+      <p>They are also spread far wider: <strong>75 clubs</strong> gain a qualifier, against 26 clubs losing one. Only 22 of the 121 qualify in the all-around; <strong>85 make it on a single apparatus</strong>, so between them they add 211 routines rather than a full extra field.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin:26px 0">
+    <h4>The net effect on breadth</h4>
+    <p>Because the incoming athletes come from three times as many clubs as the outgoing ones, the number of clubs with at least one athlete competing in a final <strong>rises from 95 to 109</strong>. Fourteen clubs — Ball State, Brandeis, Rutgers, Troy, Missouri, West Virginia, Denver, Maryland and others — gain a finals presence they don't currently have, and <strong>no club loses its presence entirely</strong>. That is the clearest equity argument for the change: it converts appearances that currently concentrate in a few large squads into appearances spread across more programs, while raising the average standard of the field.</p>
+  </div>
+
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="q2">
+  <div class="sec-head"><span class="sec-num">02 — Team results</span><h2>Three of sixteen titles change hands</h2></div>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>Of the 16 team titles currently decided in finals, <strong>3 golds move</strong> (19%) and <strong>12 of 34 medal positions</strong> (35%) end up with a different club. Three bronze medals that <em>don't currently exist</em> would start being awarded, because several categories had fewer than three teams reach the team final.</p>
+    <p>The prelim and finals team scores are not far apart on average — WAG teams score <strong>+0.71</strong> higher in finals (SD 1.59), MAG teams score <strong>&minus;4.21</strong> lower (SD 3.74) — but the margins at the top are tiny, so small differences flip places.</p>
+  </div>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>Current podium (from finals) vs. proposed podium (from prelims)</caption>
+        <thead><tr><th>Level</th><th>Category</th><th class="num">Pl</th><th>Now — finals basis</th><th>Proposed — prelims basis</th><th></th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="6">Golds that move</td></tr>
+          <tr class="chg"><td>WAG Level 9</td><td>Collegiate Women+</td><td class="num mono">1</td><td>Liberty University <span class="mono">113.975</span></td><td>University of Rhode Island <span class="mono">111.150</span></td><td><span class="tag flip">gold flips</span></td></tr>
+          <tr class="chg"><td>WAG Diamond</td><td>Collegiate Women+</td><td class="num mono">1</td><td>Grand Valley State <span class="mono">115.100</span></td><td>University of Michigan <span class="mono">114.625</span></td><td><span class="tag flip">gold flips</span></td></tr>
+          <tr class="chg"><td>MAG Intermediate</td><td>Collegiate Men+</td><td class="num mono">1</td><td>Virginia Tech <span class="mono">199.150</span></td><td>University of Vermont <span class="mono">201.050</span></td><td><span class="tag flip">gold flips</span></td></tr>
+          <tr class="grp"><td colspan="6">Full podiums that reshuffle</td></tr>
+          <tr><td>WAG Level 9</td><td>Collegiate Women+</td><td class="num mono">2</td><td>Penn State <span class="mono">112.750</span></td><td>Penn State <span class="mono">111.050</span></td><td><span class="tag hold">holds</span></td></tr>
+          <tr class="chg"><td>WAG Level 9</td><td>Collegiate Women+</td><td class="num mono">3</td><td>Rhode Island <span class="mono">109.800</span></td><td>Liberty University <span class="mono">109.825</span></td><td><span class="tag flip">1st &harr; 3rd</span></td></tr>
+          <tr class="chg"><td>WAG Diamond</td><td>Collegiate Women+</td><td class="num mono">2</td><td>Northeastern <span class="mono">114.950</span></td><td>UCLA <span class="mono">114.350</span></td><td><span class="tag flip">new medallist</span></td></tr>
+          <tr class="chg"><td>WAG Diamond</td><td>Collegiate Women+</td><td class="num mono">3</td><td>Florida State <span class="mono">114.525</span></td><td>Northeastern <span class="mono">114.250</span></td><td><span class="tag flip">FSU off podium</span></td></tr>
+          <tr class="chg"><td>MAG Intermediate</td><td>Collegiate Men+</td><td class="num mono">2</td><td>Vermont <span class="mono">198.750</span></td><td>Washington U. St. Louis <span class="mono">199.550</span></td><td><span class="tag flip">order reversed</span></td></tr>
+          <tr class="chg"><td>MAG Intermediate</td><td>Collegiate Men+</td><td class="num mono">3</td><td>Washington U. St. Louis <span class="mono">195.050</span></td><td>Virginia Tech <span class="mono">197.050</span></td><td><span class="tag flip">order reversed</span></td></tr>
+          <tr class="chg"><td>WAG Platinum</td><td>Collegiate Women+</td><td class="num mono">3</td><td>James Madison <span class="mono">114.200</span></td><td>University of Michigan <span class="mono">114.475</span></td><td><span class="tag flip">JMU off podium</span></td></tr>
+          <tr class="grp"><td colspan="6">Medals that would newly exist</td></tr>
+          <tr><td>MAG Intermediate</td><td>Collegiate Women+</td><td class="num mono">3</td><td><span style="color:var(--ink-faint)">not awarded</span></td><td>University of Michigan <span class="mono">154.300</span></td><td><span class="tag new">new bronze</span></td></tr>
+          <tr><td>WAG Diamond</td><td>Community Women+</td><td class="num mono">3</td><td><span style="color:var(--ink-faint)">not awarded</span></td><td>Ohio State University <span class="mono">103.800</span></td><td><span class="tag new">new bronze</span></td></tr>
+          <tr><td>WAG Platinum</td><td>Community Women+</td><td class="num mono">3</td><td><span style="color:var(--ink-faint)">not awarded</span></td><td>Seattle Seals <span class="mono">110.275</span></td><td><span class="tag new">new bronze</span></td></tr>
+          <tr class="grp"><td colspan="6">Titles that hold (10 of 16)</td></tr>
+          <tr><td>WAG Platinum</td><td>Collegiate Women+</td><td class="num mono">1–2</td><td>UCLA, Alabama</td><td>UCLA, Alabama</td><td><span class="tag hold">holds</span></td></tr>
+          <tr><td>MAG Advanced</td><td>Collegiate Men+</td><td class="num mono">1–3</td><td>Oklahoma, Arizona State, Penn State</td><td>Oklahoma, Arizona State, Penn State</td><td><span class="tag hold">identical</span></td></tr>
+          <tr><td colspan="2">…plus 8 single-team categories</td><td class="num mono">1</td><td colspan="2" style="color:var(--ink-soft)">Wisconsin, Georgia, Philly inMovement, UC Berkeley, Tri-State Twisters, NAIGC Alumni, Jurassic (&times;2)</td><td><span class="tag hold">holds</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>Note the pattern in the three flips: all three are categories where three or more genuinely competitive teams reached the team final. Where only one or two teams qualified, the result is mechanically identical either way.</figcaption>
+    </div>
+  </figure>
+
+  <div class="note">
+    <h4>Why the flips happen where they do</h4>
+    <p>All three golds that move come from categories where <strong>three or more genuinely competitive teams</strong> reached the team final and finished within about two points of each other. In the eight categories where only one team qualified, and in MAG Advanced Collegiate Men+ where the top three were separated by 5.7 points, the two rounds agree completely. The change doesn't make team results unstable in general — it makes them different in exactly the races that were already close.</p>
+  </div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section id="q3">
+  <div class="sec-head"><span class="sec-num">03 — Judging drift</span><h2>Across three years, session drift is not detectable — and would be smaller than the swing it replaces</h2></div>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>Tested over <strong>six year&times;discipline cells</strong> (2024, 2025, 2026 &times; WAG, MAG), the linear session trend straddles zero and <strong>flips sign by year</strong>. Pooled across three years it is <strong>&minus;0.011 points per routine per session step in WAG (p&nbsp;=&nbsp;0.17)</strong> and <strong>&minus;0.013 in MAG (p&nbsp;=&nbsp;0.47)</strong> — both indistinguishable from zero.</p>
+    <p>Testing day 1 against day 2 directly gives the same answer: pooled <strong>&minus;0.53 team points in WAG (p&nbsp;=&nbsp;0.15)</strong> and <strong>&minus;0.48 in MAG (p&nbsp;=&nbsp;0.71)</strong>, with 2025 running the other way. Only one of six cells (2026 WAG) shows even marginal session-to-session variation, implying a spread of about <strong>0.72 team points</strong>.</p>
+    <p>For comparison, the same teams' scores move by <strong>1.59 team points (WAG)</strong> and <strong>3.74 (MAG)</strong> between prelims and finals. <em>The noise you would be adding is smaller than the noise you would be removing</em> — and unlike the drift, that round-to-round swing is measured, not hypothesised.</p>
+  </div>
+
+  <h3>Why this test is clean</h3>
+  <p>The judging structure makes this comparison unusually well-controlled. Each gym runs one level group and only that group — <span style="color:var(--gym-green);font-weight:600">Green = Platinum</span>, <span style="color:var(--gym-red);font-weight:600">Red = Diamond</span>, <span style="color:var(--gym-yellow);font-weight:600">Yellow = Level 9 / Silver / Open</span>, <span style="color:var(--gym-orange);font-weight:600">Orange = all MAG</span>. And within that, <strong>the same two judges cover a given apparatus for the entire competition</strong>: every Silver bars routine at Nationals 2026 was scored by the same pair, in every session, on both days, and again in finals. In WAG a panel is fixed to one apparatus <em>and</em> one level; in MAG a panel covers one apparatus across all three levels.</p>
+  <p>The consequence is that <strong>panel identity is constant by construction</strong>. When an athlete's prelim score is compared with their finals score on the same apparatus, the same two people scored both routines. Nothing about who was judging can explain a difference — so anything the test picks up is genuine within-panel movement over the weekend: fatigue, recalibration, anchoring on what they have already seen. That is exactly the effect the rule change would expose teams to, and it is what the numbers above measure.</p>
+  <p>Clubs almost never split across sessions (299 of 306 club&times;level blocks sit in a single session), which is why a session effect would translate directly into a team advantage — and why every test here clusters its errors by club.</p>
+
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Does a later prelim session mean a friendlier panel?</p>
+      <p class="fig-sub">Change in an athlete's score from prelims to finals, per additional session number. Negative = that athlete's prelim score was relatively inflated, i.e. later sessions scored more generously. Bars are 95% confidence intervals.</p>
+      <div class="scroll">
+      <svg viewBox="0 0 700 330" role="img" aria-label="Dot and confidence interval plot of six session-drift estimates across three years, all overlapping zero except 2026 WAG">
+        <line x1="470" y1="24" x2="470" y2="248" stroke="var(--ink)" stroke-dasharray="3 3"/>
+        <text x="470" y="16" text-anchor="middle" font-size="10.5" fill="var(--ink-faint)" class="lab">no drift</text>
+        <g font-size="11.5">
+          <text x="0" y="52" class="lab" font-size="12" fill="var(--ink)" font-weight="600">2026 WAG</text>
+          <line x1="247" y1="48" x2="458" y2="48" stroke="var(--brick)" stroke-width="2"/>
+          <line x1="247" y1="42" x2="247" y2="54" stroke="var(--brick)" stroke-width="2"/>
+          <line x1="458" y1="42" x2="458" y2="54" stroke="var(--brick)" stroke-width="2"/>
+          <circle cx="352" cy="48" r="5" fill="var(--brick)"/>
+          <text x="600" y="52" fill="var(--brick)" font-weight="600" class="lab">p = 0.03</text>
+
+          <text x="0" y="92" class="lab" font-size="12" fill="var(--ink)" font-weight="600">2025 WAG</text>
+          <line x1="444" y1="88" x2="543" y2="88" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="444" y1="82" x2="444" y2="94" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="543" y1="82" x2="543" y2="94" stroke="var(--ink-faint)" stroke-width="2"/>
+          <circle cx="493" cy="88" r="5" fill="var(--ink-soft)"/>
+          <text x="600" y="92" fill="var(--ink-faint)" class="lab">0.36</text>
+
+          <text x="0" y="132" class="lab" font-size="12" fill="var(--ink)" font-weight="600">2024 WAG</text>
+          <line x1="368" y1="128" x2="538" y2="128" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="368" y1="122" x2="368" y2="134" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="538" y1="122" x2="538" y2="134" stroke="var(--ink-faint)" stroke-width="2"/>
+          <circle cx="453" cy="128" r="5" fill="var(--ink-soft)"/>
+          <text x="600" y="132" fill="var(--ink-faint)" class="lab">0.69</text>
+
+          <line x1="0" y1="150" x2="690" y2="150" stroke="var(--rule-soft)"/>
+
+          <text x="0" y="180" class="lab" font-size="12" fill="var(--ink)" font-weight="600">2026 MAG</text>
+          <line x1="203" y1="176" x2="565" y2="176" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="203" y1="170" x2="203" y2="182" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="565" y1="170" x2="565" y2="182" stroke="var(--ink-faint)" stroke-width="2"/>
+          <circle cx="384" cy="176" r="5" fill="var(--ink-soft)"/>
+          <text x="600" y="180" fill="var(--ink-faint)" class="lab">0.35</text>
+
+          <text x="0" y="220" class="lab" font-size="12" fill="var(--ink)" font-weight="600">2025 MAG</text>
+          <line x1="318" y1="216" x2="640" y2="216" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="318" y1="210" x2="318" y2="222" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="640" y1="210" x2="640" y2="222" stroke="var(--ink-faint)" stroke-width="2"/>
+          <circle cx="479" cy="216" r="5" fill="var(--ink-soft)"/>
+          <text x="655" y="220" fill="var(--ink-faint)" class="lab">0.92</text>
+
+          <text x="0" y="260" class="lab" font-size="12" fill="var(--ink)" font-weight="600">2024 MAG</text>
+          <line x1="200" y1="256" x2="615" y2="256" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="200" y1="250" x2="200" y2="262" stroke="var(--ink-faint)" stroke-width="2"/>
+          <line x1="615" y1="250" x2="615" y2="262" stroke="var(--ink-faint)" stroke-width="2"/>
+          <circle cx="408" cy="256" r="5" fill="var(--ink-soft)"/>
+          <text x="630" y="260" fill="var(--ink-faint)" class="lab">0.56</text>
+        </g>
+        <line x1="140" y1="278" x2="680" y2="278" stroke="var(--rule)"/>
+        <g font-size="10" fill="var(--ink-faint)" class="lab">
+          <text x="170" y="294" text-anchor="middle">&minus;0.10</text>
+          <text x="320" y="294" text-anchor="middle">&minus;0.05</text>
+          <text x="470" y="294" text-anchor="middle">0</text>
+          <text x="620" y="294" text-anchor="middle">+0.05</text>
+          <text x="400" y="318" text-anchor="middle" font-size="11">score points per routine, per session step</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>Design: for athletes who competed the <b>same apparatus in both rounds under the same panel</b>, the prelims&rarr;finals change differences out the athlete's own ability. Restricted to all-around finalists, whose per-apparatus finals participation is not selected on that apparatus's prelim score. Errors clustered by club. <b>Five of six estimates are indistinguishable from zero and the signs do not agree across years</b> — one significant result in six tests is what chance produces.</figcaption>
+    </div>
+  </figure>
+
+  <h3>Day 1 vs. day 2</h3>
+  <p>Sessions 1–3 run on day 1 and 4–6 on day 2, so the day split can be tested directly rather than inferred from a trend line. It is the sharper version of the fairness question: if a panel warms up or tires overnight, teams competing on different days face different standards.</p>
+
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Day 2 minus day 1, expressed in team points</p>
+      <p class="fig-sub">Same within-athlete design; bars show the estimated shift in a full team score, with the club-level permutation p-value</p>
+      <div class="scroll">
+      <svg viewBox="0 0 700 262" role="img" aria-label="Bar chart of day-2-minus-day-1 effects for six year and discipline cells, all small and none significant">
+        <line x1="350" y1="20" x2="350" y2="206" stroke="var(--ink)" stroke-width="1"/>
+        <g font-size="11.5" class="lab">
+          <text x="0" y="40" font-size="12" fill="var(--ink)" font-weight="600">2026 WAG</text>
+          <rect x="234" y="28" width="116" height="15" fill="var(--brick)"/>
+          <text x="226" y="40" text-anchor="end" class="mono" fill="var(--brick)">&minus;1.29</text>
+          <text x="590" y="40" fill="var(--ink-faint)">p = 0.07</text>
+
+          <text x="0" y="70" font-size="12" fill="var(--ink)" font-weight="600">2025 WAG</text>
+          <rect x="350" y="58" width="22" height="15" fill="var(--gain)"/>
+          <text x="382" y="70" class="mono" fill="var(--gain)">+0.24</text>
+          <text x="590" y="70" fill="var(--ink-faint)">p = 0.55</text>
+
+          <text x="0" y="100" font-size="12" fill="var(--ink)" font-weight="600">2024 WAG</text>
+          <rect x="304" y="88" width="46" height="15" fill="var(--ink-faint)"/>
+          <text x="296" y="100" text-anchor="end" class="mono" fill="var(--ink-soft)">&minus;0.51</text>
+          <text x="590" y="100" fill="var(--ink-faint)">p = 0.35</text>
+
+          <text x="0" y="140" font-size="12" fill="var(--ink)" font-weight="600">2026 MAG</text>
+          <rect x="211" y="128" width="139" height="15" fill="var(--ink-faint)"/>
+          <text x="203" y="140" text-anchor="end" class="mono" fill="var(--ink-soft)">&minus;1.54</text>
+          <text x="590" y="140" fill="var(--ink-faint)">p = 0.42</text>
+
+          <text x="0" y="170" font-size="12" fill="var(--ink)" font-weight="600">2025 MAG</text>
+          <rect x="350" y="158" width="14" height="15" fill="var(--gain)"/>
+          <text x="374" y="170" class="mono" fill="var(--gain)">+0.15</text>
+          <text x="590" y="170" fill="var(--ink-faint)">p = 0.94</text>
+
+          <text x="0" y="200" font-size="12" fill="var(--ink)" font-weight="600">2024 MAG</text>
+          <rect x="350" y="188" width="2" height="15" fill="var(--ink-faint)"/>
+          <text x="362" y="200" class="mono" fill="var(--ink-soft)">+0.01</text>
+          <text x="590" y="200" fill="var(--ink-faint)">p = 1.00</text>
+        </g>
+        <line x1="140" y1="220" x2="620" y2="220" stroke="var(--rule)"/>
+        <g font-size="10" fill="var(--ink-faint)" class="lab">
+          <text x="170" y="236" text-anchor="middle">&minus;2</text>
+          <text x="260" y="236" text-anchor="middle">&minus;1</text>
+          <text x="350" y="236" text-anchor="middle">0</text>
+          <text x="440" y="236" text-anchor="middle">+1</text>
+          <text x="380" y="250" text-anchor="middle" font-size="11">team points, day 2 relative to day 1</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>2026 leans toward day 2 being scored a little more generously in both disciplines; 2024 and 2025 do not. <b>Nothing reaches significance</b>, and pooling all three years gives &minus;0.53 (WAG) and &minus;0.48 (MAG) team points, neither distinguishable from zero. If there is a day effect it is under about one team point — real enough to name, small next to the 1.6–3.7 point round-to-round swing.</figcaption>
+    </div>
+  </figure>
+
+  <div class="note">
+    <h4>One apparent effect that dissolves on inspection</h4>
+    <p>A first pass flagged 2024 MAG as showing large session-to-session variation (p&nbsp;=&nbsp;0.066, an implied spread of 5.3 team points). It comes entirely from session 2, which contained <strong>a single club with six routines</strong> that had a poor finals day. Dropping sessions represented by fewer than three clubs, 2024 MAG's p-value goes to 0.60 and its estimated spread to zero. After that filter, <strong>2026 WAG (p&nbsp;=&nbsp;0.075, 0.72 team points) is the only cell of six with anything in it.</strong></p>
+  </div>
+
+  <h3>The comparison that matters</h3>
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Everything on one scale: team points</p>
+      <p class="fig-sub">A per-routine effect of &delta; becomes 12&delta; in a WAG team score (3 counting routines &times; 4 events) and 18&delta; in MAG</p>
+      <div class="scroll">
+      <svg viewBox="0 0 700 300" role="img" aria-label="Horizontal bars comparing session drift, day effect, open-squad advantage, podium margins and prelim-to-finals team swing, all in team points">
+        <g font-size="11.5">
+          <text x="0" y="30" class="lab" font-size="12" fill="var(--ink)">Median open-squad advantage &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG</tspan></text>
+          <rect x="250" y="20" width="5" height="14" fill="var(--brick)"/>
+          <text x="263" y="31" class="mono" fill="var(--ink-soft)">0.05</text>
+
+          <text x="0" y="56" class="lab" font-size="12" fill="var(--ink)">Median open-squad advantage &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">MAG</tspan></text>
+          <rect x="250" y="46" width="10" height="14" fill="var(--brick)"/>
+          <text x="268" y="57" class="mono" fill="var(--ink-soft)">0.10</text>
+
+          <text x="0" y="82" class="lab" font-size="12" fill="var(--ink)">Median podium margin &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG</tspan></text>
+          <rect x="250" y="72" width="30" height="14" fill="var(--ink-faint)"/>
+          <text x="288" y="83" class="mono" fill="var(--ink-soft)">0.30</text>
+
+          <text x="0" y="108" class="lab" font-size="12" fill="var(--ink)">Pooled day-2 effect &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG, n.s.</tspan></text>
+          <rect x="250" y="98" width="53" height="14" fill="var(--gym-yellow)"/>
+          <text x="311" y="109" class="mono" fill="var(--ink-soft)">0.53</text>
+
+          <text x="0" y="134" class="lab" font-size="12" fill="var(--ink)">Largest session effect in 6 cells</text>
+          <rect x="250" y="124" width="72" height="14" fill="var(--gym-yellow)"/>
+          <text x="330" y="135" class="mono" fill="var(--ink-soft)">0.72</text>
+
+          <text x="0" y="160" class="lab" font-size="12" fill="var(--ink)">Max open-squad advantage, any team</text>
+          <rect x="250" y="150" width="153" height="14" fill="var(--brick)"/>
+          <text x="411" y="161" class="mono" fill="var(--brick)">1.53</text>
+
+          <text x="0" y="186" class="lab" font-size="12" fill="var(--ink)">Team swing, prelims &rarr; finals &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG</tspan></text>
+          <rect x="250" y="176" width="159" height="14" fill="var(--accent)"/>
+          <text x="417" y="187" class="mono" fill="var(--accent)" font-weight="600">1.59 SD</text>
+
+          <text x="0" y="212" class="lab" font-size="12" fill="var(--ink)">Median podium margin &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">MAG</tspan></text>
+          <rect x="250" y="202" width="250" height="14" fill="var(--ink-faint)"/>
+          <text x="508" y="213" class="mono" fill="var(--ink-soft)">2.50</text>
+
+          <text x="0" y="238" class="lab" font-size="12" fill="var(--ink)">Team swing, prelims &rarr; finals &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">MAG</tspan></text>
+          <rect x="250" y="228" width="374" height="14" fill="var(--accent)"/>
+          <text x="632" y="239" class="mono" fill="var(--accent)" font-weight="600">3.74 SD</text>
+        </g>
+        <line x1="250" y1="256" x2="650" y2="256" stroke="var(--rule)"/>
+        <g font-size="10" fill="var(--ink-faint)" class="lab">
+          <text x="250" y="272">0</text><text x="350" y="272" text-anchor="middle">1</text>
+          <text x="450" y="272" text-anchor="middle">2</text><text x="550" y="272" text-anchor="middle">3</text>
+          <text x="650" y="272" text-anchor="middle">4 team points</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>Both fairness objections to prelims-based team scoring — session drift and open-squad scoring — land <b>below</b> the round-to-round variation in team performance that the current system already tolerates. The uncomfortable fact is that all of them exceed the median WAG podium margin of 0.30. <b>These titles are decided inside the measurement noise whichever round you use.</b></figcaption>
+    </div>
+  </figure>
+</section>
+
+<section id="depth">
+  <div class="sec-head"><span class="sec-num">04 — Open squad</span><h2>Open-squad scoring costs less than it looks, and it is not about squad size</h2></div>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>Prelims scores the top 3 of everyone who competed; finals is 4 up, 3 count from a lineup picked per apparatus. That looks like a large advantage for deep squads — but measured against what each team <em>actually</em> did, it is not. Re-scoring each team's prelims using only the athletes it fielded in its finals lineup, the open-squad rule was worth a median of <strong>0.05 team points in WAG and 0.10 in MAG</strong>. The largest gain any team received was <strong>1.53</strong>. Twenty-two of 45 teams gained <strong>nothing at all</strong>.</p>
+    <p><strong>It does not scale with squad size</strong> (WAG r&nbsp;=&nbsp;+0.01, MAG r&nbsp;=&nbsp;+0.38, neither significant). Arizona State's 23-athlete MAG squad gained 1.30; Jurassic's 4-athlete squad gained 1.40. Removing the advantage entirely changes <strong>2 of 16 podiums and 1 gold</strong>.</p>
+    <p>This corrects an earlier draft, which estimated the depth advantage by simulation at 4–17 team points. That simulation drew athletes at random from the level pool. Real squads do not work that way: <strong>a team's three best prelim scores come from more or less the same people it later puts in the lineup</strong>, so the theoretical advantage barely materialises. Keeping the open squad is a defensible call.</p>
+  </div>
+
+  <h3>How this is measured</h3>
+  <p>For every team that reached a team final, and for each apparatus separately: take the athletes who made up that team's counting lineup in the final (in WAG, those marked <code>Included</code> — at most four per apparatus, and it can be a different four on each), look up <em>their prelim scores</em>, and total the best three. That is what the team would have scored in prelims under a declared-lineup rule. Compare it with the open-squad prelim score, which draws the best three from the whole squad. The difference is the advantage the team actually received.</p>
+
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Advantage received from open-squad scoring</p>
+      <p class="fig-sub">All 45 teams that reached a 2026 team final</p>
+      <div class="scroll">
+      <svg viewBox="0 0 700 300" role="img" aria-label="Histogram of open-squad advantage across 45 teams: 22 gained nothing, 8 gained under a quarter point, 3 gained under half, 6 gained under one point, 6 gained more than one point">
+        <g>
+          <rect x="70" y="60" width="90" height="176" fill="var(--ink-faint)"/>
+          <text x="115" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">22</text>
+          <rect x="184" y="172" width="90" height="64" fill="var(--accent)"/>
+          <text x="229" y="164" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">8</text>
+          <rect x="298" y="212" width="90" height="24" fill="var(--accent)"/>
+          <text x="343" y="204" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">3</text>
+          <rect x="412" y="188" width="90" height="48" fill="var(--brick)"/>
+          <text x="457" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">6</text>
+          <rect x="526" y="188" width="90" height="48" fill="var(--brick)"/>
+          <text x="571" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">6</text>
+        </g>
+        <line x1="60" y1="236" x2="630" y2="236" stroke="var(--rule)"/>
+        <g font-size="11" fill="var(--ink-soft)" class="lab" text-anchor="middle">
+          <text x="115" y="256">no gain</text>
+          <text x="229" y="256">0 – 0.25</text>
+          <text x="343" y="256">0.25 – 0.5</text>
+          <text x="457" y="256">0.5 – 1.0</text>
+          <text x="571" y="256">over 1.0</text>
+        </g>
+        <text x="345" y="284" text-anchor="middle" font-size="11" fill="var(--ink-faint)" class="lab">team points gained from open-squad scoring</text>
+      </svg>
+      </div>
+      <figcaption>Half the field (22 of 45 teams) gained <b>nothing at all</b> — their best three prelim scores came from exactly the athletes they later fielded. Only 6 teams gained more than a full team point, and five of those six are MAG, where six events compound small differences. Means: WAG <b>+0.24</b>, MAG <b>+0.57</b>.</figcaption>
+    </div>
+  </figure>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>The nine largest gains, of 45 teams</caption>
+        <thead><tr><th>Level / Category</th><th>Club</th><th class="num">Squad</th><th class="num">Open squad</th><th class="num">Finals lineup</th><th class="num">Gain</th></tr></thead>
+        <tbody>
+          <tr><td>WAG Diamond · Community Women+</td><td>Tri-State Twisters</td><td class="num mono">11</td><td class="num mono">111.950</td><td class="num mono">110.425</td><td class="num mono">+1.525</td></tr>
+          <tr><td>MAG Advanced · Community Men+</td><td>5280 Gymnastics</td><td class="num mono">7</td><td class="num mono">196.550</td><td class="num mono">195.100</td><td class="num mono">+1.450</td></tr>
+          <tr><td>MAG Advanced · Community Men+</td><td>Jurassic Gymnastics</td><td class="num mono">4</td><td class="num mono">190.100</td><td class="num mono">188.700</td><td class="num mono">+1.400</td></tr>
+          <tr><td>MAG Intermediate · Collegiate Women+</td><td>Washington Univ in St. Louis</td><td class="num mono">9</td><td class="num mono">170.350</td><td class="num mono">168.950</td><td class="num mono">+1.400</td></tr>
+          <tr><td>MAG Advanced · Collegiate Men+</td><td>Arizona State Men's Gymnastics</td><td class="num mono">23</td><td class="num mono">222.800</td><td class="num mono">221.500</td><td class="num mono">+1.300</td></tr>
+          <tr><td>MAG Intermediate · Collegiate Women+</td><td>Wisconsin Gymnastics Club</td><td class="num mono">7</td><td class="num mono">156.000</td><td class="num mono">154.900</td><td class="num mono">+1.100</td></tr>
+          <tr style="border-bottom:1px solid var(--ink)"><td colspan="6" style="color:var(--ink-faint);font-size:11px">— above this line: the only six teams of 45 that gained more than one team point —</td></tr>
+          <tr><td>WAG Platinum · Collegiate Men+</td><td>Washington Univ in St. Louis</td><td class="num mono">9</td><td class="num mono">103.600</td><td class="num mono">102.650</td><td class="num mono">+0.950</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>Grand Valley State University</td><td class="num mono">10</td><td class="num mono">114.100</td><td class="num mono">113.325</td><td class="num mono">+0.775</td></tr>
+          <tr><td>WAG Level 9 · Collegiate Women+</td><td>University of Rhode Island</td><td class="num mono">22</td><td class="num mono">111.150</td><td class="num mono">110.400</td><td class="num mono">+0.750</td></tr>
+          <tr><td colspan="6" style="color:var(--ink-soft)">Read the squad column: a 4-athlete club gains more than a 23-athlete one. Depth is not what drives this.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>What the open-squad rule actually rewards is <b>a good routine from someone who was not in the lineup</b> — an athlete who hit in prelims but was not among the four the coach picked for finals. That is lineup judgement and one-off performances, not roster size.</figcaption>
+    </div>
+  </figure>
+
+  <h3>Does it change any result?</h3>
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>Prelims-based podium: open squad vs. finals-lineup-only scoring</caption>
+        <thead><tr><th>Level / Category</th><th>Open squad (the proposal)</th><th>Restricted to finals lineup</th></tr></thead>
+        <tbody>
+          <tr class="chg"><td>WAG Level 9 · Collegiate Women+</td><td>Rhode Island &gt; Penn State &gt; Liberty</td><td><b>Penn State</b> &gt; Rhode Island &gt; Liberty</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>Michigan &gt; UCLA &gt; Northeastern</td><td>Michigan &gt; <b>Northeastern &gt; UCLA</b></td></tr>
+          <tr><td colspan="3" style="color:var(--ink-soft)">The other 14 podiums are identical under both rules; 15 of 16 golds are unaffected.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>One gold and one medal swap across sixteen titles. Set against that, a declared-lineup rule would push clubs toward splitting into A/B squads and reintroduce a logistics problem — a poor trade for a median 0.05-point correction. <b>The "life's not fair" answer holds up on the numbers.</b></figcaption>
+    </div>
+  </figure>
+
+  <div class="note">
+    <h4>The one caveat on this measurement</h4>
+    <p>The finals lineup was chosen <em>after</em> prelims, so coaches already knew who had hit. That makes it a better-than-fair proxy for what a team would have declared in advance, and therefore makes the measured advantage a mild <strong>under</strong>-estimate of what a true declared-lineup rule would cost. It can also only be computed for the 45 teams that reached a team final; the smaller teams that would newly be ranked under this proposal have no finals lineup to compare against.</p>
+  </div>
+</section>
+
+<section id="other">
+  <div class="sec-head"><span class="sec-num">05 — Also worth weighing</span><h2>Six other consequences I'd want on the table</h2></div>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>You lose the head-to-head moment</h4>
+      <p>Panels and equipment are already common to both rounds, so the difference isn't the judging conditions — it's that the team final is the one time the contenders are <em>in the room together, at the same time, with the title live</em>. Prelims-based scoring means Michigan and GVSU settle a Diamond title in separate sessions, possibly on separate days, without either knowing what it needs. That's a real cost even though — as Section 03 shows — it's a smaller <em>statistical</em> cost than people assume. It's the part that's hardest to quantify and easiest to feel.</p>
+    </div>
+    <div class="card">
+      <h4>It makes NAIGC more internally consistent</h4>
+      <p>Right now, mixed-gender team titles and every team title in Silver, Open Scoring and MAG Developmental already come from prelims, while the other 16 come from finals. Two different rules produce two different kinds of team champion. Unifying on prelims removes an inconsistency most competitors probably can't articulate but do notice.</p>
+    </div>
+    <div class="card">
+      <h4>The team competition gets much broader</h4>
+      <p>Only 9 Platinum Collegiate Women+ teams reached the team final; <strong>43</strong> were eligible on prelims. Prelims-based scoring means every team that fields three scores per event gets a real, published placement rather than a qualification cutoff. That's a large increase in the number of clubs who feel they competed in a team competition at all.</p>
+    </div>
+    <div class="card">
+      <h4>Finals changes character</h4>
+      <p>Routines per athlete rise from 2.07 to 2.46. Fewer athletes, each doing more — a finals session becomes closer to a championship final and further from a team meet. Whether that's the product you want is a values question, not a data question, but it should be named rather than backed into.</p>
+    </div>
+    <div class="card">
+      <h4>Attendance risk is smaller than it first appears</h4>
+      <p>The obvious worry is that clubs stop bringing depth. But of the 265 athletes entered in a final purely via their team, <strong>113 never competed a routine</strong> — they rotated with the squad and cheered, which they would still do if any teammate qualified individually. The genuine loss is the <strong>98</strong> who did compete and would not make the deeper cut, spread across 26 clubs. Every club that currently has someone in a final still has someone in a final. The risk is real but it is tens of athletes, not hundreds.</p>
+    </div>
+    <div class="card">
+      <h4>The shape of the weekend changes</h4>
+      <p>Team titles would be settled the moment the last prelim session ends. Every club knows its team result before finals day, and the team awards could be presented a day earlier rather than anchoring the banquet. That cuts both ways: teams out of contention lose their reason to peak on day three, but teams that <em>won</em> get to celebrate with their whole squad present rather than the four who happened to be in the lineup. It also means finals becomes unambiguously an individual championship, which is easier to explain to newcomers than the current hybrid.</p>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h4>Two rules that are worth consideration</h4>
+    <p>Neither of these blocks the change — both already exist in some form today — but a deeper individual cut and a wider team ranking would each make them more visible, so they are worth a look while the rule is open.</p>
+    <p><strong>How deep vault fields should go.</strong> Xcel vault scores are coarse, so ties at the cutoff already inflate vault fields: Platinum Collegiate Women+ currently has 33 vault qualifiers against a nominal depth of 20. Deepening the cut compounds that — the model puts <strong>61 athletes</strong> in that vault final. If that feels like too many, a cap or a tie-break on vault specifically would keep the field closer to the intended depth.</p>
+    <p><strong>How team ties should resolve.</strong> Prelim team scores tie readily — Platinum Collegiate Women+ already had a three-way tie at 113.225 for the last qualifying spot. Ranking 43 teams rather than 9 makes ties on the podium more likely than they are now, so it may be worth settling in advance whether the answer is highest single event, best drop score, or simply co-champions.</p>
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<footer>
+  <p>Computed from the NAIGC Nationals 2026 results exports, with the judging-drift question replicated on 2025 and 2024. Modelled on two rules: finals sessions hold the <b>same number of routines</b> as in 2026, and prelim team scores keep the <b>open-squad</b> definition (top 3 of everyone who competed). "In a final" means having performed a scored routine. Detailed workings available on request.</p>
+</footer>
+
+  </main>
+</div>
+</div>
+</body>
+</html>
