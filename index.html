@@ -320,7 +320,7 @@ footer p{max-width:80ch}
     </div>
   </div>
 
-  <p class="exec-bottom"><strong>The bottom line.</strong> On the evidence, the fairness case against prelims-based team scoring is weaker than it is usually assumed to be, and the change slightly improves both the breadth and the standard of the finals field. The real cost is not statistical: it is that three of sixteen titles in 2026 would have gone to a different club, and that the team competition would no longer be settled with the contenders in the room together. Those are judgement calls, not measurement problems.</p>
+  <p class="exec-bottom"><strong>The bottom line.</strong> On the evidence, the fairness case against prelims-based team scoring (judge drift over prelims and large teams drawing on a bigger pool of scores) is weaker than it might be assumed to be, and the change slightly improves both the breadth and the standard of the finals field. The potential downsides are that three of sixteen titles in 2026 would have gone to a different club (unclear if this is positive, negative, or neutral), and that the team competition would no longer be settled with the contenders in the room together.</p>
 </section>
 
 <div class="layout">
@@ -341,12 +341,11 @@ footer p{max-width:80ch}
 <section id="setup">
   <div class="sec-head"><span class="sec-num">00 — Baseline</span><h2>What the current system actually does</h2></div>
 
-  <p>Everything below is grounded in the real 2026 files, and the qualification and scoring rules were reverse-engineered from them and then validated against the banquet program. Three facts shape the whole analysis:</p>
+  <p>Everything below is grounded in the real 2026 files. Two facts to keep in mind:</p>
 
   <ol class="body">
     <li><strong>Only five level-groups have finals at all.</strong> WAG Platinum, Diamond and Level&nbsp;9; MAG Advanced and Intermediate. Silver, Open Scoring and MAG Developmental have <em>no</em> finals session — their individual and team awards already come straight from prelims. This rule change cannot touch them.</li>
     <li><strong>Mixed-gender team titles are already decided on prelims.</strong> Colorado State's Platinum Mixed title (112.725), UCLA's Diamond Mixed (114.875) and Ohio State's Level&nbsp;9 Mixed (108.35) are all prelim numbers in the banquet program. So the proposal doesn't introduce prelims-based team scoring to NAIGC — it extends it to the remaining <strong>16 titles</strong>.</li>
-    <li><strong>Team qualification accounts for more of the finals floor than individual qualification does in some sessions.</strong> A qualifying team names four per apparatus and can name a different four on each, so the athletes it brings into a final are spread thinly across the events — averaging 2.2 routines each, against 4 or 6 for an all-around qualifier.</li>
   </ol>
 
   <div class="stats">
@@ -585,9 +584,9 @@ footer p{max-width:80ch}
           <text x="144" y="149" text-anchor="end" fill="var(--gain)" font-weight="600">54</text>
           <text x="144" y="176" text-anchor="end" fill="var(--brick)" font-weight="600">98</text>
           <text x="144" y="190" text-anchor="end" fill="var(--ink-soft)" font-size="10">team lineup only</text>
-          <text x="250" y="52" fill="var(--accent)" font-weight="600">keeps competing — qualified individually</text>
-          <text x="250" y="112" fill="var(--accent)" font-weight="600">keeps competing — was on a team as well</text>
-          <text x="250" y="149" fill="var(--gain)" font-weight="600">team lineup only, but makes the deeper individual cut</text>
+          <text x="225" y="52" fill="var(--accent)" font-weight="600">keeps competing — qualified individually</text>
+          <text x="225" y="112" fill="var(--accent)" font-weight="600">keeps competing — was on a team as well</text>
+          <text x="225" y="149" fill="var(--gain)" font-weight="600">team lineup only, but makes the new cut</text>
           <text x="180" y="216" fill="var(--brick)" font-weight="600">98 lose the chance to compete</text>
           <text x="180" y="232" fill="var(--ink-faint)" font-size="10.5">they were in a team lineup but do not make the deeper cut;</text>
           <text x="180" y="246" fill="var(--ink-faint)" font-size="10.5">they averaged 2.2 routines each in the 2026 finals</text>
@@ -682,7 +681,7 @@ footer p{max-width:80ch}
   </div>
 
   <h3>Why this test is clean</h3>
-  <p>The judging structure makes this comparison unusually well-controlled. Each gym runs one level group and only that group — <span style="color:var(--gym-green);font-weight:600">Green = Platinum</span>, <span style="color:var(--gym-red);font-weight:600">Red = Diamond</span>, <span style="color:var(--gym-yellow);font-weight:600">Yellow = Level 9 / Silver / Open</span>, <span style="color:var(--gym-orange);font-weight:600">Orange = all MAG</span>. And within that, <strong>the same two judges cover a given apparatus for the entire competition</strong>: every Silver bars routine at Nationals 2026 was scored by the same pair, in every session, on both days, and again in finals. In WAG a panel is fixed to one apparatus <em>and</em> one level; in MAG a panel covers one apparatus across all three levels.</p>
+  <p>The judging structure makes this comparison unusually well-controlled. Each gym runs one level group and only that group — <span style="color:var(--gym-green);font-weight:600">Green = Platinum</span>, <span style="color:var(--gym-red);font-weight:600">Red = Diamond</span>, <span style="color:var(--gym-yellow);font-weight:600">Yellow = Level 9 / Silver / Open</span>, <span style="color:var(--gym-orange);font-weight:600">Orange = all MAG</span>. And within that, <strong>the same two judges cover a given apparatus for the entire competition</strong>: every Silver bars routine at Nationals 2026 was scored by the same pair of judges, in every session, on both days, and again in finals. In WAG a panel is fixed to one apparatus <em>and</em> one level; in MAG a panel covers one apparatus across all three levels.</p>
   <p>The consequence is that <strong>panel identity is constant by construction</strong>. When an athlete's prelim score is compared with their finals score on the same apparatus, the same two people scored both routines. Nothing about who was judging can explain a difference — so anything the test picks up is genuine within-panel movement over the weekend: fatigue, recalibration, anchoring on what they have already seen. That is exactly the effect the rule change would expose teams to, and it is what the numbers above measure.</p>
   <p>Clubs almost never split across sessions (299 of 306 club&times;level blocks sit in a single session), which is why a session effect would translate directly into a team advantage — and why every test here clusters its errors by club.</p>
 
