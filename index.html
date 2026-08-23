@@ -190,6 +190,36 @@ code,.k{
   border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin:0;
   font-size:1.02rem;max-width:70ch;
 }
+/* ---------- expandable deep dive ---------- */
+details.dd{
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:3px;
+  background:var(--surface);margin:32px 0;box-shadow:var(--shadow);
+}
+details.dd>summary{
+  cursor:pointer;list-style:none;padding:16px 20px;
+  font-family:"Archivo",sans-serif;font-size:.97rem;font-weight:600;color:var(--ink);
+  display:flex;align-items:flex-start;gap:12px;
+}
+details.dd>summary::-webkit-details-marker{display:none}
+details.dd>summary::before{
+  content:"+";font-family:"IBM Plex Mono",monospace;font-size:15px;line-height:1.2;
+  color:var(--surface);background:var(--accent);width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;flex:none;margin-top:1px;
+}
+details.dd[open]>summary::before{content:"–"}
+details.dd>summary:hover{background:var(--surface-2)}
+details.dd>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+details.dd .sum-sub{
+  display:block;font-weight:400;font-size:.85rem;color:var(--ink-soft);margin-top:3px;
+}
+.dd-body{padding:4px 20px 22px;border-top:1px solid var(--rule-soft)}
+.dd-body>*:first-child{margin-top:18px}
+.dd-body p,.dd-body ul{max-width:68ch}
+.dd-q{
+  border-left:2px solid var(--rule);padding:2px 0 2px 16px;margin:18px 0 22px;
+  font-style:italic;color:var(--ink-soft);
+}
+.dd-q cite{display:block;font-style:normal;font-size:.85rem;color:var(--ink-faint);margin-top:6px}
 /* ---------- verdict ---------- */
 .verdict{
   background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--accent);
@@ -625,6 +655,61 @@ footer p{max-width:80ch}
     <p>Because the incoming athletes come from three times as many clubs as the outgoing ones, the number of clubs with at least one athlete competing in a final <strong>rises from 95 to 109</strong>. Fourteen clubs — Ball State, Brandeis, Rutgers, Troy, Missouri, West Virginia, Denver, Maryland and others — gain a finals presence they don't currently have, and <strong>no club loses its presence entirely</strong>. That is the clearest equity argument for the change: it converts appearances that currently concentrate in a few large squads into appearances spread across more programs, while raising the average standard of the field.</p>
   </div>
 
+  <details class="dd">
+    <summary>Does MAG have the numbers to support a deeper cut — or would finals become everyone?
+      <span class="sum-sub">Lucas (MAG Rules) asks whether the expansion makes MAG prelims meaningless. Short answer: no. The deepest MAG field reaches 54% of its pool, only 2 of 35 groups pass 50%, and none pass 67%.</span>
+    </summary>
+    <div class="dd-body">
+
+      <p class="dd-q">"Does MAG have enough gymnasts to justify increasing number of qualifiers to finals? Aka at that point would too many categories just qualify everyone or a vast majority to finals? If so I'd argue this makes prelims feel a bit silly."
+        <cite>— Lucas, MAG Rules Team Lead</cite></p>
+
+      <p>It's the right thing to check, because MAG is the smaller discipline and the expansion factor is applied to already-small fields. But the numbers don't support the worry. Measured against the pool that actually competed each apparatus in prelims, <strong>no MAG group comes close to qualifying everyone</strong>, and the two largest groups stay firmly selective.</p>
+
+      <figure style="margin:22px 0">
+        <div class="scroll">
+        <table>
+          <caption>MAG qualification rate, share of the athletes who competed that apparatus in prelims</caption>
+          <thead><tr><th rowspan="2">Level · Category</th><th class="num" colspan="3">All-around final</th><th class="num" colspan="3">Apparatus finals</th></tr>
+          <tr><th class="num">pool</th><th class="num">now</th><th class="num">new</th><th class="num">pools</th><th class="num">now</th><th class="num">new</th></tr></thead>
+          <tbody>
+            <tr><td>Advanced · Collegiate Men+ <span style="color:var(--ink-faint)">(90 athletes)</span></td><td class="num mono">28</td><td class="num mono">36%</td><td class="num mono">54%</td><td class="num mono">50–63</td><td class="num mono">21–26%</td><td class="num mono">33–42%</td></tr>
+            <tr><td>Advanced · Community Men+ <span style="color:var(--ink-faint)">(22)</span></td><td class="num mono">14</td><td class="num mono">29%</td><td class="num mono">50%</td><td class="num mono">16–19</td><td class="num mono">21–31%</td><td class="num mono">37–44%</td></tr>
+            <tr><td>Intermediate · Collegiate Men+ <span style="color:var(--ink-faint)">(87)</span></td><td class="num mono">50</td><td class="num mono">14%</td><td class="num mono">24%</td><td class="num mono">61–69</td><td class="num mono">12–15%</td><td class="num mono">19–26%</td></tr>
+            <tr><td>Intermediate · Community Men+ <span style="color:var(--ink-faint)">(28)</span></td><td class="num mono">16</td><td class="num mono">19%</td><td class="num mono">31%</td><td class="num mono">20–22</td><td class="num mono">14–15%</td><td class="num mono">23–27%</td></tr>
+            <tr><td>Intermediate · Collegiate Women+ <span style="color:var(--ink-faint)">(27)</span></td><td class="num mono">8</td><td class="num mono">25%</td><td class="num mono">38%</td><td class="num mono">12–16</td><td class="num mono">12–17%</td><td class="num mono">21–33%</td></tr>
+            <tr><td>Intermediate · Community Women+ <span style="color:var(--ink-faint)">(12)</span></td><td class="num mono">4</td><td class="num mono">50%</td><td class="num mono">75%</td><td class="num mono">6–10</td><td class="num mono">20–33%</td><td class="num mono">30–50%</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <figcaption>Pools differ between the two halves of the table: the all-around pool counts only athletes who completed <b>all six</b> apparatus in prelims, which is far fewer than the number who competed any single event. Across the <b>35 MAG group&times;apparatus combinations with a pool of 10 or more</b>, the proposed cut puts <b>2</b> above 50% and <b>none</b> above 67%; fifteen land between a third and a half — deep, but a long way from "everyone". The two biggest fields, Advanced and Intermediate Collegiate Men+, would still turn away roughly <b>three-fifths and three-quarters</b> of each apparatus pool.</figcaption>
+      </figure>
+
+      <h4 style="margin-top:26px">Where the all-around rate runs highest — and why it isn't what it looks like</h4>
+      <p>The one number that stands out is Advanced Collegiate Men+ all-around at <strong>54%</strong>. That is a real consequence of the deeper cut and worth naming. But the denominator is doing the work: only <strong>28 of the 90</strong> athletes in that group completed all six apparatus in prelims, so the AA pool is small by nature. Qualifying 15 of 28 all-arounders is a different proposition from qualifying 15 of 90 competitors, and the six apparatus finals in that same group sit at 33–42%.</p>
+
+      <h4 style="margin-top:26px">The groups that already qualify everyone are not created by this change</h4>
+      <p>MAG does have a handful of 100% categories — Advanced Collegiate Women+ and Advanced Community Women+ each had a pool of <strong>one athlete</strong> in 2026. They qualify today and they qualify under the proposal. That is a consequence of how finely the categories are cut, not of how deep the qualification line is drawn, and this rule change neither causes nor worsens it. If those categories feel unsatisfying, the lever is category structure, not cut depth.</p>
+
+      <h4 style="margin-top:26px">Who actually leaves the MAG final: 19 athletes, 6 clubs</h4>
+      <p>Every one of them currently gets in through a team lineup rather than their own score. They sit at a median of <strong>14th in a group of about 27</strong>, and the concentration is striking — <strong>Jurassic (6), Wisconsin (4), Vermont (3), Washington U. St. Louis (3), 5280 (2) and Arizona State (1)</strong> account for all 19. Five of the nineteen competed a single routine in the whole final; the lowest-placed was ranked <strong>85th of 90</strong> in Advanced Collegiate Men+ and performed once.</p>
+
+      <h4 style="margin-top:26px">Who arrives: 34 athletes, 22 clubs</h4>
+      <p>This is the part that answers the "prelims feel silly" concern most directly, because the incoming group is <em>defined</em> by prelim performance in a way the outgoing group is not:</p>
+      <ul>
+        <li><strong>16 of the 34 are top-20 all-arounders</strong> in their own group who currently have no route into the final at all — Texas A&amp;M at 68.05 (12th of 90), Flippin' Illini at 67.90 (13th), UCLA at 67.85 (15th). Their clubs did not qualify a team, and they missed the all-around cut by a place or two.</li>
+        <li><strong>10 are genuine event specialists</strong> — outside the top 40 all-around but inside the top 20 on one apparatus. A UMass Amherst gymnast ranked 54th all-around but <strong>9th on high bar</strong>; a UCLA gymnast 69th all-around but <strong>12th on floor</strong>. Under the present rules a specialist at a club without a team is invisible.</li>
+        <li>Only <strong>4 of the 34</strong> qualify all-around; <strong>24 make it on a single apparatus</strong>. They enter fairly evenly across the six events — vault 8, floor 7, pommel 6, high bar 5, rings 5, parallel bars 3 — so no single apparatus is carrying the expansion.</li>
+        <li>They come from <strong>22 clubs against the 6 losing places</strong>, led by Texas A&amp;M (4) and Flippin' Illini (3).</li>
+      </ul>
+
+      <div class="verdict" style="margin:24px 0 0">
+        <h4>The answer to Lucas</h4>
+        <p>MAG's final would go from <strong>127 competing athletes to 142</strong> — 19 out, 34 in. Prelims arguably matter <em>more</em>, not less: today a mid-pack athlete at a club with a team reaches the final while a 12th-place all-arounder or a 9th-place high bar worker at a club without one does not. The deeper cut is what lets prelim performance, rather than club affiliation, decide who competes. And at 19–54% depending on group, the line is still a line.</p>
+      </div>
+
+    </div>
+  </details>
 </section>
 
 <!-- ============ 02 ============ -->
