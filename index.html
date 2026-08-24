@@ -346,7 +346,7 @@ footer p{max-width:80ch}
     </div>
     <div class="exec-item">
       <h3>Open-squad scoring — costs very little</h3>
-      <p>Scoring prelims from the whole squad rather than a declared lineup was worth a median of <b>0.05 team points in WAG and 0.10 in MAG</b>; 22 of 45 teams gained nothing at all, and the largest gain was 1.53. About a third of even that comes from gymnasts missing an apparatus in the final rather than from squad depth. Real depth does reward big <b>MAG</b> squads (r&nbsp;=&nbsp;+0.66) but not WAG ones. Removing the advantage entirely would change one gold, so keeping the open squad — and avoiding A/B team splits — is well supported.</p>
+      <p>Scored against a 4-up-3-count lineup on the same prelim routines, the open squad was worth <b>9.35 team points in total</b> across 45 teams — and <b>27 of the 45 gained nothing at all</b>. Crucially it would <b>not have changed a single gold</b>; one medal position of 34 moves. It does reward deep <b>MAG</b> squads (r&nbsp;=&nbsp;+0.66) but not WAG ones, where four events of tightly-packed scores leave nothing to gain. Keeping the open squad — and avoiding A/B team splits — is well supported.</p>
     </div>
   </div>
 
@@ -909,13 +909,13 @@ footer p{max-width:80ch}
       <div class="scroll">
       <svg viewBox="0 0 700 300" role="img" aria-label="Horizontal bars comparing session drift, day effect, open-squad advantage, podium margins and prelim-to-finals team swing, all in team points">
         <g font-size="11.5">
-          <text x="0" y="30" class="lab" font-size="12" fill="var(--ink)">Median open-squad advantage &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG</tspan></text>
-          <rect x="250" y="20" width="5" height="14" fill="var(--brick)"/>
-          <text x="263" y="31" class="mono" fill="var(--ink-soft)">0.05</text>
+          <text x="0" y="30" class="lab" font-size="12" fill="var(--ink)">Mean open-squad advantage &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG · median 0</tspan></text>
+          <rect x="250" y="20" width="18" height="14" fill="var(--brick)"/>
+          <text x="276" y="31" class="mono" fill="var(--ink-soft)">0.18</text>
 
-          <text x="0" y="56" class="lab" font-size="12" fill="var(--ink)">Median open-squad advantage &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">MAG</tspan></text>
-          <rect x="250" y="46" width="10" height="14" fill="var(--brick)"/>
-          <text x="268" y="57" class="mono" fill="var(--ink-soft)">0.10</text>
+          <text x="0" y="56" class="lab" font-size="12" fill="var(--ink)">Mean open-squad advantage &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">MAG · median 0</tspan></text>
+          <rect x="250" y="46" width="29" height="14" fill="var(--brick)"/>
+          <text x="287" y="57" class="mono" fill="var(--ink-soft)">0.29</text>
 
           <text x="0" y="82" class="lab" font-size="12" fill="var(--ink)">Median podium margin &nbsp;<tspan fill="var(--ink-faint)" font-size="10.5">WAG</tspan></text>
           <rect x="250" y="72" width="30" height="14" fill="var(--ink-faint)"/>
@@ -963,19 +963,23 @@ footer p{max-width:80ch}
 
   <div class="verdict">
     <h4>Verdict</h4>
-    <p>Prelims scores the top 3 of everyone who competed; finals is 4 up, 3 count from a lineup picked per apparatus. That looks like a large advantage for deep squads — but measured against what each team <em>actually</em> did, it is small. Re-scoring each team's prelims using only the athletes it fielded in its finals lineup, the open-squad rule was worth a median of <strong>0.05 team points in WAG and 0.10 in MAG</strong>. The largest gain any team received was <strong>1.53</strong>. Twenty-two of 45 teams gained <strong>nothing at all</strong>, and removing the advantage entirely changes <strong>2 of 16 podiums and 1 gold</strong>.</p>
-    <p>The total across every team and apparatus is <strong>14.65 team points</strong>, and it splits into two quite different mechanisms. <strong>64% is genuine depth</strong> — a full four-up lineup, but a prelim pool bigger than four to draw the best three from. <strong>36% is finals-day attrition</strong> — a team fielding fewer than it could have, so a prelim score its lineup no longer contains drops out of the comparison. That second mechanism has nothing to do with squad size.</p>
-    <p>Separating them matters, because on the depth-only portion <strong>MAG does scale with squad size</strong> (r&nbsp;=&nbsp;+0.66, p&nbsp;=&nbsp;0.021) while <strong>WAG does not</strong> (r&nbsp;=&nbsp;&minus;0.02). Six events and wider score dispersion give a deep MAG squad more to gain; four events and tightly-packed Xcel scores give a deep WAG squad almost nothing.</p>
+    <p>Prelims scores the top 3 of everyone who competed; finals is 4 up, 3 count from a lineup picked per apparatus. Comparing like with like — the same prelim routines scored under a <strong>4-up-3-count lineup</strong> versus the open squad — the open-squad rule was worth <strong>9.35 team points in total across all 45 teams</strong>. The median team gained <strong>nothing</strong>: 27 of 45 got no benefit whatsoever. Means are <strong>0.18 (WAG)</strong> and <strong>0.29 (MAG)</strong>; the largest single gain was <strong>1.53</strong>, and only three teams cleared a full point.</p>
+    <p>Most importantly, <strong>switching to a declared four would not have changed a single gold</strong>. All 16 titles are identical either way, and just <strong>one medal position of 34</strong> moves — a silver/bronze swap in WAG Diamond Collegiate Women+.</p>
+    <p>Where it does bite is <strong>MAG</strong>, and there it tracks squad size as you would expect (r&nbsp;=&nbsp;+0.66, p&nbsp;=&nbsp;0.021). <strong>WAG shows no relationship at all</strong> (r&nbsp;=&nbsp;&minus;0.02). Six events and wider score dispersion give a deep MAG squad something to gain; four events of tightly-packed Xcel scores give a deep WAG squad almost nothing.</p>
   </div>
 
   <h3>How this is measured</h3>
-  <p>For every team that reached a team final, and for each apparatus separately: take the athletes who made up that team's counting lineup in the final (in WAG, those marked <code>Included</code> — at most four per apparatus, and it can be a different four on each), look up <em>their prelim scores</em>, and total the best three. That is what the team would have scored in prelims under a declared-lineup rule. Compare it with the open-squad prelim score, which draws the best three from the whole squad. The difference is the advantage the team actually received.</p>
+  <p>For every team that reached a team final, and for each apparatus separately, the comparison scores the <em>same prelim routines</em> two ways:</p>
+  <ul>
+    <li><strong>Open squad</strong> — the best three prelim scores from everyone in the squad who competed that apparatus. This is the current rule, and what the proposal would use.</li>
+    <li><strong>4-up-3-count</strong> — the best three from a four-athlete lineup. The four are the athletes the club actually fielded on that apparatus in the final (in WAG, those marked <code>Included</code>); where the club fielded only three, the fourth slot is <strong>backfilled</strong> from the rest of the squad using the best prelim score available on that apparatus.</li>
+  </ul>
+  <p>The backfill matters: without it, a gymnast missing an apparatus on finals day would show up as a scoring advantage that has nothing to do with squad depth. Filling the slot holds both sides at four and leaves depth as the only difference. It was needed in <strong>14 of 204</strong> team&times;apparatus cells.</p>
 
   <div class="note">
-    <h4>Why a four-athlete team can still show a gain</h4>
-    <p>It looks impossible: with exactly four gymnasts, the whole squad <em>is</em> the lineup, so both totals should be identical. The gap opens when someone misses an apparatus on finals day.</p>
-    <p>Jurassic Gymnastics in MAG Advanced Community Men+ is the clearest case, and it is the largest single gain that is <em>not</em> about depth. All four competed pommel horse in prelims — <span class="mono">10.75 / 10.65 / 9.80 / 9.25</span> — so the open-squad top three is <strong>31.20</strong>. In the final, Boaz Floor did not compete pommel, leaving a three-man lineup whose prelim marks were <span class="mono">10.75 / 9.80 / 9.25</span> = <strong>29.80</strong>. The 10.65 — the squad's second-best pommel score of the weekend — simply falls out. All <strong>1.40</strong> of Jurassic's gain is that one substitution; on the other five apparatus the two totals match exactly.</p>
-    <p>Read properly, this is an argument <em>for</em> prelims-based scoring rather than against it: the prelim number reflects a routine the club actually performed, which the finals format discarded because of who was available on day three. It is only labelled an "advantage" here because the comparison is against a lineup chosen after the fact.</p>
+    <h4>Why a four-athlete team nets to zero — the Jurassic case</h4>
+    <p>With exactly four gymnasts the squad <em>is</em> the lineup, so the two totals must agree — and under this comparison they do. It is worth walking through, because it is what the backfill is for.</p>
+    <p>Jurassic Gymnastics in MAG Advanced Community Men+ fielded four. All four competed pommel horse in prelims — <span class="mono">10.75 / 10.65 / 9.80 / 9.25</span> — giving an open-squad top three of <strong>31.20</strong>. In the final, Boaz Floor did not compete pommel, so only three went up. Taking just those three would drop his 10.65 and leave <strong>29.80</strong>, an apparent 1.40-point "advantage" for the open squad. But that gap is a finals-day absence, not depth. Backfilling the vacant fourth slot with Floor's own prelim mark restores the lineup to <span class="mono">10.75 / 10.65 / 9.80 / 9.25</span> and the two totals match exactly. Jurassic's gain across all six apparatus is <strong>0.00</strong>, as it should be.</p>
   </div>
 
   <figure>
@@ -983,18 +987,18 @@ footer p{max-width:80ch}
       <p class="fig-title">Advantage received from open-squad scoring</p>
       <p class="fig-sub">All 45 teams that reached a 2026 team final</p>
       <div class="scroll">
-      <svg viewBox="0 0 700 300" role="img" aria-label="Histogram of open-squad advantage across 45 teams: 22 gained nothing, 8 gained under a quarter point, 3 gained under half, 6 gained under one point, 6 gained more than one point">
+      <svg viewBox="0 0 700 300" role="img" aria-label="Histogram of open-squad advantage across 45 teams: 27 gained nothing, 8 gained under a quarter point, 2 gained under half, 5 gained under one point, 3 gained more than one point">
         <g>
-          <rect x="70" y="60" width="90" height="176" fill="var(--ink-faint)"/>
-          <text x="115" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">22</text>
+          <rect x="70" y="20" width="90" height="216" fill="var(--ink-faint)"/>
+          <text x="115" y="12" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">27</text>
           <rect x="184" y="172" width="90" height="64" fill="var(--accent)"/>
           <text x="229" y="164" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">8</text>
-          <rect x="298" y="212" width="90" height="24" fill="var(--accent)"/>
-          <text x="343" y="204" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">3</text>
-          <rect x="412" y="188" width="90" height="48" fill="var(--brick)"/>
-          <text x="457" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">6</text>
-          <rect x="526" y="188" width="90" height="48" fill="var(--brick)"/>
-          <text x="571" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">6</text>
+          <rect x="298" y="220" width="90" height="16" fill="var(--accent)"/>
+          <text x="343" y="212" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">2</text>
+          <rect x="412" y="196" width="90" height="40" fill="var(--brick)"/>
+          <text x="457" y="188" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">5</text>
+          <rect x="526" y="212" width="90" height="24" fill="var(--brick)"/>
+          <text x="571" y="204" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)" class="mono">3</text>
         </g>
         <line x1="60" y1="236" x2="630" y2="236" stroke="var(--rule)"/>
         <g font-size="11" fill="var(--ink-soft)" class="lab" text-anchor="middle">
@@ -1007,7 +1011,7 @@ footer p{max-width:80ch}
         <text x="345" y="284" text-anchor="middle" font-size="11" fill="var(--ink-faint)" class="lab">team points gained from open-squad scoring</text>
       </svg>
       </div>
-      <figcaption>Half the field (22 of 45 teams) gained <b>nothing at all</b> — their best three prelim scores came from exactly the athletes they later fielded. Only 6 teams gained more than a full team point, and five of those six are MAG, where six events compound small differences. Means: WAG <b>+0.24</b>, MAG <b>+0.57</b>.</figcaption>
+      <figcaption><b>27 of 45 teams — the clear majority — gained nothing at all</b>: on every apparatus their best three prelim scores came from exactly the four they later fielded. Only three teams cleared a full team point. Means are WAG <b>+0.18</b> and MAG <b>+0.29</b>, and both medians are <b>zero</b>.</figcaption>
     </div>
   </figure>
 
@@ -1015,24 +1019,33 @@ footer p{max-width:80ch}
     <div class="fig-box">
       <div class="scroll">
       <table>
-        <caption>The ten largest gains, of 45 teams, split by mechanism</caption>
-        <thead><tr><th>Level / Category</th><th>Club</th><th class="num">Squad</th><th class="num">Gain</th><th class="num">from depth</th><th class="num">from attrition</th></tr></thead>
+        <caption>Every team that gained anything &mdash; 18 of 45</caption>
+        <thead><tr><th>Level / Category</th><th>Club</th><th class="num">Squad</th><th class="num">Open squad</th><th class="num">4-up-3-count</th><th class="num">Gain</th></tr></thead>
         <tbody>
-          <tr><td>WAG Diamond · Community Women+</td><td>Tri-State Twisters</td><td class="num mono">11</td><td class="num mono">+1.525</td><td class="num mono">1.525</td><td class="num mono">—</td></tr>
-          <tr><td>MAG Advanced · Community Men+</td><td>5280 Gymnastics</td><td class="num mono">7</td><td class="num mono">+1.450</td><td class="num mono">0.850</td><td class="num mono">0.600</td></tr>
-          <tr class="chg"><td>MAG Intermediate · Collegiate Women+</td><td>Washington Univ in St. Louis</td><td class="num mono">9</td><td class="num mono">+1.400</td><td class="num mono">—</td><td class="num mono">1.400</td></tr>
-          <tr class="chg"><td>MAG Advanced · Community Men+</td><td>Jurassic Gymnastics</td><td class="num mono">4</td><td class="num mono">+1.400</td><td class="num mono">—</td><td class="num mono">1.400</td></tr>
-          <tr><td>MAG Advanced · Collegiate Men+</td><td>Arizona State Men's Gymnastics</td><td class="num mono">23</td><td class="num mono">+1.300</td><td class="num mono">1.300</td><td class="num mono">—</td></tr>
-          <tr><td>MAG Intermediate · Collegiate Women+</td><td>Wisconsin Gymnastics Club</td><td class="num mono">7</td><td class="num mono">+1.100</td><td class="num mono">1.100</td><td class="num mono">—</td></tr>
-          <tr style="border-bottom:1px solid var(--ink)"><td colspan="6" style="color:var(--ink-faint);font-size:11px">— above this line: the only six teams of 45 that gained more than one team point —</td></tr>
-          <tr><td>WAG Platinum · Collegiate Men+</td><td>Washington Univ in St. Louis</td><td class="num mono">9</td><td class="num mono">+0.950</td><td class="num mono">0.950</td><td class="num mono">—</td></tr>
-          <tr><td>WAG Diamond · Collegiate Women+</td><td>Grand Valley State University</td><td class="num mono">10</td><td class="num mono">+0.775</td><td class="num mono">0.775</td><td class="num mono">—</td></tr>
-          <tr class="chg"><td>WAG Level 9 · Collegiate Women+</td><td>University of Rhode Island</td><td class="num mono">22</td><td class="num mono">+0.750</td><td class="num mono">—</td><td class="num mono">0.750</td></tr>
-          <tr class="chg"><td>WAG Level 9 · Community Women+</td><td>NAIGC Alumni</td><td class="num mono">5</td><td class="num mono">+0.750</td><td class="num mono">—</td><td class="num mono">0.750</td></tr>
+          <tr><td>WAG Diamond · Community Women+</td><td>Tri-State Twisters</td><td class="num mono">11</td><td class="num mono">111.950</td><td class="num mono">110.425</td><td class="num mono">+1.525</td></tr>
+          <tr><td>MAG Advanced · Collegiate Men+</td><td>Arizona State Men&rsquo;s Gymnastics</td><td class="num mono">23</td><td class="num mono">222.800</td><td class="num mono">221.500</td><td class="num mono">+1.300</td></tr>
+          <tr><td>MAG Intermediate · Collegiate Women+</td><td>Wisconsin Gymnastics Club</td><td class="num mono">7</td><td class="num mono">156.000</td><td class="num mono">154.900</td><td class="num mono">+1.100</td></tr>
+          <tr style="border-bottom:1px solid var(--ink)"><td colspan="6" style="color:var(--ink-faint);font-size:11px">&mdash; above this line: the only three teams of 45 that gained more than one team point &mdash;</td></tr>
+          <tr><td>WAG Platinum · Collegiate Men+</td><td>Washington Univ in St. Louis</td><td class="num mono">9</td><td class="num mono">103.600</td><td class="num mono">102.650</td><td class="num mono">+0.950</td></tr>
+          <tr><td>MAG Advanced · Community Men+</td><td>5280 Gymnastics</td><td class="num mono">7</td><td class="num mono">196.550</td><td class="num mono">195.700</td><td class="num mono">+0.850</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>Grand Valley State University</td><td class="num mono">10</td><td class="num mono">114.100</td><td class="num mono">113.325</td><td class="num mono">+0.775</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>University of California, Los Angeles</td><td class="num mono">10</td><td class="num mono">114.350</td><td class="num mono">113.750</td><td class="num mono">+0.600</td></tr>
+          <tr><td>WAG Platinum · Community Women+</td><td>Triumph Gymnastics</td><td class="num mono">6</td><td class="num mono">111.400</td><td class="num mono">110.850</td><td class="num mono">+0.550</td></tr>
+          <tr><td>WAG Platinum · Collegiate Women+</td><td>Roger Williams University</td><td class="num mono">13</td><td class="num mono">113.225</td><td class="num mono">112.950</td><td class="num mono">+0.275</td></tr>
+          <tr><td>WAG Level 9 · Collegiate Women+</td><td>Liberty University</td><td class="num mono">16</td><td class="num mono">109.825</td><td class="num mono">109.550</td><td class="num mono">+0.275</td></tr>
+          <tr><td>WAG Platinum · Collegiate Women+</td><td>Northern Arizona University</td><td class="num mono">8</td><td class="num mono">114.175</td><td class="num mono">113.950</td><td class="num mono">+0.225</td></tr>
+          <tr><td>WAG Platinum · Collegiate Women+</td><td>Grand Valley State University</td><td class="num mono">12</td><td class="num mono">113.225</td><td class="num mono">113.000</td><td class="num mono">+0.225</td></tr>
+          <tr><td>MAG Intermediate · Collegiate Men+</td><td>University of Vermont</td><td class="num mono">6</td><td class="num mono">201.050</td><td class="num mono">200.850</td><td class="num mono">+0.200</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>University of Michigan</td><td class="num mono">17</td><td class="num mono">114.625</td><td class="num mono">114.475</td><td class="num mono">+0.150</td></tr>
+          <tr><td>WAG Platinum · Collegiate Women+</td><td>University of California, Los Angeles</td><td class="num mono">15</td><td class="num mono">115.475</td><td class="num mono">115.325</td><td class="num mono">+0.150</td></tr>
+          <tr><td>WAG Level 9 · Collegiate Women+</td><td>Texas A&amp;M University</td><td class="num mono">9</td><td class="num mono">106.925</td><td class="num mono">106.850</td><td class="num mono">+0.075</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>Syracuse Gymnastics</td><td class="num mono">16</td><td class="num mono">113.675</td><td class="num mono">113.600</td><td class="num mono">+0.075</td></tr>
+          <tr><td>WAG Diamond · Collegiate Women+</td><td>Clemson University Club Gymnastics</td><td class="num mono">13</td><td class="num mono">113.625</td><td class="num mono">113.575</td><td class="num mono">+0.050</td></tr>
+          <tr><td colspan="6" style="color:var(--ink-soft)">The other 27 teams gained exactly nothing.</td></tr>
         </tbody>
       </table>
       </div>
-      <figcaption>Highlighted rows are pure <b>attrition</b> — a gymnast who competed the apparatus in prelims but not in the final, so their prelim mark leaves the lineup comparison. Jurassic's whole gain is one such substitution, which is why a four-athlete club appears alongside a twenty-three-athlete one. Strip attrition out and the remaining <b>depth</b> column behaves as you would expect in MAG, where it tracks squad size (r&nbsp;=&nbsp;+0.66); in WAG it does not, because four events of tightly-packed Xcel scores leave a deep squad little to gain.</figcaption>
+      <figcaption>Squad size does show through in MAG &mdash; Arizona State at 23 athletes is second on this list, and the MAG correlation is <b>r&nbsp;=&nbsp;+0.66 (p&nbsp;=&nbsp;0.021)</b>. In WAG there is none (<b>r&nbsp;=&nbsp;&minus;0.02</b>): Tri-State top the list with 11 athletes while Michigan at 17 and UCLA at 15 gain a rounding error. Four events of tightly-packed Xcel scores leave a deep squad little to draw on.</figcaption>
     </div>
   </figure>
 
@@ -1041,16 +1054,15 @@ footer p{max-width:80ch}
     <div class="fig-box">
       <div class="scroll">
       <table>
-        <caption>Prelims-based podium: open squad vs. finals-lineup-only scoring</caption>
-        <thead><tr><th>Level / Category</th><th>Open squad (the proposal)</th><th>Restricted to finals lineup</th></tr></thead>
+        <caption>Prelims-based podium: open squad vs. a declared 4-up lineup</caption>
+        <thead><tr><th>Level / Category</th><th>Open squad (the proposal)</th><th>4-up-3-count lineup</th></tr></thead>
         <tbody>
-          <tr class="chg"><td>WAG Level 9 · Collegiate Women+</td><td>Rhode Island &gt; Penn State &gt; Liberty</td><td><b>Penn State</b> &gt; Rhode Island &gt; Liberty</td></tr>
           <tr><td>WAG Diamond · Collegiate Women+</td><td>Michigan &gt; UCLA &gt; Northeastern</td><td>Michigan &gt; <b>Northeastern &gt; UCLA</b></td></tr>
-          <tr><td colspan="3" style="color:var(--ink-soft)">The other 14 podiums are identical under both rules; 15 of 16 golds are unaffected.</td></tr>
+          <tr><td colspan="3" style="color:var(--ink-soft)">The other 15 podiums are identical under both rules, and <b>all 16 golds are unaffected</b>.</td></tr>
         </tbody>
       </table>
       </div>
-      <figcaption>One gold and one medal swap across sixteen titles. Set against that, a declared-lineup rule would push clubs toward splitting into A/B squads and reintroduce a logistics problem — a poor trade for a median 0.05-point correction. <b>The "life's not fair" answer holds up on the numbers.</b></figcaption>
+      <figcaption>A single silver/bronze swap across sixteen titles, and <b>no change to any champion</b>. Set against that, a declared-lineup rule would push clubs toward splitting into A/B squads and reintroduce a logistics problem — a poor trade for a correction that the median team does not need at all. <b>The "life's not fair" answer holds up on the numbers.</b></figcaption>
     </div>
   </figure>
 
