@@ -220,6 +220,12 @@ details.dd .sum-sub{
   font-style:italic;color:var(--ink-soft);
 }
 .dd-q cite{display:block;font-style:normal;font-size:.85rem;color:var(--ink-faint);margin-top:6px}
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:6px;margin:0 0 40px;border-bottom:2px solid var(--rule);font-family:"Archivo",sans-serif}
+.tabs [role=tab]{appearance:none;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;padding:11px 16px;font:inherit;font-family:"Archivo",sans-serif;font-weight:600;font-size:.95rem;color:var(--ink-soft);cursor:pointer}
+.tabs [role=tab][aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tabs [role=tab]:hover{color:var(--ink)}
+.tabs [role=tab]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* ---------- verdict ---------- */
 .verdict{
   background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--accent);
@@ -326,6 +332,13 @@ footer p{max-width:80ch}
     <span>3 years of drift data</span>
   </div>
 </header>
+
+<div class="tabs" role="tablist" aria-label="Analysis variant">
+  <button role="tab" id="tab-ind" aria-controls="view-ind" aria-selected="true">Individual-only finals&ensp;&middot;&ensp;the proposal</button>
+  <button role="tab" id="tab-team" aria-controls="view-team" aria-selected="false">Team-only finals&ensp;&middot;&ensp;the inverse</button>
+</div>
+
+<div id="view-ind" class="view" role="tabpanel" aria-label="Individual-only finals">
 
 <section class="exec" aria-labelledby="exec-h">
   <h2 id="exec-h">Executive summary</h2>
@@ -1097,9 +1110,168 @@ footer p{max-width:80ch}
 </section>
 
 <!-- ============ 06 ============ -->
+</div><!-- /view-ind -->
+
+<div id="view-team" class="view" role="tabpanel" aria-label="Team-only finals" hidden>
+<main style="max-width:860px">
+
+<section id="t-intro">
+  <p class="standfirst" style="margin-bottom:26px">The mirror image of the main proposal: finals becomes a <em>pure team competition</em> — team titles are decided there, and every individual award (All-Around and apparatus) comes from prelim scores. Same data, same methods, same routine-neutral constraint.</p>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>The sizing worry turns out to be the easy part: a team final consumes an almost fixed <strong>16 routines (WAG) or 24 (MAG)</strong> regardless of squad size, so the same sessions cleanly fit <strong>68 team slots versus the 45 teams that qualify today</strong>. Two harder problems replace it.</p>
+    <p>First, <strong>selectivity collapses outside the big Xcel groups</strong>: Level&nbsp;9 has 11 eligible teams for 12 slots and MAG has 21 for 18, so prelims stops deciding who advances there — it only seeds. Second, individual titles are far less stable between rounds than team titles: decided on prelims, <strong>43 of 106 contested individual golds (41%) change hands</strong>, against 3 of 16 team golds (19%) under the main proposal. A one-routine title moves much more easily than a 12-to-18-routine aggregate.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">68</span><span class="stat-lab">team slots fit in today's sessions (45 teams qualify now)</span></div>
+    <div class="stat"><span class="stat-val dn">41%</span><span class="stat-lab">of individual golds change hands when decided on prelims</span></div>
+    <div class="stat"><span class="stat-val">~449</span><span class="stat-lab">athletes would compete in finals (488 today, 511 under the main proposal)</span></div>
+    <div class="stat"><span class="stat-val dn">47</span><span class="stat-lab">clubs with a finalist (95 today, 109 under the main proposal)</span></div>
+  </div>
+</section>
+
+<section id="t-sizing">
+  <div class="sec-head"><span class="sec-num">T1 — Sizing</span><h2>Team finals are easy to size — squad size is a red herring</h2></div>
+  <p>A plausible objection is that team size varies too much to plan a session around — a team could be 3 all-arounders or 16 (WAG) / 24 (MAG) distinct specialists. But session length is set by <em>routines</em>, not roster size, and a team final is at most 4 up per apparatus whoever fills the slots. The 2026 team finals confirm how tight that is:</p>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>Routines actually consumed per team, 2026 team finals</caption>
+        <thead><tr><th></th><th class="num">Max possible</th><th class="num">Mean</th><th class="num">Median</th><th class="num">Range</th><th>Distribution</th></tr></thead>
+        <tbody>
+          <tr><td>WAG (33 teams)</td><td class="num mono">16</td><td class="num mono">15.6</td><td class="num mono">16</td><td class="num mono">12–16</td><td>28 of 33 at exactly 16</td></tr>
+          <tr><td>MAG (12 teams)</td><td class="num mono">24</td><td class="num mono">22.3</td><td class="num mono">24</td><td class="num mono">18–24</td><td>6 of 12 at exactly 24</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>Roster size shows up only in <b>who</b> fills the four slots (distinct lineup athletes per team averaged 6.8 in WAG and 6.2 in MAG, ranging 3 to 14), not in how long the team takes. Budgeting 16 / 24 routines per team is accurate to within a few percent — sizing this format is actually <b>easier</b> than sizing individual finals, which need AA-versus-event union math and inflate under vault ties.</figcaption>
+    </div>
+  </figure>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>Routine-neutral capacity: teams that fit vs teams that exist</caption>
+        <thead><tr><th>Session</th><th class="num">Routines (held fixed)</th><th class="num">Teams that fit</th><th class="num">Eligible teams in prelims</th><th class="num">In today's team final</th></tr></thead>
+        <tbody>
+          <tr><td>WAG Level 9</td><td class="num mono">201</td><td class="num mono">12</td><td class="num mono">11</td><td class="num mono">8</td></tr>
+          <tr><td>WAG Diamond</td><td class="num mono">293</td><td class="num mono">18</td><td class="num mono">45</td><td class="num mono">11</td></tr>
+          <tr><td>WAG Platinum</td><td class="num mono">326</td><td class="num mono">20</td><td class="num mono">54</td><td class="num mono">14</td></tr>
+          <tr><td>MAG (Adv + Int)</td><td class="num mono">435</td><td class="num mono">18</td><td class="num mono">21</td><td class="num mono">12</td></tr>
+          <tr style="border-top:1px solid var(--ink);font-weight:600"><td>Total</td><td class="num mono">1,255</td><td class="num mono">68</td><td class="num mono">131</td><td class="num mono">45</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>"Eligible" = fielded &ge;3 scores on every event in 2026 prelims (ICA/ISA excluded). Teams that fit uses the 16 / 24-routine budget against each session's actual 2026 routine count.</figcaption>
+    </div>
+  </figure>
+
+  <div class="note">
+    <h4>The real sizing problem is allocation, not volume</h4>
+    <p>Level&nbsp;9 fits <strong>12 teams and has 11</strong> — every eligible team advances and prelims decides nothing but seeding. MAG fits 18 of 21. Meanwhile Diamond and Platinum Collegiate Women+ still cut hard (17–19 admitted of 40–43 eligible), and if slots are filled purely by score, Collegiate Women+ takes <strong>17 of 18 Diamond slots and 19 of 20 Platinum slots</strong>, leaving one slot each for the other three categories combined. Category quotas would have to be designed explicitly — and the 2026 Platinum cut line lands on a <strong>dead tie at 110.500</strong>, so a team tie-break is needed on day one. The "prelims feels silly" concern raised against the main proposal actually lands <em>here</em>: for most of MAG and all of Level&nbsp;9, team qualification would be a formality.</p>
+  </div>
+</section>
+
+<section id="t-individual">
+  <div class="sec-head"><span class="sec-num">T2 — Individual awards</span><h2>Individual titles move four times as much as team titles</h2></div>
+  <p>Deciding individual hardware on prelims is the mirror of deciding team hardware on prelims — so the mirror question is how often the two rounds disagree. Across every contested (event &times; category &times; level) title in the 2026 finals levels:</p>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">106</span><span class="stat-lab">contested individual titles compared</span></div>
+    <div class="stat"><span class="stat-val dn">43</span><span class="stat-lab">golds go to a different athlete on prelim scores (41%)</span></div>
+    <div class="stat"><span class="stat-val">79%</span><span class="stat-lab">of medal positions still go to the same athlete</span></div>
+    <div class="stat"><span class="stat-val">18%</span><span class="stat-lab">of podiums fully identical</span></div>
+  </div>
+
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Share of 2026 golds that change hands if decided on prelims</p>
+      <p class="fig-sub">By apparatus, both disciplines; the dashed line is the team-title rate under the main proposal</p>
+      <div class="scroll">
+      <svg viewBox="0 0 700 330" role="img" aria-label="Bar chart: vault 67 percent, rings 62, floor 42, all-around 39, bars 36, pommel 29, beam 27, high bar 14, parallel bars 14; reference line at 19 percent for team titles">
+        <line x1="200" y1="14" x2="200" y2="286" stroke="var(--rule)"/>
+        <line x1="305" y1="14" x2="305" y2="292" stroke="var(--accent)" stroke-dasharray="4 4"/>
+        <text x="305" y="308" text-anchor="middle" font-size="10" fill="var(--accent)" class="lab">team titles: 19%</text>
+        <g font-size="11.5">
+          <text x="0" y="32" class="lab" font-size="12" fill="var(--ink)" font-weight="600">VT</text><text x="34" y="32" class="lab" font-size="10.5" fill="var(--ink-faint)">12 of 18</text>
+          <rect x="200" y="20" width="369" height="15" fill="var(--brick)"/><text x="577" y="32" class="mono" fill="var(--brick)">67%</text>
+          <text x="0" y="62" class="lab" font-size="12" fill="var(--ink)" font-weight="600">SR</text><text x="34" y="62" class="lab" font-size="10.5" fill="var(--ink-faint)">5 of 8</text>
+          <rect x="200" y="50" width="341" height="15" fill="var(--brick)"/><text x="549" y="62" class="mono" fill="var(--brick)">62%</text>
+          <text x="0" y="92" class="lab" font-size="12" fill="var(--ink)" font-weight="600">FX</text><text x="34" y="92" class="lab" font-size="10.5" fill="var(--ink-faint)">8 of 19</text>
+          <rect x="200" y="80" width="231" height="15" fill="var(--brick)"/><text x="439" y="92" class="mono" fill="var(--brick)">42%</text>
+          <text x="0" y="122" class="lab" font-size="12" fill="var(--ink)" font-weight="600">AA</text><text x="34" y="122" class="lab" font-size="10.5" fill="var(--ink-faint)">7 of 18</text>
+          <rect x="200" y="110" width="215" height="15" fill="var(--brick)"/><text x="423" y="122" class="mono" fill="var(--brick)">39%</text>
+          <text x="0" y="152" class="lab" font-size="12" fill="var(--ink)" font-weight="600">UB</text><text x="34" y="152" class="lab" font-size="10.5" fill="var(--ink-faint)">4 of 11</text>
+          <rect x="200" y="140" width="198" height="15" fill="var(--brick)"/><text x="406" y="152" class="mono" fill="var(--brick)">36%</text>
+          <text x="0" y="182" class="lab" font-size="12" fill="var(--ink)" font-weight="600">PH</text><text x="34" y="182" class="lab" font-size="10.5" fill="var(--ink-faint)">2 of 7</text>
+          <rect x="200" y="170" width="160" height="15" fill="var(--brick)" opacity=".8"/><text x="368" y="182" class="mono" fill="var(--brick)">29%</text>
+          <text x="0" y="212" class="lab" font-size="12" fill="var(--ink)" font-weight="600">BB</text><text x="34" y="212" class="lab" font-size="10.5" fill="var(--ink-faint)">3 of 11</text>
+          <rect x="200" y="200" width="149" height="15" fill="var(--brick)" opacity=".8"/><text x="357" y="212" class="mono" fill="var(--brick)">27%</text>
+          <text x="0" y="242" class="lab" font-size="12" fill="var(--ink)" font-weight="600">HB</text><text x="34" y="242" class="lab" font-size="10.5" fill="var(--ink-faint)">1 of 7</text>
+          <rect x="200" y="230" width="77" height="15" fill="var(--ink-faint)"/><text x="285" y="242" class="mono" fill="var(--ink-soft)">14%</text>
+          <text x="0" y="272" class="lab" font-size="12" fill="var(--ink)" font-weight="600">PB</text><text x="34" y="272" class="lab" font-size="10.5" fill="var(--ink-faint)">1 of 7</text>
+          <rect x="200" y="260" width="77" height="15" fill="var(--ink-faint)"/><text x="285" y="272" class="mono" fill="var(--ink-soft)">14%</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>Current podium = finals scores among event-eligible finalists; prelims podium = prelim scores among place-eligible athletes. A gold "changes hands" when no athlete holds gold under both. WAG flips at 45% overall and MAG at 35%; single-routine, high-variance events (vault, rings) flip most, and the six-routine MAG events with deep fields flip least.</figcaption>
+    </div>
+  </figure>
+
+  <p>This is not a judging-fairness problem — the drift analysis on the main tab applies unchanged (same panels score both rounds, and no consistent session or day effect exists in three years of data). It is a <strong>sample-size fact</strong>: an individual title decided by one routine is inherently more volatile between rounds than a team title aggregated over 12–18 routines. Whether "your prelim routine is the one that counts" is better or worse than "finals is your second chance" is a values question — but the scale of it should be known going in: <strong>roughly two of every five 2026 individual champions would have been someone else.</strong></p>
+</section>
+
+<section id="t-floor">
+  <div class="sec-head"><span class="sec-num">T3 — The field</span><h2>Fewer athletes, far fewer clubs</h2></div>
+  <p>Filling all 68 slots (with a one-team-per-category floor, which pushes the illustrative field to 71 teams) puts roughly <strong>449 athletes</strong> on the finals floor — modestly below today's 488 — but concentrates them into <strong>47 clubs</strong>, against 95 today and 109 under the main proposal. Every athlete whose club does not field a qualifying team loses finals access entirely; in 2026 that is at minimum the <strong>188 competing finalists who qualified individually with no team</strong> — including every Community athlete from a small club, and every finalist from the 48 clubs that had an individual qualifier but no eligible team.</p>
+  <div class="two-col">
+    <div class="card">
+      <h4>What this format buys</h4>
+      <p><strong>The head-to-head team race, doubled.</strong> The one thing the main proposal gives up — contenders in the room together with the title live — becomes the entire show, and 68 slots against 45 today means substantially more programs get that experience. Finals scheduling also becomes trivial: fixed 16/24-routine blocks, no AA-versus-event union math, no vault-tie inflation (the 61-athlete vault-final problem disappears — there is no vault final). And prelims carries real weight for every individual: the routine you do on day one is the one that decides your medal.</p>
+    </div>
+    <div class="card">
+      <h4>What it costs</h4>
+      <p><strong>Finals access becomes club-gated.</strong> The main proposal spreads finals across more clubs (95&rarr;109) at a higher standard; this one collapses it (95&rarr;~47), and the strongest individuals in the sport can lose their finals day because their club is three routines short of a team. Individual champions are decided on single prelim routines, moving 41% of golds. And team qualification stops being competitive in Level&nbsp;9 and most of MAG, which is exactly the "prelims feels silly" failure mode — just relocated from individuals to teams.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <h4>Design details this variant would need settled</h4>
+    <p><strong>Category quotas</strong> for team slots (score-ordered filling gives Collegiate Women+ 36 of the 38 Xcel slots); <strong>a team tie-break</strong> (the 2026 Platinum cut is a dead tie at 110.500); <strong>walkover handling</strong> for the eight 2026 categories with only one eligible team, whose team final would be uncontested; and whether individual awards move to the banquet, since nothing on finals day decides them any more.</p>
+  </div>
+</section>
+
+</main>
+</div>
+
 <footer>
   <p>Computed from the NAIGC Nationals 2026 results exports, with the judging-drift question replicated on 2025 and 2024. Modelled on two rules: finals sessions hold the <b>same number of routines</b> as in 2026, and prelim team scores keep the <b>open-squad</b> definition (top 3 of everyone who competed). "In a final" means having performed a scored routine. Detailed workings available on request.</p>
 </footer>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tabs [role=tab]');
+  function show(id, scroll) {
+    document.querySelectorAll('.view').forEach(function (v) { v.hidden = (v.id !== id); });
+    tabs.forEach(function (t) {
+      t.setAttribute('aria-selected', t.getAttribute('aria-controls') === id ? 'true' : 'false');
+    });
+    if (history.replaceState) {
+      history.replaceState(null, '', id === 'view-team' ? '#team-finals' : location.pathname + location.search);
+    }
+    if (scroll) window.scrollTo(0, 0);
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { show(this.getAttribute('aria-controls'), true); });
+  });
+  if (location.hash === '#team-finals') show('view-team', false);
+})();
+</script>
 
   </main>
 </div>
