@@ -336,6 +336,7 @@ footer p{max-width:80ch}
 <div class="tabs" role="tablist" aria-label="Analysis variant">
   <button role="tab" id="tab-ind" aria-controls="view-ind" aria-selected="true">Individual-only finals&ensp;&middot;&ensp;the proposal</button>
   <button role="tab" id="tab-team" aria-controls="view-team" aria-selected="false">Team-only finals&ensp;&middot;&ensp;the inverse</button>
+  <button role="tab" id="tab-app" aria-controls="view-app" aria-selected="false">Apparatus-only finals&ensp;&middot;&ensp;the hybrid</button>
 </div>
 
 <div id="view-ind" class="view" role="tabpanel" aria-label="Individual-only finals">
@@ -1251,6 +1252,140 @@ footer p{max-width:80ch}
 </main>
 </div>
 
+<div id="view-app" class="view" role="tabpanel" aria-label="Apparatus-only finals" hidden>
+<main style="max-width:860px">
+
+<section id="a-intro">
+  <p class="standfirst" style="margin-bottom:26px">A third variant, raised by another volunteer: move <em>both</em> team awards and the individual All-Around to prelim scores, and keep finals only for individual apparatus finals. Same data, same methods, same two sizing philosophies as the other tabs.</p>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>This is the middle path on award stability: it moves <strong>10 golds</strong> to prelim decisions (3 team + 7 All-Around), against 3 under the main proposal and 43 under team-only finals. What it keeps in finals is exactly where the two rounds disagree most — apparatus titles flip 41% between rounds, vault 67% — so the second-chance final survives precisely where it changes outcomes most. The cost is that the <strong>All-Around, the marquee individual title, is crowned without a finals moment</strong>, and 39% of 2026 AA champions would have been someone else.</p>
+    <p>Its most interesting property is logistical: because apparatus spots are 1-routine units, the format can be sized <em>either</em> way cleanly. Keep sessions full and event fields go ~2.1–2.9&times; deeper (612 athletes, 117 clubs — the widest finals of any variant, but Platinum Collegiate Women+ event finals hit 61–67 athletes). Or keep today's depths and <strong>finals shrinks to 43% of its current floor time</strong> — the largest volunteer-effort reduction available from any variant on this page.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">10</span><span class="stat-lab">golds decided on prelims (3 team + 7 AA of 34 contested)</span></div>
+    <div class="stat"><span class="stat-val">43%</span><span class="stat-lab">of current finals floor time, if today's event depths are kept</span></div>
+    <div class="stat"><span class="stat-val">612</span><span class="stat-lab">athletes in finals if sessions stay full (331 if depths stay)</span></div>
+    <div class="stat"><span class="stat-val">117</span><span class="stat-lab">clubs with a finalist under full sessions — most of any variant</span></div>
+  </div>
+</section>
+
+<section id="a-stability">
+  <div class="sec-head"><span class="sec-num">A1 — What moves</span><h2>The stability spectrum: 0 &rarr; 3 &rarr; 10 &rarr; 43</h2></div>
+  <p>Each variant on this page moves a different set of awards onto prelim scores, and the 2026 data says how many champions that changes. Lined up on one axis:</p>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>2026 golds that would have gone to someone else, by system</caption>
+        <thead><tr><th>System</th><th>Decided in finals</th><th>Decided on prelims</th><th class="num">Golds moved</th></tr></thead>
+        <tbody>
+          <tr><td>Status quo</td><td>Team + AA + events</td><td>—</td><td class="num mono">0</td></tr>
+          <tr><td>Individual-only finals <span class="tag hold">main proposal</span></td><td>AA + events</td><td>Team</td><td class="num mono">3 of 16</td></tr>
+          <tr><td>Apparatus-only finals <span class="tag hold">this tab</span></td><td>Events</td><td>Team + AA</td><td class="num mono">10 of 34</td></tr>
+          <tr><td>Team-only finals</td><td>Team</td><td>AA + events</td><td class="num mono">43 of 122</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>"Golds moved" counts 2026 titles whose winner differs between the two rounds: team 3 of 16 (19%), AA 7 of 18 (39%), apparatus 36 of 88 (41%). The pattern is monotone in aggregation — a team score sums 12–18 routines and barely moves; an apparatus title hangs on one routine and moves constantly.</figcaption>
+    </div>
+  </figure>
+
+  <p>There is a coherent logic to this split that the other variants lack: it keeps the finals round for <strong>exactly the titles where the final most often changes the outcome</strong> (vault 67%, rings 62%), and moves to prelims the aggregated titles where the rounds mostly agree anyway. The counterargument is equally simple: the All-Around is the title most people care most about, 39% of its champions would differ, and under this system it is announced at the banquet from a spreadsheet rather than won on the floor.</p>
+</section>
+
+<section id="a-sizing">
+  <div class="sec-head"><span class="sec-num">A2 — Sizing</span><h2>One-routine granularity cuts both ways: go deep, or go home early</h2></div>
+  <p>Because an event spot is a single routine, this format sizes precisely to any target — no team-block quantization, and the choice between the two philosophies is starker than on the other tabs:</p>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>The two sizing options, on 2026 numbers</caption>
+        <thead><tr><th>Session</th><th class="num">Routines today</th><th class="num">A: full sessions<br>(depth &times;2.1–2.9)</th><th class="num">B: today's depths<br>(routines used)</th><th class="num">B: share of session</th></tr></thead>
+        <tbody>
+          <tr><td>WAG Level 9</td><td class="num mono">201</td><td class="num mono">209 spots · k 2.12</td><td class="num mono">~93</td><td class="num mono">46%</td></tr>
+          <tr><td>WAG Diamond</td><td class="num mono">293</td><td class="num mono">302 spots · k 2.75</td><td class="num mono">~122</td><td class="num mono">42%</td></tr>
+          <tr><td>WAG Platinum</td><td class="num mono">326</td><td class="num mono">343 spots · k 2.93</td><td class="num mono">~125</td><td class="num mono">38%</td></tr>
+          <tr><td>MAG (Adv + Int)</td><td class="num mono">435</td><td class="num mono">438 spots · k 2.29</td><td class="num mono">~200</td><td class="num mono">46%</td></tr>
+          <tr style="border-top:1px solid var(--ink);font-weight:600"><td>Total</td><td class="num mono">1,255</td><td class="num mono">1,292 spots · 612 athletes</td><td class="num mono">~539</td><td class="num mono">43%</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>Option A keeps every session at its current length by scaling each category's event depths by a common per-session factor (ties still advance). Option B keeps today's qualification depths — the 555 current event spots at their measured ~97% show rate — and simply removes the AA and team portions of each session.</figcaption>
+    </div>
+  </figure>
+
+  <div class="note">
+    <h4>Option A dilutes what "making finals" means</h4>
+    <p>At k&nbsp;=&nbsp;2.9, the Platinum Collegiate Women+ apparatus finals run <strong>61–67 athletes each</strong> — roughly the top 14% of the group rather than today's top 5–7%. Vault's tie-inflation problem gets proportionally worse. The 612-athlete, 117-club field is the broadest finals of any variant, but an "apparatus final" with 67 competitors is a second session of prelims in all but name. Option B keeps event finals at today's selectivity and takes the savings instead; a middle setting (k&nbsp;&asymp;&nbsp;1.5) is of course available.</p>
+  </div>
+</section>
+
+<section id="a-participants">
+  <div class="sec-head"><span class="sec-num">A3 — Participants</span><h2>What athletes gain and lose</h2></div>
+  <div class="two-col">
+    <div class="card">
+      <h4>Gains</h4>
+      <p><strong>Specialists keep their stage.</strong> Every apparatus final survives, at today's selectivity (B) or far broader access (A — 612 athletes, 117 clubs, the widest of any variant). Every prelim routine now carries stakes for team and AA hardware, so day 1–2 matters for everyone. And the AA race becomes genuinely two-day: consistent all-arounders are rewarded over one-day peaks — the same athletes who currently lose AA titles to a single hot finals routine.</p>
+    </div>
+    <div class="card">
+      <h4>Losses</h4>
+      <p><strong>The AA loses its showcase.</strong> The sport's headline individual title is decided in a spreadsheet after day 2 — no final rotation, no live race, and 7 of 18 2026 AA champions would differ. The 152 team-lineup-only competitors lose their finals day exactly as under the main proposal, and the handful of athletes who qualify AA-only (3 in 2026 WAG) need a rule (their AA spot no longer maps to a finals event). Finals-day drama narrows to event titles only.</p>
+    </div>
+  </div>
+</section>
+
+<section id="a-volunteers">
+  <div class="sec-head"><span class="sec-num">A4 — Volunteers</span><h2>The volunteer case is the strongest of any variant</h2></div>
+  <p>This variant was raised with logistics in mind, and the data supports that instinct — mostly through option B:</p>
+  <div class="two-col">
+    <div class="card">
+      <h4>Effort and time saved</h4>
+      <p><strong>Floor time:</strong> under option B, finals drops to ~539 routines — 43% of today. That is half a competition day returned: fewer volunteer shifts, judges (fixed panels, paid by the day) done by mid-afternoon, venue hours freed for T&amp;T finals, open gym, or an earlier banquet. <strong>Results pipeline:</strong> team and AA standings are final the moment day-2 prelims close, so banquet slides, medal sorting, and award scripts can be prepared Saturday morning instead of in the post-finals crunch — and the finals results job shrinks to event places only, eliminating the team-score and AA recompute steps (and their tie-handling bugs) from the critical path. <strong>Floor logistics:</strong> no team-lineup collection from coaches, no 4-up flashing coordination — per-apparatus squads are the simplest rotation format the event runs.</p>
+    </div>
+    <div class="card">
+      <h4>Effort added or kept</h4>
+      <p><strong>Option A works against the savings:</strong> full-length sessions with ~2.3&times; the qualifier volume mean more qualification emails, check-in traffic, scratch management, and a worse vault-tie problem — volunteer effort likely rises slightly. <strong>Either option:</strong> two major award sets are announced with no competitive moment attached, so the banquet's production burden grows (more presentation slots, more of the evening's emotional weight). Prelims scoring accuracy becomes higher-stakes — a day-1 score entry error now decides team and AA titles with no finals to absorb it, so verification effort shifts earlier rather than shrinking.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <h4>The honest comparison across all four systems</h4>
+    <p>Ranked by total volunteer effort on finals weekend: <strong>apparatus-only (B) &lt; team-only &lt; apparatus-only (A) &asymp; individual-only (main) &asymp; status quo</strong>. The main proposal is roughly effort-neutral — same session lengths, simpler qualification logic, one fewer recompute. Team-only simplifies rotations but keeps full sessions. Only apparatus-only option B actually hands back hours, and it is the single biggest lever on this page for volunteer time — at the price of the AA showcase.</p>
+  </div>
+</section>
+
+<section id="a-compare">
+  <div class="sec-head"><span class="sec-num">A5 — Side by side</span><h2>All four systems on one card</h2></div>
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>2026-modelled comparison</caption>
+        <thead><tr><th></th><th>Status quo</th><th>Individual-only<br>(main proposal)</th><th>Apparatus-only<br>(this tab)</th><th>Team-only</th></tr></thead>
+        <tbody>
+          <tr><td>Golds moved to prelims</td><td class="num mono">0</td><td class="num mono">3</td><td class="num mono">10</td><td class="num mono">43</td></tr>
+          <tr><td>Athletes competing in finals</td><td class="num mono">488</td><td class="num mono">511</td><td class="num mono">612 (A) / 331 (B)</td><td class="num mono">~449</td></tr>
+          <tr><td>Clubs with a finalist</td><td class="num mono">95</td><td class="num mono">109</td><td class="num mono">117 (A) / 95 (B)</td><td class="num mono">~47</td></tr>
+          <tr><td>Finals floor time</td><td class="num mono">100%</td><td class="num mono">100%</td><td class="num mono">100% (A) / 43% (B)</td><td class="num mono">~98%</td></tr>
+          <tr><td>Finals character</td><td>Hybrid team + individual</td><td>Individual championship</td><td>Event-specialist showcase</td><td>Team head-to-head</td></tr>
+          <tr><td>Marquee cost</td><td>—</td><td>Team race not head-to-head</td><td>AA decided off the floor</td><td>All individual titles off the floor; club-gated access</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>All figures from the 2026 model under the conventions used throughout: routine-neutral sizing unless stated, competing = performed a scored routine, ICA/ISA excluded.</figcaption>
+    </div>
+  </figure>
+</section>
+
+</main>
+</div>
+
 <footer>
   <p>Computed from the NAIGC Nationals 2026 results exports, with the judging-drift question replicated on 2025 and 2024. Modelled on two rules: finals sessions hold the <b>same number of routines</b> as in 2026, and prelim team scores keep the <b>open-squad</b> definition (top 3 of everyone who competed). "In a final" means having performed a scored routine. Detailed workings available on request.</p>
 </footer>
@@ -1264,7 +1399,8 @@ footer p{max-width:80ch}
       t.setAttribute('aria-selected', t.getAttribute('aria-controls') === id ? 'true' : 'false');
     });
     if (history.replaceState) {
-      history.replaceState(null, '', id === 'view-team' ? '#team-finals' : location.pathname + location.search);
+      var H = { 'view-team': '#team-finals', 'view-app': '#apparatus-finals' };
+      history.replaceState(null, '', H[id] || location.pathname + location.search);
     }
     if (scroll) window.scrollTo(0, 0);
   }
@@ -1272,6 +1408,7 @@ footer p{max-width:80ch}
     t.addEventListener('click', function () { show(this.getAttribute('aria-controls'), true); });
   });
   if (location.hash === '#team-finals') show('view-team', false);
+  if (location.hash === '#apparatus-finals') show('view-app', false);
 })();
 </script>
 </div><!-- /.wrap -->
