@@ -337,6 +337,7 @@ footer p{max-width:80ch}
   <button role="tab" id="tab-ind" aria-controls="view-ind" aria-selected="true">Individual-only finals&ensp;&middot;&ensp;the proposal</button>
   <button role="tab" id="tab-team" aria-controls="view-team" aria-selected="false">Team-only finals&ensp;&middot;&ensp;the inverse</button>
   <button role="tab" id="tab-app" aria-controls="view-app" aria-selected="false">Apparatus-only finals&ensp;&middot;&ensp;the hybrid</button>
+  <button role="tab" id="tab-wt" aria-controls="view-wt" aria-selected="false">Apparatus-weighted finals&ensp;&middot;&ensp;the tilt</button>
 </div>
 
 <div id="view-ind" class="view" role="tabpanel" aria-label="Individual-only finals">
@@ -1455,6 +1456,181 @@ footer p{max-width:80ch}
 </main>
 </div>
 
+<div id="view-wt" class="view" role="tabpanel" aria-label="Apparatus-weighted finals" hidden>
+<main style="max-width:860px">
+
+<section id="w-intro">
+  <p class="standfirst" style="margin-bottom:26px">A variant of the main proposal: finals stays an individual championship with both All-Around and apparatus finals, but the All-Around keeps its <em>current</em> qualification depth — every routine slot freed by removing team finals goes to extra apparatus qualifiers. Modelled against the current system on the 2026 results, routine-neutral as throughout.</p>
+
+  <div class="verdict">
+    <h4>Verdict</h4>
+    <p>The award structure is identical to the main proposal — only the <strong>3 of 16 team titles</strong> move to prelim decisions, and the All-Around and apparatus finals continue to crown their champions on the floor. What changes is who fills the freed capacity: the AA final keeps today's <strong>108 qualifiers exactly</strong> (same depths, same field, same champions), while event depths roughly double — spots rise from <strong>555 to 1,162 (+109%)</strong>, against +70% for events under the main proposal.</p>
+    <p>The field grows from <strong>488 to 593 athletes</strong> across <strong>115 clubs</strong>. <strong>No current individual qualifier is displaced</strong> — the AA cut is unchanged by construction and the event cuts are strict supersets — and 72 of the 152 athletes who currently compete only via a team lineup earn an event spot outright. The trade against the main proposal: more specialists get a final, but no additional all-arounders do — an athlete just outside today's AA cut stays outside it.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">1,162</span><span class="stat-lab">event qualification spots, up from 555 (+109%)</span></div>
+    <div class="stat"><span class="stat-val">108</span><span class="stat-lab">AA qualifiers — unchanged from today by design</span></div>
+    <div class="stat"><span class="stat-val">593</span><span class="stat-lab">athletes competing in finals, up from 488</span></div>
+    <div class="stat"><span class="stat-val">115</span><span class="stat-lab">clubs with a finalist, up from 95</span></div>
+  </div>
+</section>
+
+<section id="w-quals">
+  <div class="sec-head"><span class="sec-num">W1 — Qualifiers</span><h2>Event spots roughly double; the All-Around field doesn't move</h2></div>
+
+  <p>The reallocation freezes each category's All-Around depth at its current value and scales only the event depths by a common per-session factor, ties at the cutoff still advancing. Because most AA qualifiers also hold event spots, the solver accounts for the overlap — an apparatus final's slot count is the union of the (unchanged) AA qualifiers competing that event and the deepened event cut:</p>
+
+  <figure>
+    <div class="fig-box">
+      <div class="scroll">
+      <table>
+        <caption>Event-depth factor needed to keep each session the same length</caption>
+        <thead><tr><th>Finals session</th><th class="num">Routines<br>(held fixed)</th><th class="num">Event<br>expansion</th><th class="num">Event spots</th><th class="num">Athletes<br>after</th></tr></thead>
+        <tbody>
+          <tr><td>WAG Xcel Platinum</td><td class="num mono">326</td><td class="num mono">&times;2.83</td><td class="num mono">131 &rarr; 326</td><td class="num mono">182</td></tr>
+          <tr><td>WAG Xcel Diamond</td><td class="num mono">293</td><td class="num mono">&times;2.40</td><td class="num mono">125 &rarr; 255</td><td class="num mono">154</td></tr>
+          <tr><td>WAG Level 9</td><td class="num mono">201</td><td class="num mono">&times;1.82</td><td class="num mono">97 &rarr; 185</td><td class="num mono">95</td></tr>
+          <tr><td>MAG (Adv + Int)</td><td class="num mono">435</td><td class="num mono">&times;2.12</td><td class="num mono">202 &rarr; 396</td><td class="num mono">162</td></tr>
+          <tr style="border-top:1px solid var(--ink);font-weight:600"><td>Total</td><td class="num mono">1,255</td><td class="num mono">—</td><td class="num mono">555 &rarr; 1,162</td><td class="num mono">593</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <figcaption>AA spots add an unchanged 108 on top of the event spots shown (total qualification spots 663&nbsp;&rarr;&nbsp;1,270). Event factors run higher than the main proposal's &times;1.5–2.0 because none of the freed capacity is spent deepening the AA. One granularity note: a large tie cluster at the Diamond cutoff forces that session to land 12 routines under target (281 of 293) — the next admissible depth step would overshoot, and sessions cannot run longer.</figcaption>
+    </div>
+  </figure>
+
+  <h3>Change by apparatus</h3>
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">Event qualification spots, current vs. proposed</p>
+      <p class="fig-sub">WAG covers the Platinum, Diamond and Level 9 finals; MAG covers the single Advanced + Intermediate final. AA spots are unchanged and not shown.</p>
+      <div class="scroll">
+      <svg viewBox="-5 0 725 400" role="img" aria-label="Paired bars comparing current and proposed event qualification spots for each apparatus, split by WAG and MAG; All-Around depths are unchanged">
+        <g font-size="11">
+        <text x="0" y="12" class="lab" font-size="11" font-weight="600" fill="var(--accent)" letter-spacing="1.4">WAG</text>
+        <!-- scale: 2.36 px per spot -->
+        <g class="lab" font-size="12" font-weight="600" fill="var(--ink)">
+          <text x="0" y="38">FX</text><text x="0" y="68">VT</text><text x="0" y="98">UB</text><text x="0" y="128">BB</text>
+        </g>
+        <rect x="34" y="24" width="210" height="7" fill="var(--ink-faint)"/><rect x="34" y="33" width="458" height="7" fill="var(--accent)"/>
+        <text x="500" y="39" fill="var(--gain)" font-weight="600">89 &rarr; 194 &nbsp;+118%</text>
+        <rect x="34" y="54" width="229" height="7" fill="var(--ink-faint)"/><rect x="34" y="63" width="456" height="7" fill="var(--accent)"/>
+        <text x="498" y="69" fill="var(--gain)" font-weight="600">97 &rarr; 193 &nbsp;+99%</text>
+        <rect x="34" y="84" width="198" height="7" fill="var(--ink-faint)"/><rect x="34" y="93" width="451" height="7" fill="var(--accent)"/>
+        <text x="493" y="99" fill="var(--gain)" font-weight="600">84 &rarr; 191 &nbsp;+127%</text>
+        <rect x="34" y="114" width="196" height="7" fill="var(--ink-faint)"/><rect x="34" y="123" width="444" height="7" fill="var(--accent)"/>
+        <text x="486" y="129" fill="var(--gain)" font-weight="600">83 &rarr; 188 &nbsp;+127%</text>
+        <line x1="0" y1="146" x2="700" y2="146" stroke="var(--rule)"/>
+        <text x="0" y="168" class="lab" font-size="11" font-weight="600" fill="var(--accent)" letter-spacing="1.4">MAG</text>
+        <g class="lab" font-size="12" font-weight="600" fill="var(--ink)">
+          <text x="0" y="194">PH</text><text x="0" y="224">VT</text><text x="0" y="254">FX</text>
+          <text x="0" y="284">SR</text><text x="0" y="314">PB</text><text x="0" y="344">HB</text>
+        </g>
+        <rect x="34" y="180" width="78" height="7" fill="var(--ink-faint)"/><rect x="34" y="189" width="158" height="7" fill="var(--accent)"/>
+        <text x="200" y="195" fill="var(--gain)" font-weight="600">33 &rarr; 67 &nbsp;+103%</text>
+        <rect x="34" y="210" width="78" height="7" fill="var(--ink-faint)"/><rect x="34" y="219" width="158" height="7" fill="var(--accent)"/>
+        <text x="200" y="225" fill="var(--gain)" font-weight="600">33 &rarr; 67 &nbsp;+103%</text>
+        <rect x="34" y="240" width="83" height="7" fill="var(--ink-faint)"/><rect x="34" y="249" width="156" height="7" fill="var(--accent)"/>
+        <text x="198" y="255" fill="var(--gain)" font-weight="600">35 &rarr; 66 &nbsp;+89%</text>
+        <rect x="34" y="270" width="80" height="7" fill="var(--ink-faint)"/><rect x="34" y="279" width="156" height="7" fill="var(--accent)"/>
+        <text x="198" y="285" fill="var(--gain)" font-weight="600">34 &rarr; 66 &nbsp;+94%</text>
+        <rect x="34" y="300" width="76" height="7" fill="var(--ink-faint)"/><rect x="34" y="309" width="153" height="7" fill="var(--accent)"/>
+        <text x="195" y="315" fill="var(--gain)" font-weight="600">32 &rarr; 65 &nbsp;+103%</text>
+        <rect x="34" y="330" width="83" height="7" fill="var(--ink-faint)"/><rect x="34" y="339" width="153" height="7" fill="var(--accent)"/>
+        <text x="195" y="345" fill="var(--gain)" font-weight="600">35 &rarr; 65 &nbsp;+86%</text>
+        </g>
+      </svg>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--ink-faint)"></i>Current</span>
+        <span><i class="sw" style="background:var(--accent)"></i>Proposed (routine-neutral, AA frozen)</span>
+      </div>
+      <figcaption>WAG event spots rise <b>+117%</b> overall and MAG <b>+96%</b> — the deepest event fields of the individual-finals variants, since the AA absorbs none of the freed capacity. For comparison, the main proposal deepens events by about +70% and the AA by +75%.</figcaption>
+    </div>
+  </figure>
+
+  <h3>Who actually moves</h3>
+  <figure>
+    <div class="fig-box">
+      <p class="fig-title">The finals field, before and after</p>
+      <p class="fig-sub">Routine-neutral scenario, all four sessions. Every athlete who competed in a 2026 final, by whether they still hold a place.</p>
+      <div class="scroll">
+      <svg viewBox="0 -14 700 260" role="img" aria-label="Flow diagram: of 488 current competing finalists, 408 keep a place and 82 team-lineup-only athletes lose it; 185 newly qualify, giving 593">
+        <defs>
+          <linearGradient id="wfl" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".5"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".25"/></linearGradient>
+          <linearGradient id="wfx" x1="0" x2="1"><stop offset="0" stop-color="var(--brick)" stop-opacity=".5"/><stop offset="1" stop-color="var(--brick)" stop-opacity=".12"/></linearGradient>
+          <linearGradient id="wfn" x1="0" x2="1"><stop offset="0" stop-color="var(--gain)" stop-opacity=".1"/><stop offset="1" stop-color="var(--gain)" stop-opacity=".5"/></linearGradient>
+        </defs>
+        <!-- scale 0.30 px/athlete: 488 -> 146px, keep 408 -> 122px, lose 82 -> 25px, new 185 -> 56px, 593 -> 178px -->
+        <rect x="150" y="14" width="22" height="122" fill="var(--accent)"/>
+        <rect x="150" y="136" width="22" height="25" fill="var(--brick)"/>
+        <text x="161" y="6" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)" class="lab">488 compete now</text>
+        <path d="M172,14 L520,14 L520,136 L172,136 Z" fill="url(#wfl)"/>
+        <path d="M172,136 L400,136 L400,196 L172,161 Z" fill="url(#wfx)"/>
+        <path d="M430,226 L520,136 L520,192 L430,232 Z" fill="url(#wfn)"/>
+        <rect x="520" y="14" width="22" height="122" fill="var(--accent)"/>
+        <rect x="520" y="136" width="22" height="56" fill="var(--gain)"/>
+        <text x="531" y="6" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)" class="lab">593 qualify</text>
+        <g class="lab" font-size="11.5">
+          <text x="144" y="72" text-anchor="end" fill="var(--accent)" font-weight="600">408</text>
+          <text x="144" y="152" text-anchor="end" fill="var(--brick)" font-weight="600">82</text>
+          <text x="230" y="66" fill="var(--accent)" font-weight="600">keep a place — every individually-qualified athlete,</text>
+          <text x="230" y="82" fill="var(--accent)" font-weight="600">plus 72 of the 152 team-lineup-only competitors</text>
+          <text x="180" y="186" fill="var(--brick)" font-weight="600">82 no longer qualify — none of them individually qualified today</text>
+          <text x="436" y="222" fill="var(--gain)" font-weight="600">+185 newly qualify,</text>
+          <text x="436" y="238" fill="var(--gain)" font-weight="600">all on event scores</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption><b>Zero</b> current individual qualifiers are displaced: the AA cut is untouched by construction and every event cut is a strict superset of today's. The 82 who lose a place all competed only via a team lineup (80 flagged team-only, 2 edge-case entries with neither flag). The 185 newcomers enter exclusively through the deepened event cuts — no one new reaches the AA final, which is this variant's defining constraint.</figcaption>
+    </div>
+  </figure>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>More clubs on the finals floor</h4>
+      <p>Clubs with at least one athlete competing in a final rise from <strong>95 to 115</strong>, with <strong>20 clubs gaining a finals presence they don't currently have</strong> and none losing theirs. That sits between the main proposal (109) and the apparatus-only variant (117) — unsurprisingly, since this design is the midpoint: the AA field is frozen while the event fields carry all the growth.</p>
+    </div>
+    <div class="card">
+      <h4>What "making finals" comes to mean</h4>
+      <p>The Platinum Collegiate Women+ event finals run <strong>58–63 athletes each</strong> — the same depth concern as the apparatus-only variant, and deeper than the main proposal's ~42–61. Vault's tie-inflation problem scales accordingly, so a vault cap or tie-break is worth settling here too. The AA final, by contrast, stays exactly as selective as today — the one final whose meaning is guaranteed unchanged.</p>
+    </div>
+  </div>
+</section>
+
+<section id="w-awards">
+  <div class="sec-head"><span class="sec-num">W2 — Awards moved to prelims</span><h2>Only the team titles move — same three flips as the main proposal</h2></div>
+  <p>This variant's award mechanics are identical to the main proposal: team awards go to prelim scores under the existing open-squad rule, and <strong>3 of 16 team titles change hands</strong> — WAG Level 9 (Liberty &rarr; Rhode Island), WAG Diamond (Grand Valley &rarr; Michigan) and MAG Intermediate Collegiate (Virginia Tech &rarr; Vermont), all in categories where three or more competitive teams finished within about two points. Three bronzes that currently go unawarded would exist. The full podium detail is on the main tab.</p>
+  <p><strong>Every individual title is decided exactly as today.</strong> The AA final runs with the same field and produces the same champions; apparatus finals keep their second chance where the rounds disagree most. Among the individual-finals variants, this one and the main proposal are the only ones that move no individual hardware at all — and this one additionally holds the AA <em>field</em> constant, not just its format.</p>
+</section>
+
+<section id="w-fairness">
+  <div class="sec-head"><span class="sec-num">W3 — Fairness</span><h2>The drift and open-squad findings carry over unchanged</h2></div>
+  <p>Both analyses from the main tab apply verbatim, because the only scores promoted to award status are the same prelim team scores. <strong>Judging drift:</strong> fixed per-apparatus panels across the whole competition, and no consistent session or day effect in three years of data (largest effect in six year&times;discipline tests ~0.72 team points, against a 1.6–3.7 point prelims-to-finals team swing). <strong>Open squad:</strong> measured against a 4-up-3-count lineup on the same routines, the median team gained nothing and no 2026 team gold would change under the stricter rule. Nothing in this variant creates a new fairness surface: individual awards remain finals-decided, so no prelim scoring error can decide an individual title.</p>
+</section>
+
+<section id="w-consequences">
+  <div class="sec-head"><span class="sec-num">W4 — Also worth weighing</span><h2>Three other consequences I'd want on the table</h2></div>
+  <div class="two-col">
+    <div class="card">
+      <h4>The AA stays exclusive — deliberately</h4>
+      <p>Freezing the AA depth is a statement about what the All-Around means: it stays the sport's hardest final to reach, at today's ~top-20-per-category standard, while event finals open up. The cost is that the expansion helps specialists only — the 21st-best all-arounder in a big category gains nothing from this change, where the main proposal would have admitted roughly 80 more all-arounders. Whether the AA's prestige is better served by scarcity or by growth is the values question that separates these two variants.</p>
+    </div>
+    <div class="card">
+      <h4>Finals tilts toward specialists</h4>
+      <p>Per-athlete load drops to about <strong>2.1 routines</strong> (1,270 spots across 593 athletes) from 2.57 today: the AA cohort still does its full four or six, but they are now a smaller share of a floor dominated by one- and two-event qualifiers. Sessions read as long event-final sequences punctuated by the same AA race as today — closer to the apparatus-only variant's character than to the main proposal's.</p>
+    </div>
+    <div class="card">
+      <h4>Volunteer effects match the main proposal</h4>
+      <p>Sessions are unchanged in length, team results are final when day-2 prelims close (banquet team awards can be prepared early), and the finals results pipeline drops the team recompute. Qualification logic is marginally simpler than the main proposal's — the AA list is literally today's list — but the deeper event fields mean the same larger comms and check-in volume. Net: roughly effort-neutral, like the main proposal.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
 <footer>
   <p>Computed from the NAIGC Nationals 2026 results exports, with the judging-drift question replicated on 2025 and 2024. Modelled on two rules: finals sessions hold the <b>same number of routines</b> as in 2026, and prelim team scores keep the <b>open-squad</b> definition (top 3 of everyone who competed). "In a final" means having performed a scored routine. Detailed workings available on request.</p>
 </footer>
@@ -1468,7 +1644,7 @@ footer p{max-width:80ch}
       t.setAttribute('aria-selected', t.getAttribute('aria-controls') === id ? 'true' : 'false');
     });
     if (history.replaceState) {
-      var H = { 'view-team': '#team-finals', 'view-app': '#apparatus-finals' };
+      var H = { 'view-team': '#team-finals', 'view-app': '#apparatus-finals', 'view-wt': '#apparatus-weighted' };
       history.replaceState(null, '', H[id] || location.pathname + location.search);
     }
     if (scroll) window.scrollTo(0, 0);
@@ -1478,6 +1654,7 @@ footer p{max-width:80ch}
   });
   if (location.hash === '#team-finals') show('view-team', false);
   if (location.hash === '#apparatus-finals') show('view-app', false);
+  if (location.hash === '#apparatus-weighted') show('view-wt', false);
 })();
 </script>
 </div><!-- /.wrap -->
