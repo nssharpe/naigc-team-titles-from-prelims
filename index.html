@@ -1759,29 +1759,34 @@ footer p{max-width:80ch}
     </div>
     <div class="card">
       <h4>Team blue #'s</h4>
-      <p>Team finals are all categories or none. Each category's team blue # is in proportion to its eligible teams (clubs with 3+ scores on every apparatus), 0 if it has no eligible teams, otherwise at least 2 (never 1). XSa. Collegiate W+ has the most eligible teams, so its team blue # is the input below; every other category follows from the same proportion.</p>
+      <p>Team finals are all categories or none. Each category's team blue # is in proportion to its eligible teams (clubs with 3+ scores on every apparatus), 0 if it has no eligible teams, otherwise at least 2 (never 1). Under the proportional rule, XSa. Collegiate W+ (the most eligible teams) is set by hand and every other category follows the same proportion. The ladder alternative gives a category no team final until it has enough eligible teams, which frees routines at little cost because small team finals are the most expensive per team (section E).</p>
     </div>
   </div>
 
   <div class="fig-box">
     <div class="si-ctl">
-      <label>Team blue #, XSa. Collegiate W+
+      <label>Team blue # rule
+        <select id="si-trule"><option value="prop">Proportional to eligible teams (as in 2026)</option><option value="ladder">Ladder: none until a category has enough teams</option></select>
+      </label>
+      <label id="si-tb-wrap">Team blue #, XSa. Collegiate W+
         <select id="si-tb"><option value="2">2 (the minimum)</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="7">7 (as in 2026)</option></select>
       </label>
+      <span id="si-lad-wrap" class="si-lad">0 below <input type="number" id="si-lmin" min="2" max="20"> eligible teams, <input type="number" id="si-llo" min="2" max="10"> at that many, rising to <input type="number" id="si-lhi" min="2" max="20"> at <input type="number" id="si-lat" min="3" max="40"> or more</span>
     </div>
+    <div id="si-ladprev" class="si-ladprev"></div>
     <p class="fig-title">Resulting team blue #'s, if there are team finals</p>
     <div class="scroll">
     <table>
-      <thead><tr><th>Level</th><th class="num">Collegiate W+</th><th class="num">Community W+</th><th class="num">Collegiate M+</th><th class="num">Community M+</th><th class="num">Team finalists</th></tr></thead>
+      <thead><tr><th>Level</th><th></th><th class="num">Collegiate W+</th><th class="num">Community W+</th><th class="num">Collegiate M+</th><th class="num">Community M+</th><th class="num">Team finalists</th></tr></thead>
       <tbody id="si-teamlist"></tbody>
     </table>
     </div>
-    <p class="fig-sub" style="margin:12px 0 18px">Team blue # (eligible teams in brackets). A category with no eligible teams gets 0; any other gets at least 2, even with only 1 eligible team, so a late-registered second team can't leave a blue # of 1. Edit any box to fine-tune; the dropdown resets them all.</p>
+    <p class="fig-sub" style="margin:12px 0 18px">Both rows are editable (edited boxes are outlined). <b>Eligible teams</b> starts at what the 2026-based field produces; raise it to add teams the data doesn't have. A team the simulation doesn't have is counted in the expected case at the 2025–26 average cost of a team finalist (<span id="si-tfmean"></span> of 16 routines). <b>Team blue #</b> follows the rule above; a hand-typed 1 becomes 2. Changing the rule or the dropdown clears hand edits to team blue #'s.</p>
 
     <p class="fig-title">For comparison: 2026 team blue #'s, each level in its own session</p>
     <div class="scroll">
     <table>
-      <thead><tr><th>2026 level</th><th class="num">Collegiate W+</th><th class="num">Community W+</th><th class="num">Collegiate M+</th><th class="num">Community M+</th></tr></thead>
+      <thead><tr><th>2026 level</th><th class="num">Collegiate W+</th><th class="num">Community W+</th><th class="num">Collegiate M+</th><th class="num">Community M+</th><th class="num">Team finalists</th></tr></thead>
       <tbody id="si-t26"></tbody>
     </table>
     </div>
@@ -1939,6 +1944,14 @@ footer p{max-width:80ch}
 #si-teamlist input{width:52px}
 #si-teamlist input.si-ov{border-color:var(--si-b);border-width:2px}
 .si-el{color:var(--ink-soft);font-size:12px}
+.si-rl{color:var(--ink-soft);font-size:12.5px;white-space:nowrap}
+#si-teamlist tr.si-tbrow td{border-bottom:2px solid var(--rule)}
+#si-teamlist input{width:52px}
+.si-lad input{width:52px!important}
+.si-ladprev{display:flex;flex-wrap:wrap;gap:4px;align-items:flex-end;margin:0 0 14px;font:12px "Archivo",sans-serif;color:var(--ink)}
+.si-ladprev span{display:inline-flex;flex-direction:column;align-items:center;min-width:26px;padding:2px 4px;border:1px solid var(--rule);border-radius:3px}
+.si-ladprev span.si-ladlab{border:none;min-width:0;padding-right:8px;color:var(--ink-soft);display:inline}
+.si-ladprev i{font-style:normal;color:var(--ink-soft);font-size:11px}
 </style>
 <div class="si-tip" id="si-tip"></div>
 <script type="application/json" id="si-data">{"flows":[{"L26":"Diamond","CompLevel":"Xcel Diamond","n":329},{"L26":"Diamond","CompLevel":"Xcel Sapphire","n":145},{"L26":"Level 9","CompLevel":"UCG Infinity","n":144},{"L26":"Level 9","CompLevel":"Xcel Sapphire","n":36},{"L26":"Not matched","CompLevel":"UCG Infinity","n":3},{"L26":"Not matched","CompLevel":"Xcel Diamond","n":3},{"L26":"Not matched","CompLevel":"Xcel Gold","n":1},{"L26":"Not matched","CompLevel":"Xcel Platinum","n":4},{"L26":"Not matched","CompLevel":"Xcel Sapphire","n":2},{"L26":"Not matched","CompLevel":"Xcel Silver","n":1},{"L26":"Open Scoring","CompLevel":"UCG Infinity","n":36},{"L26":"Platinum","CompLevel":"Xcel Gold","n":45},{"L26":"Platinum","CompLevel":"Xcel Platinum","n":506},{"L26":"Silver","CompLevel":"Xcel Gold","n":43},{"L26":"Silver","CompLevel":"Xcel Silver","n":112}],"medians":{"diamond":{"Xcel Diamond":35.425,"Xcel Sapphire":35.650000000000006},"l9":{"UCG Infinity":34.3125,"Xcel Sapphire":33.575}},"ath":{"Xcel Sapphire|Collegiate Women+":[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,8.8,0,1,0],[8.45,9.55,9.6,9.75,1,0],[9.1,9.4,9.3,9.55,1,0],[8.35,7.35,8.825,8.825,1,0],[8.95,9.4,9.0,9.425,2,0],[9.3,7.25,8.775,9.425,2,0],[0,0,0,9.25,2,0],[9.3,0,0,9.4,2,0],[8.5,7.8,8.225,9.05,3,0],[9.175,8.075,9.45,9.325,3,0],[9.15,7.825,7.6,9.45,3,0],[8.9,7.65,9.275,9.35,3,0],[9.325,8.8,8.925,9.15,3,0],[8.75,6.05,8.7,9.3,3,0],[0,0,9.0,8.575,3,0],[8.85,9.0,8.9,9.45,3,0],[8.875,6.35,9.6,9.1,4,0],[0,0,0,0,4,0],[8.775,0,9.25,9.45,4,0],[9.0,9.0,9.15,9.725,4,0],[8.675,0,0,9.425,4,0],[9.175,9.3,9.4,9.45,5,0],[9.05,9.45,8.5,9.3,5,0],[8.95,0,7.85,8.25,5,0],[8.9,8.45,9.05,9.75,5,0],[8.8,0,8.45,9.4,5,0],[0,9.35,9.45,9.95,5,0],[8.45,0,8.2,0,5,0],[9.375,7.9,0,8.85,5,0],[0,9.75,9.3,9.55,5,0],[0,0,8.05,8.15,6,0],[8.925,7.225,8.55,9.625,6,0],[8.775,9.15,7.9,9.35,6,0],[0,7.4,0,0,6,0],[0,0,0,9.075,6,0],[9.15,9.225,9.1,9.375,6,0],[8.7,7.1,8.45,9.15,6,0],[0,0,8.3,9.4,6,0],[0,8.6,8.55,0,6,0],[0,0,0,0,7,0],[9.625,6.4,8.0,9.425,7,0],[8.6,9.45,9.15,9.35,8,0],[8.75,8.375,9.15,8.85,8,0],[9.0,9.45,9.175,9.825,8,0],[8.775,9.025,9.275,9.65,8,0],[8.85,9.375,8.3,9.3,8,0],[8.75,0,8.6,8.6,9,0],[9.0,8.2,9.15,9.3,10,1],[8.1,8.15,8.0,9.15,10,1],[9.0,8.0,8.2,9.125,11,0],[8.8,8.375,8.25,9.4,11,0],[8.95,9.7,9.5,9.525,11,0],[8.975,7.125,8.5,8.4,11,0],[8.5,9.275,8.95,9.35,11,0],[8.75,7.275,8.65,8.4,11,0],[9.05,6.0,9.05,8.275,12,0],[9.2,8.9,9.15,9.65,13,0],[9.05,9.2,9.35,9.25,13,0],[9.2,8.825,8.625,9.55,13,0],[0,6.0,8.2,0,13,0],[9.025,7.925,8.05,9.1,13,0],[9.175,8.45,7.4,9.15,13,0],[8.8,8.425,9.25,9.55,13,0],[8.95,0,7.9,9.4,13,0],[0,7.475,0,8.725,13,0],[9.15,9.55,9.625,9.55,13,0],[8.9,9.3,8.95,9.5,13,0],[8.825,9.0,8.675,9.225,13,0],[8.825,0,8.1,8.9,14,0],[8.825,0,0,8.675,14,0],[8.75,0,0,9.4,15,0],[8.65,7.65,9.1,9.525,15,0],[8.775,7.825,8.4,9.625,15,0],[8.75,8.65,7.65,9.075,16,0],[9.225,9.15,9.2,9.2,16,0],[9.125,0,8.225,9.275,16,0],[8.85,8.625,8.7,9.3,16,0],[8.475,7.275,8.7,9.025,16,0],[8.85,8.15,9.15,9.125,16,0],[9.125,9.85,8.95,9.775,17,0],[0,6.375,8.0,9.425,17,0],[8.55,7.2,8.3,9.35,17,0],[0,0,0,8.1,17,0],[8.775,9.25,8.9,9.325,17,0],[8.4,0,9.25,9.4,17,0],[8.6,0,0,0,17,0],[8.775,9.45,8.85,9.375,17,0],[8.525,8.0,7.85,8.2,17,0],[7.85,0,8.15,0,17,0],[8.7,9.35,8.775,9.625,17,0],[8.4,9.525,0,9.525,17,0],[8.625,9.675,9.1,9.825,17,0],[9.25,9.325,8.7,9.55,17,0],[8.8,9.25,9.4,9.35,17,0],[0,0,7.0,7.5,18,0],[8.95,0,9.15,9.0,18,0],[9.425,0,8.75,0,18,0],[8.625,0,8.275,9.15,18,0],[0,0,9.45,9.225,18,0],[8.75,8.925,8.85,9.15,18,0],[9.35,9.65,8.8,9.0,18,0],[9.225,9.675,9.425,9.45,18,0],[9.275,9.0,9.0,9.225,18,0],[9.375,8.85,9.15,9.55,18,0],[9.05,9.625,9.7,9.75,19,0],[8.75,9.225,8.2,9.55,19,0],[9.05,7.95,8.9,9.25,19,0],[8.8,8.35,9.4,9.45,19,0],[9.2,9.35,9.2,9.3,20,0],[0,0,0,7.7,21,0],[9.0,7.35,8.525,8.85,21,0],[8.9,8.15,0,9.375,21,0],[9.025,8.7,9.35,9.75,22,0],[8.9,7.725,9.3,9.425,22,0],[0,0,0,0,22,0],[8.95,8.525,8.3,9.25,22,0],[8.375,8.075,9.55,9.4,22,0],[8.95,6.15,0,0,23,0],[0,6.45,0,7.85,23,0],[8.35,0,8.325,9.15,23,0],[9.125,7.25,9.35,0,23,0],[0,0,8.0,9.25,23,0],[0,0,0,0,23,0],[0,0,8.7,9.4,23,0],[9.4,0,8.325,8.85,23,0],[0,0,0,0,23,0],[9.225,0,0,8.35,23,0],[8.25,7.1,8.575,0,23,0],[8.475,0,0,8.8,23,0],[8.4,6.25,7.7,9.075,23,0],[0,0,8.05,8.1,23,0],[9.0,6.25,0,0,23,0],[0,0,0,9.25,23,0],[0,0,9.1,9.4,23,0],[0,0,7.1,9.15,23,0],[0,7.8,0,0,23,0],[8.15,6.15,8.7,8.5,24,0],[7.85,7.85,8.85,9.05,24,0],[8.875,7.375,8.7,8.5,24,0],[8.3,0,6.9,9.4,24,0],[8.75,9.35,9.05,8.3,25,0],[8.75,8.1,9.1,9.0,25,0],[8.95,8.925,8.5,8.5,26,0],[0,9.325,8.55,9.2,27,0],[0,0,8.45,9.15,27,0],[8.7,0,0,9.025,27,0],[8.725,8.1,8.05,8.6,28,0],[9.0,6.2,0,9.4,29,0],[8.85,0,9.5,9.575,30,0],[9.025,9.225,9.6,9.625,30,0],[8.975,7.75,7.85,7.85,30,0],[9.025,8.6,9.6,9.375,30,0],[8.95,7.3,8.8,9.55,30,0],[9.075,9.15,8.1,9.6,30,0],[0,8.85,7.3,0,30,0],[8.925,8.2,9.175,9.55,30,0],[8.825,7.1,7.85,9.4,31,0],[8.225,8.925,8.25,9.075,32,0],[7.9,9.3,8.75,9.4,32,0],[8.45,7.85,9.2,9.1,32,0],[0,0,8.4,9.05,33,0]],"Xcel Sapphire|Community Women+":[[8.75,9.325,8.1,9.225,34,1],[0,9.9,0,0,34,1],[9.25,9.7,9.5,9.6,34,1],[9.3,8.7,9.475,9.5,35,0],[9.05,8.05,8.5,8.55,36,0],[8.9,0,8.6,9.375,28,0],[8.8,7.6,9.05,9.05,28,0],[8.25,9.35,8.65,9.4,37,0]],"Xcel Sapphire|Collegiate Men+":[[8.8,9.175,8.35,9.6,6,0],[9.025,6.0,8.5,9.425,18,0]],"Xcel Sapphire|Community Men+":[[0,0,0,0,38,0],[0,0,0,0,38,0],[8.85,7.85,0,9.35,34,1],[9.35,9.0,8.6,9.125,22,0],[9.025,8.5,6.5,9.35,22,0],[9.5,8.975,8.05,9.825,22,0],[8.5,7.8,9.1,8.975,39,0]],"UCG Infinity|Collegiate Women+":[[0,0,7.65,9.35,40,0],[0,0,8.75,9.2,40,0],[0,7.35,8.4,9.1,41,0],[0,0,9.3,9.125,41,0],[0,6.65,7.5,0,41,0],[0,7.45,0,8.55,41,0],[8.8,0,9.4,9.225,42,0],[0,0,9.45,9.675,42,0],[9.55,0,8.5,9.125,42,0],[8.1,6.6,0,0,5,0],[0,0,0,0,5,0],[0,7.7,0,9.35,5,0],[8.475,7.45,0,9.35,5,0],[9.125,0,8.4,9.375,5,0],[9.2,7.9,9.175,0,5,0],[0,6.6,7.6,0,5,0],[0,0,7.4,9.2,5,0],[0,0,0,0,5,0],[9.425,9.525,9.025,9.25,8,0],[8.325,8.8,9.075,9.2,14,0],[0,8.15,0,0,43,0],[9.15,8.2,9.175,9.125,43,0],[9.0,0,9.275,7.75,43,0],[0,0,8.05,9.0,43,0],[8.825,0,8.15,9.0,43,0],[0,7.25,8.7,7.55,43,0],[0,0,7.0,8.45,43,0],[0,5.2,8.9,0,43,0],[8.6,7.85,9.0,8.6,43,0],[0,0,8.4,9.125,43,0],[9.4,8.95,9.25,9.45,43,0],[0,0,7.85,7.95,43,0],[9.125,6.3,8.3,9.2,43,0],[8.7,9.45,8.7,9.2,43,0],[0,0,0,0,43,0],[0,0,8.4,0,43,0],[0,0,7.55,8.025,44,0],[9.2,9.225,9.35,9.425,45,0],[8.225,9.15,8.7,9.1,45,0],[8.65,0,0,0,46,0],[0,6.6,8.65,0,46,0],[0,0,0,0,47,0],[7.9,8.7,9.275,9.0,47,0],[8.65,7.5,7.2,8.8,47,0],[9.1,6.2,7.15,9.25,47,0],[7.8,5.0,8.35,9.0,47,0],[9.225,6.0,8.025,9.325,47,0],[9.1,7.0,8.65,9.275,47,0],[9.5,8.3,8.725,9.35,47,0],[8.175,5.85,8.575,8.6,47,0],[8.325,6.5,7.0,8.2,48,0],[0,0,7.45,8.35,48,0],[9.35,9.5,8.9,9.525,48,0],[8.5,7.3,8.325,9.5,48,0],[9.275,0,7.85,9.175,49,0],[9.35,8.65,8.75,9.5,49,0],[8.275,8.45,8.475,8.65,49,0],[0,0,0,0,49,0],[8.775,8.75,7.55,8.4,49,0],[0,0,8.525,8.95,49,0],[6.65,0,8.45,9.0,49,0],[8.45,7.9,8.325,8.95,49,0],[0,0,8.775,8.9,49,0],[0,0,8.55,9.4,49,0],[9.2,8.85,7.65,9.1,49,0],[9.375,0,0,9.525,49,0],[0,0,9.0,0,49,0],[9.0,0,0,9.325,49,0],[8.5,9.5,9.75,9.225,49,0],[0,7.35,7.875,8.9,50,0],[9.025,6.45,7.75,9.1,50,0],[0,0,0,0,50,0],[0,5.5,7.15,9.05,50,0],[8.15,5.65,7.3,8.8,50,0],[0,5.55,0,0,50,0],[0,0,7.65,9.2,51,0],[8.3,7.65,9.35,9.075,52,0],[9.4,6.85,9.25,9.525,52,0],[9.575,8.85,8.175,9.375,53,0],[0,6.45,7.15,0,54,0],[8.2,4.0,6.8,9.05,54,0],[9.25,9.55,8.7,9.6,54,0],[8.175,0,0,9.075,54,0],[0,0,0,9.35,54,0],[8.7,6.75,8.9,9.1,55,0],[0,0,0,0,56,0],[0,0,6.55,9.325,57,0],[9.325,8.45,8.75,9.3,57,0],[0,6.7,8.65,8.15,27,0],[0,7.55,0,9.05,58,0],[8.925,0,0,9.325,58,0],[9.3,9.1,8.25,9.35,59,0],[9.25,9.35,9.35,0,59,0],[0,0,8.2,9.0,59,0],[0,8.05,0,9.35,59,0],[0,0,0,0,59,0],[9.4,8.35,9.0,0,59,0],[0,0,0,8.95,59,0],[9.275,6.85,0,0,59,0],[9.325,6.65,0,8.175,59,0],[9.375,8.15,8.25,9.375,59,0],[0,0,0,0,59,0],[0,0,7.0,0,59,0],[0,0,0,0,59,0],[9.35,0,7.2,8.45,59,0],[0,6.45,6.0,0,59,0],[0,0,0,8.875,59,0],[0,0,8.225,9.325,59,0],[9.1,0,7.8,0,59,0],[9.0,9.0,9.15,0,59,0],[9.075,0,0,9.15,59,0],[0,8.5,0,9.025,59,0],[0,8.3,6.85,8.35,59,0],[8.65,6.2,6.875,9.05,28,0],[8.5,6.0,9.6,9.525,60,0],[9.275,0,0,9.6,60,0],[9.2,7.65,6.25,8.65,61,0],[8.25,6.45,8.1,8.55,62,0],[8.1,8.55,7.6,8.45,62,0],[6.8,6.7,7.05,8.15,62,0],[9.35,8.5,8.275,9.15,62,0],[0,0,0,0,63,0],[9.175,7.2,8.6,9.3,63,0],[0,0,0,0,63,0],[8.7,6.45,8.25,8.9,63,0],[8.725,6.8,0,9.175,63,0],[0,0,0,0,63,0],[9.4,8.8,9.35,9.325,64,0],[0,0,0,1.0,64,0],[9.025,8.2,8.55,9.4,64,0],[9.0,8.0,8.15,9.2,64,0]],"UCG Infinity|Community Women+":[[0,0,0,0,38,0],[9.3,8.15,8.525,9.35,65,0],[8.175,7.55,8.55,9.15,66,0],[13.1,11.3,12.8,12.8,67,0],[0,10.8,9.4,12.6,67,0],[0,10.9,11.4,12.4,67,0],[13.025,9.5,11.1,13.0,67,0],[11.95,11.4,11.9,12.3,67,0],[0,11.7,13.0,13.1,67,0],[14.175,11.7,12.7,13.0,67,0],[0,0,12.1,12.2,67,0],[12.95,11.4,12.2,12.9,67,0],[12.7,9.6,10.0,12.4,67,0],[14.75,13.4,12.6,12.6,68,0],[14.9,12.7,14.05,13.8,68,0],[11.75,8.2,10.2,11.5,68,0],[15.3,13.0,15.15,13.8,68,0],[11.6,10.9,12.0,12.6,68,0],[8.1,6.75,8.2,8.65,69,0],[9.25,9.05,8.8,9.3,69,0],[8.95,7.5,8.675,9.35,69,0],[9.3,9.0,8.0,8.65,69,0],[8.2,7.2,8.05,9.2,69,0],[13.15,14.6,13.6,13.4,70,0],[0,0,0,0,71,0],[0,6.5,8.3,10.9,72,0],[11.6,8.1,10.4,11.3,72,0],[11.35,6.9,10.7,10.8,72,0],[8.075,5.0,6.7,8.75,61,0]],"UCG Infinity|Collegiate Men+":[[9.05,0,0,9.15,5,0],[0,0,0,0,14,0],[0,0,8.025,9.725,73,0],[9.625,9.875,8.05,9.9,48,0],[9.7,8.3,8.35,9.4,51,0],[0,7.35,0,9.075,27,0]],"UCG Infinity|Community Men+":[[16.0,8.0,7.9,12.0,38,0],[12.7,0,11.4,15.3,74,0],[14.2,11.8,13.05,14.2,74,0],[15.425,12.6,13.2,12.3,34,1],[0,12.2,11.3,0,34,1],[11.8,5.5,9.9,11.1,67,0],[11.85,0,10.0,10.4,68,0],[0,12.1,0,0,68,0],[11.55,9.6,9.7,9.8,68,0],[12.4,12.7,11.2,13.2,68,0],[14.2,12.1,10.9,12.6,69,0],[14.825,12.9,10.5,14.0,75,0],[16.4,15.1,14.0,14.9,71,0],[0,0,0,0,71,0],[15.35,14.3,12.5,14.6,71,0],[16.175,12.7,14.3,14.5,48,0],[12.15,9.8,10.0,10.4,76,0]]},"ctx":[{"level":"Platinum","cat":"Collegiate Women+","n":448,"eligible":43,"routines":219,"team_extra":80,"teams":9,"aa":20},{"level":"Platinum","cat":"Community Women+","n":64,"eligible":8,"routines":38,"team_extra":24,"teams":2,"aa":3},{"level":"Platinum","cat":"Collegiate Men+","n":34,"eligible":2,"routines":44,"team_extra":28,"teams":2,"aa":2},{"level":"Platinum","cat":"Community Men+","n":10,"eligible":1,"routines":25,"team_extra":15,"teams":1,"aa":2},{"level":"Diamond","cat":"Collegiate Women+","n":419,"eligible":40,"routines":214,"team_extra":69,"teams":7,"aa":21},{"level":"Diamond","cat":"Community Women+","n":34,"eligible":3,"routines":40,"team_extra":27,"teams":2,"aa":3},{"level":"Diamond","cat":"Collegiate Men+","n":16,"eligible":1,"routines":24,"team_extra":13,"teams":1,"aa":2},{"level":"Diamond","cat":"Community Men+","n":10,"eligible":1,"routines":15,"team_extra":3,"teams":1,"aa":2},{"level":"Level 9","cat":"Collegiate Women+","n":164,"eligible":10,"routines":170,"team_extra":54,"teams":7,"aa":20},{"level":"Level 9","cat":"Community Women+","n":10,"eligible":1,"routines":22,"team_extra":9,"teams":1,"aa":2},{"level":"Level 9","cat":"Collegiate Men+","n":6,"eligible":0,"routines":9,"team_extra":0,"teams":0,"aa":2},{"level":"Level 9","cat":"Community Men+","n":2,"eligible":0,"routines":0,"team_extra":0,"teams":0,"aa":0}],"teamcfg26":{"Platinum":[7,2,2,2],"Diamond":[7,2,2,2],"Level 9":[7,2,0,0]},"indcfg26":{"Platinum":[20,3,2,2],"Diamond":[20,3,2,2],"Level 9":[20,2,2,2]},"mag":[{"year":2025,"level":"Adv","cat":"Collegiate Men+","n":88,"aa":11,"ev":83,"teams":3,"ind_union":120,"act_ind":115,"team_extra":30,"routines":145},{"year":2025,"level":"Adv","cat":"Collegiate Women+","n":2,"aa":1,"ev":7,"teams":0,"ind_union":7,"act_ind":7,"team_extra":0,"routines":7},{"year":2025,"level":"Adv","cat":"Community Men+","n":22,"aa":4,"ev":25,"teams":1,"ind_union":37,"act_ind":37,"team_extra":6,"routines":43},{"year":2025,"level":"Adv","cat":"Community Women+","n":1,"aa":1,"ev":6,"teams":0,"ind_union":6,"act_ind":6,"team_extra":0,"routines":6},{"year":2025,"level":"Int","cat":"Collegiate Men+","n":112,"aa":7,"ev":48,"teams":3,"ind_union":67,"act_ind":65,"team_extra":49,"routines":114},{"year":2025,"level":"Int","cat":"Collegiate Women+","n":23,"aa":2,"ev":13,"teams":1,"ind_union":19,"act_ind":16,"team_extra":11,"routines":27},{"year":2025,"level":"Int","cat":"Community Men+","n":33,"aa":2,"ev":13,"teams":1,"ind_union":19,"act_ind":19,"team_extra":9,"routines":28},{"year":2025,"level":"Int","cat":"Community Women+","n":7,"aa":2,"ev":12,"teams":0,"ind_union":15,"act_ind":15,"team_extra":0,"routines":15},{"year":2026,"level":"NAIGC Advanced (GymACT)","cat":"Collegiate Men+","n":90,"aa":10,"ev":76,"teams":3,"ind_union":109,"act_ind":106,"team_extra":15,"routines":121},{"year":2026,"level":"NAIGC Advanced (GymACT)","cat":"Collegiate Women+","n":1,"aa":0,"ev":2,"teams":0,"ind_union":2,"act_ind":2,"team_extra":0,"routines":2},{"year":2026,"level":"NAIGC Advanced (GymACT)","cat":"Community Men+","n":22,"aa":4,"ev":26,"teams":2,"ind_union":34,"act_ind":34,"team_extra":36,"routines":70},{"year":2026,"level":"NAIGC Advanced (GymACT)","cat":"Community Women+","n":1,"aa":1,"ev":6,"teams":0,"ind_union":6,"act_ind":6,"team_extra":0,"routines":6},{"year":2026,"level":"NAIGC Intermediate","cat":"Collegiate Men+","n":87,"aa":7,"ev":50,"teams":3,"ind_union":72,"act_ind":72,"team_extra":35,"routines":107},{"year":2026,"level":"NAIGC Intermediate","cat":"Collegiate Women+","n":27,"aa":2,"ev":12,"teams":2,"ind_union":18,"act_ind":18,"team_extra":30,"routines":48},{"year":2026,"level":"NAIGC Intermediate","cat":"Community Men+","n":28,"aa":3,"ev":18,"teams":1,"ind_union":30,"act_ind":30,"team_extra":18,"routines":48},{"year":2026,"level":"NAIGC Intermediate","cat":"Community Women+","n":12,"aa":2,"ev":12,"teams":1,"ind_union":17,"act_ind":17,"team_extra":16,"routines":33}],"wag_sess":[{"year":2025,"level":"L9","routines":188,"team_extra":43,"teams":5},{"year":2025,"level":"XD","routines":227,"team_extra":57,"teams":6},{"year":2025,"level":"XP","routines":236,"team_extra":58,"teams":7},{"year":2026,"level":"Diamond","routines":293,"team_extra":112,"teams":11},{"year":2026,"level":"Level 9","routines":201,"team_extra":63,"teams":8},{"year":2026,"level":"Platinum","routines":326,"team_extra":147,"teams":14}],"hist":{"ind_max":0.8553459119496856,"ind_min":0.5625,"ind_mean":0.7727049582719686,"tf_max":0.9375,"tf_min":0.1875,"tf_mean":0.5568181818181818,"n_ind":35,"n_team":29,"team_pts":[{"year":2025,"disc":"wag","level":"L9","cat":"Collegiate Men+","aa":2,"frac":0.4375},{"year":2025,"disc":"wag","level":"L9","cat":"Collegiate Women+","aa":19,"frac":0.5833333333333334},{"year":2025,"disc":"wag","level":"L9","cat":"Community Women+","aa":2,"frac":0.5},{"year":2025,"disc":"wag","level":"XD","cat":"Collegiate Women+","aa":18,"frac":0.75},{"year":2025,"disc":"wag","level":"XD","cat":"Community Women+","aa":3,"frac":0.4375},{"year":2025,"disc":"wag","level":"XP","cat":"Collegiate Men+","aa":2,"frac":0.875},{"year":2025,"disc":"wag","level":"XP","cat":"Collegiate Women+","aa":18,"frac":0.6666666666666666},{"year":2025,"disc":"wag","level":"XP","cat":"Community Women+","aa":3,"frac":0.25},{"year":2025,"disc":"mag","level":"Adv","cat":"Collegiate Men+","aa":11,"frac":0.4166666666666667},{"year":2025,"disc":"mag","level":"Adv","cat":"Community Men+","aa":4,"frac":0.25},{"year":2025,"disc":"mag","level":"Int","cat":"Collegiate Men+","aa":7,"frac":0.6805555555555555},{"year":2025,"disc":"mag","level":"Int","cat":"Collegiate Women+","aa":2,"frac":0.4583333333333333},{"year":2025,"disc":"mag","level":"Int","cat":"Community Men+","aa":2,"frac":0.375},{"year":2026,"disc":"wag","level":"Diamond","cat":"Collegiate Men+","aa":2,"frac":0.8125},{"year":2026,"disc":"wag","level":"Diamond","cat":"Collegiate Women+","aa":21,"frac":0.6160714285714286},{"year":2026,"disc":"wag","level":"Diamond","cat":"Community Men+","aa":2,"frac":0.1875},{"year":2026,"disc":"wag","level":"Diamond","cat":"Community Women+","aa":3,"frac":0.84375},{"year":2026,"disc":"wag","level":"Level 9","cat":"Collegiate Women+","aa":20,"frac":0.48214285714285715},{"year":2026,"disc":"wag","level":"Level 9","cat":"Community Women+","aa":2,"frac":0.5625},{"year":2026,"disc":"wag","level":"Platinum","cat":"Collegiate Men+","aa":2,"frac":0.875},{"year":2026,"disc":"wag","level":"Platinum","cat":"Collegiate Women+","aa":20,"frac":0.5555555555555556},{"year":2026,"disc":"wag","level":"Platinum","cat":"Community Men+","aa":2,"frac":0.9375},{"year":2026,"disc":"wag","level":"Platinum","cat":"Community Women+","aa":3,"frac":0.75},{"year":2026,"disc":"mag","level":"NAIGC Advanced (GymACT)","cat":"Collegiate Men+","aa":10,"frac":0.20833333333333334},{"year":2026,"disc":"mag","level":"NAIGC Advanced (GymACT)","cat":"Community Men+","aa":4,"frac":0.75},{"year":2026,"disc":"mag","level":"NAIGC Intermediate","cat":"Collegiate Men+","aa":7,"frac":0.4861111111111111},{"year":2026,"disc":"mag","level":"NAIGC Intermediate","cat":"Collegiate Women+","aa":2,"frac":0.625},{"year":2026,"disc":"mag","level":"NAIGC Intermediate","cat":"Community Men+","aa":3,"frac":0.75},{"year":2026,"disc":"mag","level":"NAIGC Intermediate","cat":"Community Women+","aa":2,"frac":0.6666666666666666}]}}</script>
@@ -1964,9 +1977,11 @@ footer p{max-width:80ch}
   var UNM = { 'Xcel Diamond': 3, 'Xcel Sapphire': 2, 'UCG Infinity': 3 };
   function baseFlow(f) { var x = D.flows.filter(function (r) { return r.L26 === f[0] && r.CompLevel === f[1]; })[0]; return x ? x.n : 0; }
   function baseCount(L, c) { return L === 'Xcel Diamond' ? DIA[c] : base[L + '|' + c].length; }
-  var state = { flow: {}, share: {}, R: 245, tb: 2, v: 2 };
+  var LAD0 = { min: 3, lo: 2, hi: 7, at: 10 };
+  var state = { flow: {}, share: {}, R: 245, tb: 2, v: 2, trule: 'prop', lad: { min: 3, lo: 2, hi: 7, at: 10 }, elo: {}, tbo: {} };
   function levelN(L) { return FLOWS.reduce(function (a, f) { return a + (f[1] === L ? (+state.flow[f.join('>')] || 0) : 0); }, 0) + UNM[L]; }
   function resetField() {
+    state.elo = {}; state.tbo = {};
     FLOWS.forEach(function (f) { state.flow[f.join('>')] = baseFlow(f); });
     ALLV.forEach(function (l) {
       var t = CATS.reduce(function (a, c) { return a + baseCount(l[0], c); }, 0);
@@ -1975,7 +1990,7 @@ footer p{max-width:80ch}
   }
   try { var q = JSON.parse(localStorage.getItem('si-state') || 'null'); } catch (e) { q = null; }
   resetField();
-  if (q && q.v === 2 && q.flow && q.share) { state.flow = q.flow; state.share = q.share; state.R = q.R || 245; state.tb = q.tb || 2; state.tbo = q.tbo || {}; state.plan = q.plan; FLOWS.forEach(function (f) { if (!state.flow.hasOwnProperty(f.join('>'))) state.flow[f.join('>')] = baseFlow(f); }); }
+  if (q && q.v === 2 && q.flow && q.share) { state.flow = q.flow; state.share = q.share; state.R = q.R || 245; state.tb = q.tb || 2; state.tbo = q.tbo || {}; state.plan = q.plan; state.trule = q.trule || 'prop'; state.lad = q.lad || { min: 3, lo: 2, hi: 7, at: 10 }; state.elo = q.elo || {}; FLOWS.forEach(function (f) { if (!state.flow.hasOwnProperty(f.join('>'))) state.flow[f.join('>')] = baseFlow(f); }); }
   else if (q) { state.R = q.R || 245; state.tb = q.tb || 2; }
   function save() { try { localStorage.setItem('si-state', JSON.stringify(state)); } catch (e) {} }
 
@@ -2038,6 +2053,7 @@ footer p{max-width:80ch}
     });
     var extra = 0, tt = Math.min(T, G.teams.length);
     for (var t = 0; t < tt; t++) G.teams[t].lineup.forEach(function (p) { if (!q[p[0] * 4 + p[1]]) { q[p[0] * 4 + p[1]] = 1; extra++; } ath[p[0]] = 1; });
+    if (T > tt) extra += Math.round(H.tf_mean * 16) * (T - tt);
     return { aaQ: aaQ, evQ: evQ, bound: 4 * aaQ + evQ, uni: uni, extra: extra, T: tt, Tplan: T, ath: Object.keys(ath).length };
   }
   function cost(s, sc, pool) {
@@ -2048,9 +2064,21 @@ footer p{max-width:80ch}
     return { ind: ind, team: Math.max(0, tm) };
   }
   function blues(Gs, k) { var o = {}; Gs.forEach(function (G) { o[G.key] = G.n < 2 ? G.n : Math.min(G.n, Math.max(2, Math.round(k * G.n))); }); return o; }
-  function teamBlues(Gs, tb) {
-    var ref = Gs[0].teams.length || 1, kt = tb / ref, o = {};
-    Gs.forEach(function (G) { var e = G.teams.length; o[G.key] = e === 0 ? 0 : Math.max(2, Math.round(kt * e)); if (state.tbo && state.tbo.hasOwnProperty(G.key)) o[G.key] = state.tbo[G.key]; });
+  function elig(G) { return state.elo && state.elo.hasOwnProperty(G.key) ? state.elo[G.key] : G.teams.length; }
+  function ladder(e) {
+    var p = state.lad || LAD0;
+    if (e < p.min) return 0;
+    if (e >= p.at) return p.hi;
+    return Math.max(2, Math.round(p.lo + (e - p.min) * (p.hi - p.lo) / Math.max(1, p.at - p.min)));
+  }
+  function teamBlues(Gs, tb, rule, noOverride) {
+    rule = rule || state.trule || 'prop';
+    var ref = elig(Gs[0]) || 1, kt = tb / ref, o = {};
+    Gs.forEach(function (G) {
+      var e = elig(G);
+      o[G.key] = rule === 'ladder' ? ladder(e) : (e === 0 ? 0 : Math.max(2, Math.round(kt * e)));
+      if (!noOverride && state.tbo && state.tbo.hasOwnProperty(G.key)) o[G.key] = state.tbo[G.key];
+    });
     return o;
   }
   function total(Gs, bl, tbl, sc) {
@@ -2301,30 +2329,41 @@ footer p{max-width:80ch}
     });
   }
 
+  function ruleLabel() {
+    var p = state.lad || LAD0, ov = state.tbo && Object.keys(state.tbo).length ? ', with hand edits' : '';
+    return (state.trule === 'ladder' ? 'ladder: 0 below ' + p.min + ' eligible teams, ' + p.lo + ' at ' + p.min + ', up to ' + p.hi + ' at ' + p.at + '+' : 'XSa. Collegiate W+ team blue # ' + state.tb + ', others proportional') + ov;
+  }
   function teamRow(tbl) {
     var h = '';
     LV.forEach(function (l) {
-      var tot = 0;
-      h += '<tr><td>' + l[1] + '</td>' + CATS.map(function (c) {
-        var k = l[0] + '|' + c, G = Gs.filter(function (g) { return g.key === k; })[0], t = tbl[k], ov = state.tbo && state.tbo.hasOwnProperty(k); tot += t;
-        return '<td class="num"><input type="number" min="0" max="20" step="1" data-tk="' + k + '" value="' + t + '"' + (ov ? ' class="si-ov" title="Edited by hand"' : '') + '> <span class="si-el">(' + (G ? G.teams.length : 0) + ')</span></td>';
-      }).join('') + '<td class="num">' + tot + '</td></tr>';
+      var tot = 0, row1 = '', row2 = '';
+      CATS.forEach(function (c) {
+        var k = l[0] + '|' + c, G = Gs.filter(function (g) { return g.key === k; })[0], t = tbl[k], e = G ? elig(G) : 0;
+        var ovT = state.tbo && state.tbo.hasOwnProperty(k), ovE = state.elo && state.elo.hasOwnProperty(k); tot += t;
+        row1 += '<td class="num"><input type="number" min="0" max="60" step="1" data-ek="' + k + '" value="' + e + '"' + (ovE ? ' class="si-ov" title="Edited by hand; the simulation has ' + (G ? G.teams.length : 0) + '"' : '') + '></td>';
+        row2 += '<td class="num"><input type="number" min="0" max="20" step="1" data-tk="' + k + '" value="' + t + '"' + (ovT ? ' class="si-ov" title="Edited by hand"' : '') + '></td>';
+      });
+      h += '<tr><td rowspan="2"><b>' + l[1] + '</b></td><td class="si-rl">Eligible teams</td>' + row1 + '<td></td></tr>';
+      h += '<tr class="si-tbrow"><td class="si-rl">Team blue #</td>' + row2 + '<td class="num"><b>' + tot + '</b></td></tr>';
     });
     return h;
   }
   function tiles(res, tbl) {
     $('si-teamlist').innerHTML = teamRow(tbl);
-    document.querySelectorAll('#si-teamlist input').forEach(function (i) { i.addEventListener('change', function () {
+    document.querySelectorAll('#si-teamlist input[data-tk]').forEach(function (i) { i.addEventListener('change', function () {
       var x = Math.max(0, Math.round(+i.value || 0)); if (x === 1) x = 2;
       state.tbo = state.tbo || {}; state.tbo[i.getAttribute('data-tk')] = x; render();
     }); });
+    document.querySelectorAll('#si-teamlist input[data-ek]').forEach(function (i) { i.addEventListener('change', function () {
+      state.elo = state.elo || {}; state.elo[i.getAttribute('data-ek')] = Math.max(0, Math.round(+i.value || 0)); render();
+    }); });
     function cw(o, L) { return o.best ? o.best.bl[L + '|Collegiate Women+'] : '–'; }
     function line(o) { return o.best ? cw(o, 'Xcel Sapphire') + ' / ' + cw(o, 'UCG Infinity') : '<span style="color:var(--brick)">doesn’t fit</span> (needs ' + o.floor + ')'; }
-    var keep = state.tbo; state.tbo = {}; var t7 = teamBlues(Gs, 7); state.tbo = keep; var inf7 = t7['UCG Infinity|Collegiate Women+'], n7 = Object.keys(t7).reduce(function (a, k) { return a + t7[k]; }, 0);
+    var t7 = teamBlues(Gs, 7, 'prop', true); var inf7 = t7['UCG Infinity|Collegiate Women+'], n7 = Object.keys(t7).reduce(function (a, k) { return a + t7[k]; }, 0);
     $('si-verdict').innerHTML = '<h4>Summary at the current inputs (' + state.R + '-routine session)</h4>' +
       '<div class="scroll"><table><thead><tr><th>Individual blue #, Collegiate W+ (XSa. / Inf.)</th><th class="num">Worst</th><th class="num">Worst likely</th><th class="num">Expected</th></tr></thead><tbody>' +
       '<tr><td>No team finals</td>' + SC.map(function (sc) { return '<td class="num">' + line(res.a[sc]) + '</td>'; }).join('') + '</tr>' +
-      '<tr><td>With team finals (XSa. Collegiate W+ team blue # ' + state.tb + ')</td>' + SC.map(function (sc) { return '<td class="num">' + line(res.b[sc]) + '</td>'; }).join('') + '</tr></tbody></table></div>' +
+      '<tr><td>With team finals (' + ruleLabel() + ')</td>' + SC.map(function (sc) { return '<td class="num">' + line(res.b[sc]) + '</td>'; }).join('') + '</tr></tbody></table></div>' +
       '<p style="margin-top:10px"><b>At 2026 team depth:</b> in 2026, Platinum, Diamond and Level 9 each had a Collegiate W+ team blue # of 7. Setting XSa. Collegiate W+ to 7 here gives Inf. Collegiate W+ a team blue # of ' + inf7 + ' by the section B rule (' + n7 + ' team finalists in all). Those team finals alone push the session to <b>' + res.t7 + '</b> routines even with every individual blue # at the minimum of 2 (worst case). The largest WAG finals session in 2024–26 held 326.</p>';
   }
 
@@ -2334,7 +2373,7 @@ footer p{max-width:80ch}
       var tc = D.teamcfg26[L], el2 = {}; D.ctx.forEach(function (c) { if (c.level === L) el2[c.cat] = c.eligible; });
       h += '<tr><td>' + L + '</td>' + ['Collegiate Women+', 'Community Women+', 'Collegiate Men+', 'Community Men+'].map(function (c, i) {
         return '<td class="num">' + tc[i] + ' (' + el2[c] + ')</td>';
-      }).join('') + '</tr>';
+      }).join('') + '<td class="num"><b>' + tc.reduce(function (a, x) { return a + x; }, 0) + '</b></td></tr>';
     });
     $('si-t26').innerHTML = h;
   }
@@ -2364,6 +2403,21 @@ footer p{max-width:80ch}
   function refreshTotals() { ['Xcel Diamond', 'Xcel Sapphire', 'UCG Infinity'].forEach(function (L) { var e = $('si-tot-' + L.replace(/ /g, '')); if (e) e.textContent = levelN(L); }); }
   $('si-reset').addEventListener('click', function () { resetField(); mixUI(); update(); });
   var r = $('si-r'), sel = $('si-tb');
+  function ladUI() {
+    var p = state.lad || LAD0, lad = state.trule === 'ladder';
+    $('si-trule').value = state.trule || 'prop';
+    $('si-tb-wrap').style.display = lad ? 'none' : ''; $('si-lad-wrap').style.display = lad ? '' : 'none';
+    $('si-lmin').value = p.min; $('si-llo').value = p.lo; $('si-lhi').value = p.hi; $('si-lat').value = p.at;
+    var pv = '';
+    if (lad) { var cells = []; for (var e = 0; e <= p.at + 1; e++) cells.push('<span><b>' + ladder(e) + '</b><i>' + e + (e === p.at + 1 ? '+' : '') + '</i></span>'); pv = '<span class="si-ladlab">Team blue # by eligible teams:</span>' + cells.join(''); }
+    $('si-ladprev').innerHTML = pv;
+    $('si-tfmean').textContent = pct(H.tf_mean);
+  }
+  $('si-trule').addEventListener('change', function () { state.trule = this.value; state.tbo = {}; ladUI(); render(); });
+  ['min', 'lo', 'hi', 'at'].forEach(function (k) { $('si-l' + k).addEventListener('change', function () {
+    var p = state.lad = Object.assign({}, state.lad || LAD0); p[k] = Math.max(k === 'min' ? 1 : 2, Math.round(+this.value || 0));
+    if (p.at <= p.min) p.at = p.min + 1; if (p.hi < p.lo) p.hi = p.lo; state.tbo = {}; ladUI(); render();
+  }); });
   $('si-plan').addEventListener('change', function () { state.plan = this.value; render(); });
   r.addEventListener('input', function () { state.R = +r.value; updateFast(); });
   sel.addEventListener('change', function () { state.tb = +sel.value; state.tbo = {}; update(); });
@@ -2377,11 +2431,11 @@ footer p{max-width:80ch}
       res.a[sc] = solve(Gs, state.R, null, sc); res.b[sc] = solve(Gs, state.R, tbl, sc);
       res.b[sc].floorParts = total(Gs, blues(Gs, 0), tbl, sc); res.a[sc].floorParts = total(Gs, blues(Gs, 0), null, sc);
     });
-    var keep = state.tbo; state.tbo = {}; res.t7 = total(Gs, blues(Gs, 0), teamBlues(Gs, 7), 'worst').tot; state.tbo = keep;
+    res.t7 = total(Gs, blues(Gs, 0), teamBlues(Gs, 7, 'prop', true), 'worst').tot;
     return { res: res, tbl: tbl };
   }
   function render() {
-    r.value = state.R; $('si-rv').textContent = state.R; sel.value = state.tb; $('si-plan').value = state.plan || 'likely';
+    r.value = state.R; $('si-rv').textContent = state.R; sel.value = state.tb; ladUI(); $('si-plan').value = state.plan || 'likely';
     var c = compute();
     tiles(c.res, c.tbl); bars(c.res); stack(c.res, c.tbl); table(Gs, N, c.res, c.tbl); teamCost(Gs, c.tbl); magChart(c.res, Gs); rates(c.res, Gs);
     save();
