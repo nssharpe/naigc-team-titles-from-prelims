@@ -1729,7 +1729,7 @@ footer p{max-width:80ch}
     <div class="si-ctl si-ctl-grid">
       <div class="si-flowbox">
         <p class="si-ctl-h">Athletes moving from each 2026 level to each 2027 level</p>
-        <p class="si-ctl-note">Each 2026 level keeps its total: raising one of its flows lowers the other (e.g. more 2026 Diamond athletes into XSa. leaves fewer in Diamond). Open Scoring only feeds Inf., so changing it changes the Inf. total.</p>
+        <p class="si-ctl-note">Each 2026 level keeps its total: raising one of its flows lowers the other (e.g. more 2026 Diamond athletes into XSa. leaves fewer in Diamond). Extra athletes in a level are modelled on that level's 2026-based athletes, so 2026 Open gymnasts moved into XSa. compete like the other XSa. athletes in their category.</p>
         <div class="scroll"><table class="si-flowtbl">
           <thead><tr><th>From 2026</th><th class="num">→ Diamond</th><th class="num">→ XSa.</th><th class="num">→ Inf.</th></tr></thead>
           <tbody id="si-flowin"></tbody>
@@ -1956,7 +1956,7 @@ footer p{max-width:80ch}
   function lvTotal(L) { return CATS.reduce(function (s, c) { return s + base[L + '|' + c].length; }, 0); }
   var ALLV = [['Xcel Diamond', 'Diamond', 'D']].concat(LV);
   var DIA = { 'Collegiate Women+': 286, 'Community Women+': 27, 'Collegiate Men+': 14, 'Community Men+': 5 };
-  var FLOWS = [['Diamond', 'Xcel Diamond'], ['Diamond', 'Xcel Sapphire'], ['Level 9', 'Xcel Sapphire'], ['Level 9', 'UCG Infinity'], ['Open Scoring', 'UCG Infinity']];
+  var FLOWS = [['Diamond', 'Xcel Diamond'], ['Diamond', 'Xcel Sapphire'], ['Level 9', 'Xcel Sapphire'], ['Level 9', 'UCG Infinity'], ['Open Scoring', 'Xcel Sapphire'], ['Open Scoring', 'UCG Infinity']];
   var UNM = { 'Xcel Diamond': 3, 'Xcel Sapphire': 2, 'UCG Infinity': 3 };
   function baseFlow(f) { var x = D.flows.filter(function (r) { return r.L26 === f[0] && r.CompLevel === f[1]; })[0]; return x ? x.n : 0; }
   function baseCount(L, c) { return L === 'Xcel Diamond' ? DIA[c] : base[L + '|' + c].length; }
@@ -1971,7 +1971,7 @@ footer p{max-width:80ch}
   }
   try { var q = JSON.parse(localStorage.getItem('si-state') || 'null'); } catch (e) { q = null; }
   resetField();
-  if (q && q.v === 2 && q.flow && q.share) { state.flow = q.flow; state.share = q.share; state.R = q.R || 245; state.tb = q.tb || 2; }
+  if (q && q.v === 2 && q.flow && q.share) { state.flow = q.flow; state.share = q.share; state.R = q.R || 245; state.tb = q.tb || 2; FLOWS.forEach(function (f) { if (!state.flow.hasOwnProperty(f.join('>'))) state.flow[f.join('>')] = baseFlow(f); }); }
   else if (q) { state.R = q.R || 245; state.tb = q.tb || 2; }
   function save() { try { localStorage.setItem('si-state', JSON.stringify(state)); } catch (e) {} }
 
