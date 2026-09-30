@@ -1706,15 +1706,15 @@ footer p{max-width:80ch}
 
   <div class="verdict">
     <h4>Verdict</h4>
-    <p>A team final in both levels takes up most of the session before any individual qualifies. In the worst case every team routine is extra: 16 per team, 4 up on each of 4 apparatus. At 2026's team depth (7 Collegiate Women+ teams per level plus the smaller categories), <strong>the session needs 395 routines even with every blue number at the minimum of 2</strong> (335 in the expected case). That's more than any WAG finals session in the last three years (largest: 326).</p>
-    <p>At a 245-routine session (the 2025–26 average), planning for the worst case: <strong>without team finals, Sapphire Collegiate Women+ gets a blue number of 11 and Infinity 8.</strong> With a slimmed team final of 3 Collegiate Women+ teams per level and none in the smaller categories, those fall to <strong>4 and 3</strong>. If the smaller categories keep team finals too, the worst case doesn't fit at all. In the expected case the numbers are 16 / 12 without teams and 12 / 9 with the slimmed team final. If the session gets the 2026 Level 9 slot (about 200 routines), worst-case planning gives <strong>7 / 6 without teams</strong>, and 3 Collegiate Women+ teams per level no longer fit.</p>
+    <p>A team final in both levels takes up most of the session before any individual qualifies. In the worst case every team routine is extra: 16 per team, 4 up on each of 4 apparatus. Team finals would run in every category with eligible teams, under the same blue-number rules as individuals (proportional, minimum 2). At 2026's team depth (7 Collegiate Women+ teams per level), <strong>the session needs 395 routines even with every individual blue number at the minimum of 2</strong> (335 in the expected case). That's more than any WAG finals session in the last three years (largest: 326).</p>
+    <p>At a 245-routine session (the 2025–26 average), planning for the worst case: <strong>without team finals, Sapphire Collegiate Women+ gets a blue number of 11 and Infinity 8.</strong> Even the smallest team final the rules allow (the minimum 2 teams in every category, 8 teams in all) cuts those to <strong>3 and 2</strong>, and every other category stays at 2. With 3 Collegiate Women+ teams per level the worst case doesn't fit at all. In the expected case the numbers are 16 / 12 without teams and 7 / 6 with the minimum team final. If the session gets the 2026 Level 9 slot (about 200 routines), worst-case planning gives <strong>7 / 6 without teams</strong>, and no team final fits except in the expected case (3 / 2).</p>
   </div>
 
   <div class="stats">
     <div class="stat"><span class="stat-val">245</span><span class="stat-lab">routines: planning budget (average 2025–26 WAG finals session; 188–326 range)</span></div>
     <div class="stat"><span class="stat-val dn">395</span><span class="stat-lab">routines needed at 2026 team depth with every blue number at 2, worst case</span></div>
     <div class="stat"><span class="stat-val up">11 / 8</span><span class="stat-lab">Sapphire / Infinity CW blue numbers, no team finals, worst case, 245 routines</span></div>
-    <div class="stat"><span class="stat-val dn">4 / 3</span><span class="stat-lab">the same with 3 CW team finalists per level (no community team finals)</span></div>
+    <div class="stat"><span class="stat-val dn">3 / 2</span><span class="stat-lab">the same with the smallest team final the rules allow (2 teams per category)</span></div>
   </div>
 </section>
 
@@ -1740,7 +1740,7 @@ footer p{max-width:80ch}
   <p>A session's length depends on how many routines it holds. Sessions have held between 188 and 326 routines in recent years: WAG finals in 2025 had 236 (Platinum), 227 (Diamond) and 188 (Level 9); in 2026 they had 326, 293 and 201. The average across those six sessions is <strong>245</strong>, which is the headline figure here. The earlier sizing of the draft 2027 config assumed about 90 finalists for a full session, which matches the 2026 Level 9 slot (89 athletes, 201 routines). If that's the slot this session gets, use the 200 preset. The control below moves the budget anywhere from 150 to 400. These are counts of routines actually performed, so the budget is checked against qualified routines and the scratch rate (a few percent) is left as spare margin.</p>
 
   <h3>Team finalists</h3>
-  <p>In 2026, 7 Collegiate Women+ teams reached each WAG team final, and the smaller categories sent up to 2 teams. Mixed teams already score from prelims. The controls below set Collegiate Women+ to 2, 3, 5 or 7 per level and switch team finals in the smaller categories on or off. When on, they get 2 team finalists each (fewer where fewer clubs are eligible, which comes to 4 teams across the two levels). Each team may put up 4 athletes per apparatus.</p>
+  <p>In 2026, 7 Collegiate Women+ teams reached each WAG team final, and the smaller categories sent up to 2 teams. Mixed teams already score from prelims. Team finals are all categories or none. The team blue numbers follow the same rule as individuals: proportional, with a minimum of 2 (or all eligible teams where fewer than 2 are eligible). The smaller categories therefore sit at the minimum, which comes to 4 teams across the two levels. The control below sets Collegiate Women+ to 2 (the minimum everywhere), 3, 5 or 7 per level. Each team may put up 4 athletes per apparatus.</p>
 </section>
 
 <section id="si-cases">
@@ -1783,9 +1783,8 @@ footer p{max-width:80ch}
         <button type="button" data-r="325">Platinum 2026 (326)</button>
       </span>
       <label>Collegiate Women+ team finalists per level
-        <select id="si-cw"><option value="2">2</option><option value="3" selected>3</option><option value="5">5</option><option value="7">7 (as in 2026)</option></select>
+        <select id="si-cw"><option value="2" selected>2 (minimum everywhere)</option><option value="3">3</option><option value="5">5</option><option value="7">7 (as in 2026)</option></select>
       </label>
-      <label><input type="checkbox" id="si-com"> Team finals in the smaller categories too (as in 2026)</label>
     </div>
     <div class="scroll">
     <table class="si-tbl">
@@ -1799,7 +1798,7 @@ footer p{max-width:80ch}
     <p class="fig-sub" style="margin:14px 0 0">"Does not fit" means the case needs more routines than the budget even at the minimum blue number of 2 in every category; the minimum it needs is shown. The athlete count is the expected number of different athletes at those blue numbers. Qualification spots count each final separately (AA + each apparatus), ties included.</p>
   </div>
 
-  <p style="margin-top:22px">For comparison, the 2027 draft config (Sapphire CW 11 and 2 elsewhere; Infinity 6 in every category) needs <b id="si-cur0"></b> routines with no team finals. With 3 Collegiate Women+ team finalists per level it needs <b id="si-cur3"></b>, and at 2026 team depth <b id="si-cur7"></b> (worst / worst likely / expected in each case). So even without teams the draft misses a 245 budget on the worst-case principle. It is also far from proportional in Infinity: 6 of 6 Collegiate Men+ athletes qualify against 6 of 131 Collegiate Women+.</p>
+  <p style="margin-top:22px">For comparison, the 2027 draft config (Sapphire CW 11 and 2 elsewhere; Infinity 6 in every category) needs <b id="si-cur0"></b> routines with no team finals. With the minimum team final (2 teams per category) it needs <b id="si-cur3"></b>, and at 2026 team depth <b id="si-cur7"></b> (worst / worst likely / expected in each case). So even without teams the draft misses a 245 budget on the worst-case principle. It is also far from proportional in Infinity: 6 of 6 Collegiate Men+ athletes qualify against 6 of 131 Collegiate Women+.</p>
 </section>
 
 <section id="si-teamcost">
@@ -1831,16 +1830,16 @@ footer p{max-width:80ch}
   <div class="two-col">
     <div class="card">
       <h4>The small categories are a fixed cost either way</h4>
-      <p>Six of the eight categories stay at the minimum blue number of 2 in almost every setting, and a few of them only have 2 to 8 athletes. Their individual finalists need about <b>57 routines</b> in the expected case (87 in the worst case) whatever is decided about teams. If they keep team finals, that adds <b>4 more team finalists</b> (Infinity Community Women+ 2, Infinity Community Men+ 1, Sapphire Community Men+ 1), about 50 routines in the worst case, before any Collegiate Women+ team is added.</p>
+      <p>Six of the eight categories stay at the minimum blue number of 2 in almost every setting, and a few of them only have 2 to 8 athletes. Their individual finalists need about <b>57 routines</b> in the expected case (87 in the worst case) whatever is decided about teams. Team finals add <b>4 more team finalists</b> in these categories (Infinity Community Women+ 2, Infinity Community Men+ 1, Sapphire Community Men+ 1), about 50 routines in the worst case, before any Collegiate Women+ team is added.</p>
     </div>
     <div class="card">
       <h4>Qualification rates against Platinum and Diamond</h4>
-      <p>Platinum Collegiate Women+ qualifies 20 of about 400 athletes (5%), and Diamond 20 of about 290 (7%). Without team finals and at the 245 budget, Sapphire Collegiate Women+ gets 11–16 of 166 (7–10%) and Infinity 8–12 of 131 (6–9%), in line with the other finals levels. With 3 Collegiate Women+ team finalists per level and worst-case planning, Sapphire drops to 4 (2%) and Infinity to 3 (2%). The places go to team lineup athletes instead of individual qualifiers: the <em>number of different athletes</em> in the session stays around 85–115 either way. What changes is how they get there.</p>
+      <p>Platinum Collegiate Women+ qualifies 20 of about 400 athletes (5%), and Diamond 20 of about 290 (7%). Without team finals and at the 245 budget, Sapphire Collegiate Women+ gets 11–16 of 166 (7–10%) and Infinity 8–12 of 131 (6–9%), in line with the other finals levels. With the minimum team final and worst-case planning, Sapphire drops to 3 (2%) and Infinity to 2 (2%). The places go to team lineup athletes instead of individual qualifiers: the <em>number of different athletes</em> in the session stays around 85–115 either way. What changes is how they get there.</p>
     </div>
   </div>
   <div class="note">
     <h4>What this analysis does not settle</h4>
-    <p>It doesn't compare the value of a team title contested head to head in finals with individual places; that's covered on the main tab. Other options exist: fewer team finalists, team finals for only one of the two levels, or a longer session. The budget control above shows what each would allow. The 2026 regrouping into 2027 levels is an estimate. 2027 registration will differ, so the absolute numbers will change. The size of the gap between having and not having team finals is the finding that should hold.</p>
+    <p>It doesn't compare the value of a team title contested head to head in finals with individual places; that's covered on the main tab. The remaining levers are a longer session or fewer levels with finals; the team final can't be made smaller than 2 teams per category. The budget control above shows what each would allow. The 2026 regrouping into 2027 levels is an estimate. 2027 registration will differ, so the absolute numbers will change. The size of the gap between having and not having team finals is the finding that should hold.</p>
   </div>
 </section>
 
@@ -1872,17 +1871,17 @@ footer p{max-width:80ch}
   var fb = document.getElementById('si-field'), rows = '';
   D.G.forEach(function (g, i) {
     var cw = g.indexOf('Collegiate Women+') >= 0;
-    var tf = cw ? '2 / 3 / 5 / 7' : Math.min(2, D.et[i]) + ' (if on)';
+    var tf = cw ? '2 / 3 / 5 / 7' : Math.min(2, D.et[i]);
     rows += '<tr><td>' + short(g) + '</td><td class="num">' + D.n[i] + '</td><td class="num">' + D.aa[i] + '</td><td class="num">' + D.et[i] + '</td><td class="num">' + (D.et[i] ? tf : 0) + '</td></tr>';
   });
   fb.innerHTML = rows;
   function f3(cw) { return SC.map(function (s) { return D.cur[cw + '|' + s]; }).join(' / '); }
   document.getElementById('si-cur0').textContent = f3('0|0');
-  document.getElementById('si-cur3').textContent = f3('3|0');
+  document.getElementById('si-cur3').textContent = f3('2|1');
   document.getElementById('si-cur7').textContent = f3('7|1');
-  var r = document.getElementById('si-r'), rv = document.getElementById('si-rv'), cwSel = document.getElementById('si-cw'), comBox = document.getElementById('si-com');
+  var r = document.getElementById('si-r'), rv = document.getElementById('si-rv'), cwSel = document.getElementById('si-cw');
   function render() {
-    var R = +r.value, cw = cwSel.value + '|' + (comBox.checked ? 1 : 0); rv.textContent = R;
+    var R = +r.value, cw = cwSel.value + '|1'; rv.textContent = R;
     var cols = [];
     SC.forEach(function (s) { cols.push({ v: D.r[R + '|0|0|' + s], fl: D.floor['0|0|' + s] }); });
     SC.forEach(function (s) { cols.push({ v: D.r[R + '|' + cw + '|' + s], fl: D.floor[cw + '|' + s] }); });
@@ -1904,7 +1903,7 @@ footer p{max-width:80ch}
     });
     document.getElementById('si-body').innerHTML = h;
   }
-  r.addEventListener('input', render); cwSel.addEventListener('change', render); comBox.addEventListener('change', render);
+  r.addEventListener('input', render); cwSel.addEventListener('change', render);
   document.querySelectorAll('.si-presets button').forEach(function (b) {
     b.addEventListener('click', function () { r.value = b.getAttribute('data-r'); render(); });
   });
