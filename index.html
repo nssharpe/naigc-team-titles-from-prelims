@@ -1781,7 +1781,7 @@ footer p{max-width:80ch}
       <tbody id="si-teamlist"></tbody>
     </table>
     </div>
-    <p class="fig-sub" style="margin:12px 0 18px">Both rows are editable (edited boxes are outlined). <b>Eligible teams</b> starts at what the 2026-based field produces; raise it to add teams the data doesn't have. A team the simulation doesn't have is counted in the expected case at the 2025–26 average cost of a team finalist (<span id="si-tfmean"></span> of 16 routines). <b>Team blue #</b> follows the rule above; a hand-typed 1 becomes 2. Changing the rule or the dropdown clears hand edits to team blue #'s.</p>
+    <p class="fig-sub" style="margin:12px 0 18px"><b>Team finalists</b> counts the teams that can actually qualify: a category with a team blue # of 2 but only 1 eligible team sends 1. "Up to" is the total if every team blue # filled; the worst and worst likely cases plan for that, in case teams register late. Both rows are editable (edited boxes are outlined). <b>Eligible teams</b> starts at what the 2026-based field produces; raise it to add teams the data doesn't have. A team the simulation doesn't have is counted in the expected case at the 2025–26 average cost of a team finalist (<span id="si-tfmean"></span> of 16 routines). <b>Team blue #</b> follows the rule above; a hand-typed 1 becomes 2. Changing the rule or the dropdown clears hand edits to team blue #'s.</p>
 
     <p class="fig-title">For comparison: 2026 team blue #'s, each level in its own session</p>
     <div class="scroll">
@@ -2263,7 +2263,7 @@ footer p{max-width:80ch}
       var G = Gs.filter(function (g) { return g.key === L[0]; })[0], T = tbl[L[0]];
       if (!G || !T) return;
       var pts = [];
-      for (var b = 1; b <= XM; b++) { var r = evalG(G, b, T); pts.push([b, r.extra / (16 * r.T)]); }
+      for (var b = 1; b <= XM; b++) { var r = evalG(G, b, Math.min(T, G.teams.length)); if (r.T) pts.push([b, r.extra / (16 * r.T)]); }
       el('path', { d: 'M' + pts.map(function (p) { return X(p[0]) + ',' + Y(p[1]); }).join('L'), fill: 'none', stroke: L[1], 'stroke-width': 2 }, s);
       pts.forEach(function (p) { var c = el('circle', { cx: X(p[0]), cy: Y(p[1]), r: 7, fill: 'transparent' }, s); hover(c, L[2] + ' Collegiate W+, individual blue # ' + p[0] + ', ' + T + ' team finalists<br>Extra routines per team: <b>' + pct(p[1]) + '</b> of 16'); });
       var last = pts[pts.length - 1];
@@ -2336,15 +2336,15 @@ footer p{max-width:80ch}
   function teamRow(tbl) {
     var h = '';
     LV.forEach(function (l) {
-      var tot = 0, row1 = '', row2 = '';
+      var tot = 0, plan = 0, row1 = '', row2 = '';
       CATS.forEach(function (c) {
         var k = l[0] + '|' + c, G = Gs.filter(function (g) { return g.key === k; })[0], t = tbl[k], e = G ? elig(G) : 0;
-        var ovT = state.tbo && state.tbo.hasOwnProperty(k), ovE = state.elo && state.elo.hasOwnProperty(k); tot += t;
+        var ovT = state.tbo && state.tbo.hasOwnProperty(k), ovE = state.elo && state.elo.hasOwnProperty(k); tot += Math.min(t, e); plan += t;
         row1 += '<td class="num"><input type="number" min="0" max="60" step="1" data-ek="' + k + '" value="' + e + '"' + (ovE ? ' class="si-ov" title="Edited by hand; the simulation has ' + (G ? G.teams.length : 0) + '"' : '') + '></td>';
         row2 += '<td class="num"><input type="number" min="0" max="20" step="1" data-tk="' + k + '" value="' + t + '"' + (ovT ? ' class="si-ov" title="Edited by hand"' : '') + '></td>';
       });
       h += '<tr><td rowspan="2"><b>' + l[1] + '</b></td><td class="si-rl">Eligible teams</td>' + row1 + '<td></td></tr>';
-      h += '<tr class="si-tbrow"><td class="si-rl">Team blue #</td>' + row2 + '<td class="num"><b>' + tot + '</b></td></tr>';
+      h += '<tr class="si-tbrow"><td class="si-rl">Team blue #</td>' + row2 + '<td class="num"><b>' + tot + '</b>' + (plan > tot ? '<br><span class="si-el">up to ' + plan + '</span>' : '') + '</td></tr>';
     });
     return h;
   }
@@ -2359,12 +2359,12 @@ footer p{max-width:80ch}
     }); });
     function cw(o, L) { return o.best ? o.best.bl[L + '|Collegiate Women+'] : '–'; }
     function line(o) { return o.best ? cw(o, 'Xcel Sapphire') + ' / ' + cw(o, 'UCG Infinity') : '<span style="color:var(--brick)">doesn’t fit</span> (needs ' + o.floor + ')'; }
-    var t7 = teamBlues(Gs, 7, 'prop', true); var inf7 = t7['UCG Infinity|Collegiate Women+'], n7 = Object.keys(t7).reduce(function (a, k) { return a + t7[k]; }, 0);
+    var t7 = teamBlues(Gs, 7, 'prop', true); var inf7 = t7['UCG Infinity|Collegiate Women+'], n7 = Gs.reduce(function (a, G) { return a + Math.min(t7[G.key], elig(G)); }, 0), p7 = Object.keys(t7).reduce(function (a, k) { return a + t7[k]; }, 0);
     $('si-verdict').innerHTML = '<h4>Summary at the current inputs (' + state.R + '-routine session)</h4>' +
       '<div class="scroll"><table><thead><tr><th>Individual blue #, Collegiate W+ (XSa. / Inf.)</th><th class="num">Worst</th><th class="num">Worst likely</th><th class="num">Expected</th></tr></thead><tbody>' +
       '<tr><td>No team finals</td>' + SC.map(function (sc) { return '<td class="num">' + line(res.a[sc]) + '</td>'; }).join('') + '</tr>' +
       '<tr><td>With team finals (' + ruleLabel() + ')</td>' + SC.map(function (sc) { return '<td class="num">' + line(res.b[sc]) + '</td>'; }).join('') + '</tr></tbody></table></div>' +
-      '<p style="margin-top:10px"><b>At 2026 team depth:</b> in 2026, Platinum, Diamond and Level 9 each had a Collegiate W+ team blue # of 7. Setting XSa. Collegiate W+ to 7 here gives Inf. Collegiate W+ a team blue # of ' + inf7 + ' by the section B rule (' + n7 + ' team finalists in all). Those team finals alone push the session to <b>' + res.t7 + '</b> routines even with every individual blue # at the minimum of 2 (worst case). The largest WAG finals session in 2024–26 held 326.</p>';
+      '<p style="margin-top:10px"><b>At 2026 team depth:</b> in 2026, Platinum, Diamond and Level 9 each had a Collegiate W+ team blue # of 7. Setting XSa. Collegiate W+ to 7 here gives Inf. Collegiate W+ a team blue # of ' + inf7 + ' by the section B rule (' + n7 + ' team finalists with today\'s eligible teams' + (p7 > n7 ? ', up to ' + p7 + ' if every team blue # filled' : '') + '). Planning for every team blue # to fill, those team finals alone push the session to <b>' + res.t7 + '</b> routines even with every individual blue # at the minimum of 2 (worst case). The largest WAG finals session in 2024–26 held 326.</p>';
   }
 
   function t26() {
@@ -2373,7 +2373,7 @@ footer p{max-width:80ch}
       var tc = D.teamcfg26[L], el2 = {}; D.ctx.forEach(function (c) { if (c.level === L) el2[c.cat] = c.eligible; });
       h += '<tr><td>' + L + '</td>' + ['Collegiate Women+', 'Community Women+', 'Collegiate Men+', 'Community Men+'].map(function (c, i) {
         return '<td class="num">' + tc[i] + ' (' + el2[c] + ')</td>';
-      }).join('') + '<td class="num"><b>' + tc.reduce(function (a, x) { return a + x; }, 0) + '</b></td></tr>';
+      }).join('') + '<td class="num"><b>' + ['Collegiate Women+', 'Community Women+', 'Collegiate Men+', 'Community Men+'].reduce(function (a, c, i) { return a + Math.min(tc[i], el2[c] || 0); }, 0) + '</b></td></tr>';
     });
     $('si-t26').innerHTML = h;
   }
